@@ -20,6 +20,9 @@ public class FieldCells
     
     public FieldCells( GameField gameField )
     {
+
+        
+    
         _gameField = gameField;
         IsFirstClick = true;
         var widthPerUnit = gameField.GetSizePerUnit();
@@ -33,7 +36,6 @@ public class FieldCells
         countRows = gameField.GetCountBlocksXY().y;
 
         
-        
         FieldCellData = new FieldCellData(countColumns,countRows,_gameField.GameState.GameFieldData.ScaleBrick);
         _cells = new Cell[FieldCellData.CountColumns, FieldCellData.CountRows];
         _countCells = _cells.Length;
@@ -41,7 +43,6 @@ public class FieldCells
         ContainerMines = new ContainerMines( this._gameField, _cells, _firstIndexes );
        _spawnerField = new SpawnerField(this, _cells );
         _spawnerField.CreateBlocks();
-        
         
     }
 

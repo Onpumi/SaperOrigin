@@ -30,6 +30,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         SpriteData = new SpriteData(width, height);
         DataSetting = new DataSetting(this);
         _gameState.GameFieldData.ScaleBrick = DataSetting.GameData.GetOptionValue(TypesOption.SizeCells);
+//        Debug.Log(_gameState.GameFieldData.ScaleBrick);
         SetPercentMine((TypesGame)DataSetting.GameData.GetDifficultValue());
         //var parent = this.transform;
         var parent = _parentField;
@@ -73,7 +74,6 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         var spriteArea = Mathf.Pow(ScreenAdjusment.PixelsPerUnit, 2);
         var deltaScale = Mathf.Sqrt(screenArea / (_gameState.GameFieldData.NeedCountBricks * spriteArea));
         scaleBrick *= deltaScale;
-        scaleBrick = 0.0f;
         return scaleBrick;
     }
 
