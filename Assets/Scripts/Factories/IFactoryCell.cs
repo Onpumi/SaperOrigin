@@ -1,0 +1,4 @@
+
+interface IFactoryCell : IFactory<Cell>
+{
+}
