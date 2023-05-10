@@ -10,6 +10,8 @@ public class BackgroundField : MonoBehaviour
         _rectTransform.anchorMin = new Vector2(0f, 0f);
         _rectTransform.anchorMax = new Vector2(1f, 1f);
         _rectTransform.offsetMax = new Vector2(0f, -_windowPanel.RectTransform.rect.height);
-        _rectTransform.offsetMin = new Vector2(0f, -Screen.height / 2 - _windowPanel.RectTransform.rect.height);
+//        _rectTransform.offsetMin = new Vector2(0f, -Screen.height / 2 - _windowPanel.RectTransform.rect.height);
+        _rectTransform.offsetMin = new Vector2(0f, 0f);
+        transform.localScale = new Vector3(1, 0.8f);
     }
 }

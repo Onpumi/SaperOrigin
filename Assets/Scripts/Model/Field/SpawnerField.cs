@@ -39,6 +39,7 @@ public class SpawnerField
             positionStart = camera.ScreenToWorldPoint(new Vector3(tabLeftForSprite + widthSprite / 2f,
                 tabTopForSprite + heightSprite / 2f));
         Stopwatch stopwatch = new Stopwatch();
+
         
         for (var i = 0; i < FieldCellData.CountColumns; i++)
         for (var j = 0; j < FieldCellData.CountRows; j++)

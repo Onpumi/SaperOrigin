@@ -23,11 +23,8 @@ public class Cell : ICell
        Flag = new Flag( _cellView );
     }
 
-    //public void Display( Vector3 position, float scale)
     public void Display( int indexI, int indexJ, float scale)
     {
-        //_cellView.Display(this, position, scale);
-        //_cellView.transform.position = Vector3.zero;
         _cellView.transform.localScale = new Vector3(scale,scale);
         Image image = _cellView.GetComponent<Image>();
         var width = image.rectTransform.rect.width;
@@ -36,7 +33,6 @@ public class Cell : ICell
         image.rectTransform.anchorMin = new Vector2(0,1);
         image.rectTransform.anchorMax = new Vector2(0,1);
         image.rectTransform.anchoredPosition = new Vector2( width * scale * indexI, -height * scale * indexJ );
-
     }
 
     public void CreateMine(int value)

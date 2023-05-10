@@ -10,7 +10,7 @@ public class DataSetting
     public DataSetting(GameField gameField)
     {
         _gameField = gameField;
-        CalculateScaleBrick();
+     //   CalculateScaleBrick();
         AudioData = new AudioData("AudioKey");
         AudioData.Load();
         ScreenData = new ScreenData("ScreenKey");
@@ -44,6 +44,7 @@ public class DataSetting
 
     public void CalculateScaleBrick()
     {
+        /*
         var screenAdjusment = _gameField.ScreenAdjusment;
         var spriteData = _gameField.SpriteData;
         var needCountBricks = _gameField.GameState.GameFieldData.NeedCountBricks;
@@ -52,5 +53,6 @@ public class DataSetting
         var spriteArea = spriteData.Width * spriteData.Height;
         var deltaScale = Mathf.Sqrt(screenArea / (needCountBricks * spriteArea));
         ScaleBrick *= deltaScale;
+        */
     }
 }

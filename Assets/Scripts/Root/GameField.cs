@@ -30,9 +30,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         SpriteData = new SpriteData(width, height);
         DataSetting = new DataSetting(this);
         _gameState.GameFieldData.ScaleBrick = DataSetting.GameData.GetOptionValue(TypesOption.SizeCells);
-//        Debug.Log(_gameState.GameFieldData.ScaleBrick);
         SetPercentMine((TypesGame)DataSetting.GameData.GetDifficultValue());
-        //var parent = this.transform;
         var parent = _parentField;
         PoolDataContainer = new PoolDataContainer(_views, parent, 1000);
     }
@@ -63,14 +61,14 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     {
         Init();
         new FieldCells(this);
-
     }
 
     public float CalculateScale()
     {
         var image = _parentField.GetComponent<Image>();
         var scaleBrick = 1f;
-        var screenArea = image.rectTransform.rect.width * image.rectTransform.rect.height; 
+        var rectImage = image.rectTransform.rect;
+        var screenArea = rectImage.width * rectImage.height; 
         var spriteArea = Mathf.Pow(ScreenAdjusment.PixelsPerUnit, 2);
         var deltaScale = Mathf.Sqrt(screenArea / (_gameState.GameFieldData.NeedCountBricks * spriteArea));
         scaleBrick *= deltaScale;
@@ -83,7 +81,6 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         var image = _parentField.GetComponent<Image>();
         var scaleBrick = 1f;
         var needProcentDeltaWidth = 10;
-        
         return scaleBrick;
     }
 
@@ -120,7 +117,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         GameState.StopGame();
         GameState.ResetTimeView();
         _gameState.GameFieldData.ScaleBrick = DataSetting.GameData.GetOptionValue(TypesOption.SizeCells);
-        foreach (Transform cell in transform)
+        foreach (Transform cell in _parentField)
         {
             if (cell.TryGetComponent(out CellView cellview))
             {

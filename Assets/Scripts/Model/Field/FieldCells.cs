@@ -20,9 +20,6 @@ public class FieldCells
     
     public FieldCells( GameField gameField )
     {
-
-        
-    
         _gameField = gameField;
         IsFirstClick = true;
         var widthPerUnit = gameField.GetSizePerUnit();
