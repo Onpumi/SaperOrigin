@@ -24,7 +24,8 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
 
     private void Init()
     {
-        ScreenAdjusment = new ScreenAdjusment(transform);
+        
+        ScreenAdjusment = new ScreenAdjusment(transform.parent);
         var width = _views.CellView.GetWidth();
         var height = _views.CellView.GetHeight();
         SpriteData = new SpriteData(width, height);
@@ -65,23 +66,13 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
 
     public float CalculateScale()
     {
-        var image = _parentField.GetComponent<Image>();
-        var scaleBrick = 1f;
-        var rectImage = image.rectTransform.rect;
-        var screenArea = rectImage.width * rectImage.height; 
-        var spriteArea = Mathf.Pow(ScreenAdjusment.PixelsPerUnit, 2);
-        var deltaScale = Mathf.Sqrt(screenArea / (_gameState.GameFieldData.NeedCountBricks * spriteArea));
-        scaleBrick *= deltaScale;
-        return scaleBrick;
-    }
-
-
-    public float GetScaleDefault()
-    {
-        var image = _parentField.GetComponent<Image>();
-        var scaleBrick = 1f;
-        var needProcentDeltaWidth = 10;
-        return scaleBrick;
+        var imageParent = _parentField.GetComponent<Image>();
+        var imageChild = _views.CellView.GetComponent<Image>();
+        var rectTransformImageParent = imageParent.rectTransform.rect;
+        var rectTransformImageChild = imageChild.rectTransform.rect;
+        //12f нужно сделать чтобы считал сам в зависимости от разрешения экрана и на экране не мелко не крупно было
+        var scaleFactor = (rectTransformImageParent.width / 12f) / rectTransformImageChild.width;
+        return scaleFactor;
     }
 
     public Vector2 GetSizePerUnit()

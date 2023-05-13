@@ -22,16 +22,16 @@ public class FieldCells
     {
         _gameField = gameField;
         IsFirstClick = true;
-        var widthPerUnit = gameField.GetSizePerUnit();
-        var countColumns = Mathf.RoundToInt( widthPerUnit.x );
-        if (countColumns > widthPerUnit.x) countColumns--;
-        var countRows = Mathf.RoundToInt(widthPerUnit.y);
-        if (Screen.width < Screen.height) countRows = countColumns;
+        //var widthPerUnit = gameField.GetSizePerUnit();
+        //var countColumns = Mathf.RoundToInt( widthPerUnit.x );
+        //if (countColumns > widthPerUnit.x) countColumns--;
+        //var countRows = Mathf.RoundToInt(widthPerUnit.y);
+        //if (Screen.width < Screen.height) countRows = countColumns;
 
 
-        countColumns = gameField.GetCountBlocksXY().x;
-        countRows = gameField.GetCountBlocksXY().y;
-
+        var countColumns = gameField.GetCountBlocksXY().x;
+        var countRows = gameField.GetCountBlocksXY().y;
+        
         
         FieldCellData = new FieldCellData(countColumns,countRows,_gameField.GameState.GameFieldData.ScaleBrick);
         _cells = new Cell[FieldCellData.CountColumns, FieldCellData.CountRows];

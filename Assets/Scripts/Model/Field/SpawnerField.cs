@@ -1,8 +1,3 @@
-using System;
-using UnityEngine;
-using System.Diagnostics;
-using Debug = UnityEngine.Debug;
-
 public class SpawnerField
 {
     private readonly FieldCells _fieldCells;
@@ -23,24 +18,6 @@ public class SpawnerField
     public void CreateBlocks()
     {
         _gameField = _fieldCells.GameField;
-        var camera = _gameField.CameraField;
-        if (camera is null) throw new ArgumentException("Current camera is null");
-        var deltaY = _gameField.ScreenAdjusment.PixelsPerUnit / _gameField.SpriteData.Height;
-        var deltaX = _gameField.ScreenAdjusment.PixelsPerUnit / _gameField.SpriteData.Width;
-        var resolutionCanvas = _gameField.ScreenAdjusment.ResolutionCanvas;
-        var heightSprite = _gameField.SpriteData.Height * FieldCellData.Scale * deltaY;
-        var widthSprite = _gameField.SpriteData.Width * FieldCellData.Scale * deltaX;
-        var tabLeftForSprite = (resolutionCanvas.x - (float)FieldCellData.CountColumns * widthSprite) / 2f;
-        var tabTopForSprite = resolutionCanvas.y * 0.01f;
-        var positionStart = camera.ScreenToWorldPoint(new Vector3(tabLeftForSprite + widthSprite / 2f,
-            tabTopForSprite + heightSprite / 2f + Screen.height * 0.25f));
-
-        if (Screen.width > Screen.height)
-            positionStart = camera.ScreenToWorldPoint(new Vector3(tabLeftForSprite + widthSprite / 2f,
-                tabTopForSprite + heightSprite / 2f));
-        Stopwatch stopwatch = new Stopwatch();
-
-        
         for (var i = 0; i < FieldCellData.CountColumns; i++)
         for (var j = 0; j < FieldCellData.CountRows; j++)
         {
@@ -49,10 +26,8 @@ public class SpawnerField
             _cells[i, j] = factoryCell.Create();
             _cells[i, j].CellView.InputHandler.OnClickCell += ActionAfterClickCell;
             _cells[i, j].CellView.InputHandler.OnClickDelay += ActionAfterHoldCell;
-            //_cells[i, j].Display(positionStart, FieldCellData.Scale);
             _cells[i, j].Display(i, j, FieldCellData.Scale);
         }
-        
     }
 
     private void ActionAfterClickCell(InputHandler inputHandler)

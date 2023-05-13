@@ -15,7 +15,8 @@ public class ScreenAdjusment
         _canvasParent = canvasParent;
         ScreenExtensions.SetPortraitOrientation();
         _canvasScaler = _canvasParent.GetComponent<CanvasScaler>();
-        _canvasScaler.SetResolutionToScreen();
+        if( _canvasScaler == null ) return;
+  //      _canvasScaler.SetResolutionToScreen();
         ResolutionCanvas = _canvasScaler.referenceResolution;
         RefPixelsPerUnit = _canvasScaler.referencePixelsPerUnit;
         PixelsPerUnit = _canvasScaler.referencePixelsPerUnit;

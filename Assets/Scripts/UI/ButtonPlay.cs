@@ -61,8 +61,8 @@ public class ButtonPlay : WindowBase, IPointerDownHandler
     public override void Display( List<IWindowCommand> activeUI )
     {
         _gameState.DisableAllUI();
-        if( activeUI != null )
-          activeUI.ForEach(ui => ui.Enable());
+  //      if( activeUI != null )
+//          activeUI.ForEach(ui => ui.Enable());
     }
     
 }
