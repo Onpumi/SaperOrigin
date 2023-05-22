@@ -66,19 +66,20 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
 
     public float CalculateScale()
     {
-        var imageParent = _parentField.GetComponent<Image>();
-        var imageChild = _views.CellView.GetComponent<Image>();
-        var rectTransformImageParent = imageParent.rectTransform.rect;
-        var rectTransformImageChild = imageChild.rectTransform.rect;
-        //12f нужно сделать чтобы считал сам в зависимости от разрешения экрана и на экране не мелко не крупно было
-        var scaleFactor = (rectTransformImageParent.width / 12f) / rectTransformImageChild.width;
-        return scaleFactor;
+       var imageParent = _parentField.GetComponent<Image>();
+       var imageChild = _views.CellView.GetComponent<Image>();
+       var rectTransformImageParent = imageParent.rectTransform.rect;
+       var rectTransformImageChild = imageChild.rectTransform.rect; //12 23
+       var scaleFactorWidth = (rectTransformImageParent.width / 12f) / rectTransformImageChild.width;
+       var scaleFactorHeight = (rectTransformImageParent.height / 24f) / rectTransformImageChild.height;
+       var scaleFactor = Mathf.Min(scaleFactorWidth,scaleFactorHeight);
+       return scaleFactor;
     }
-
+    
     public Vector2 GetSizePerUnit()
     {
         var scaleX = _gameState.GameFieldData.ScaleBrick;
-        var scaleY = _gameState.GameFieldData.ScaleBrick / _gameState.GameFieldData.ScaleHeightGrid;
+        var scaleY = _gameState.GameFieldData.ScaleBrick;
         var resolutionCanvas = ScreenAdjusment.ResolutionCanvas;
         var refPixelsPerUnit = ScreenAdjusment.RefPixelsPerUnit;
         return new Vector2(resolutionCanvas.x / (refPixelsPerUnit * scaleX),

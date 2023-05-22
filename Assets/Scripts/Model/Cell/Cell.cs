@@ -25,14 +25,22 @@ public class Cell : ICell
 
     public void Display( int indexI, int indexJ, float scale)
     {
+        float leftPadding = 50f; 
+        float rightPadding = 50f; 
+        float topPadding = 50f; 
+        float bottomPadding = 50f; 
+
+       
         _cellView.transform.localScale = new Vector3(scale,scale);
         Image image = _cellView.GetComponent<Image>();
         var width = image.rectTransform.rect.width;
         var height = image.rectTransform.rect.height;
         image.rectTransform.pivot = new Vector2(0, 1);
-        image.rectTransform.anchorMin = new Vector2(0,1);
-        image.rectTransform.anchorMax = new Vector2(0,1);
+        image.rectTransform.anchorMin = new Vector2(0f,1f);
+        image.rectTransform.anchorMax = new Vector2(0f,1f);
         image.rectTransform.anchoredPosition = new Vector2( width * scale * indexI, -height * scale * indexJ );
+//        image.rectTransform.anchoredPosition = new Vector2( leftPadding + width * scale * indexI + rightPadding * indexI, -topPadding - height * scale * indexJ - bottomPadding * indexJ ); 
+       
     }
 
     public void CreateMine(int value)
