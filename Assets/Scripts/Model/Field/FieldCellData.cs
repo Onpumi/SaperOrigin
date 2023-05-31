@@ -1,14 +1,19 @@
-
+using UnityEngine;
    public struct FieldCellData
-{
+   { 
     public int CountColumns;
     public int CountRows;
-    public float Scale;
+    public Vector2 Scales; 
 
-    public FieldCellData(int countColumns, int countRows, float scale)
+    public FieldCellData(int countColumns, int countRows, Vector2 scales)
     {
         CountColumns = countColumns;
         CountRows = countRows;
-        Scale = scale;
+        Scales = scales;
     }
-}
+
+    public void UpdateScales(Vector2 scales)
+    {
+        Scales = scales;
+    }
+   }

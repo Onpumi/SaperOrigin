@@ -23,23 +23,16 @@ public class Cell : ICell
        Flag = new Flag( _cellView );
     }
 
-    public void Display( int indexI, int indexJ, float scale)
+    public void Display( int indexI, int indexJ, Vector2 scales)
     {
-        float leftPadding = 50f; 
-        float rightPadding = 50f; 
-        float topPadding = 50f; 
-        float bottomPadding = 50f; 
-
-       
-        _cellView.transform.localScale = new Vector3(scale,scale);
+        _cellView.transform.localScale = new Vector3(scales.x,scales.y);
         Image image = _cellView.GetComponent<Image>();
         var width = image.rectTransform.rect.width;
         var height = image.rectTransform.rect.height;
-        image.rectTransform.pivot = new Vector2(0, 1);
-        image.rectTransform.anchorMin = new Vector2(0f,1f);
-        image.rectTransform.anchorMax = new Vector2(0f,1f);
-        image.rectTransform.anchoredPosition = new Vector2( width * scale * indexI, -height * scale * indexJ );
-//        image.rectTransform.anchoredPosition = new Vector2( leftPadding + width * scale * indexI + rightPadding * indexI, -topPadding - height * scale * indexJ - bottomPadding * indexJ ); 
+        image.rectTransform.pivot = Vector2.zero;
+        image.rectTransform.anchorMin = Vector2.zero;
+        image.rectTransform.anchorMax = Vector2.zero;
+        image.rectTransform.anchoredPosition = new Vector2( width * scales.x * indexI, height * scales.y * indexJ );
        
     }
 

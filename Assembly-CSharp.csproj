@@ -202,6 +202,7 @@
      <Compile Include="Assets\YandexGame\ScriptsYG\LeaderboardYG.cs" />
      <Compile Include="Assets\Scripts\Pooling\Pool Field\PoolDataRoot.cs" />
      <Compile Include="Assets\Scripts\Data\GameSetups.cs" />
+     <Compile Include="Assets\Scripts\Model\Scale\ScaleCalculator.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

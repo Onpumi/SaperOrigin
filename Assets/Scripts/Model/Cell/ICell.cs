@@ -12,7 +12,6 @@ public interface ICell
     public bool SetFlag( ContainerMines containerMines );
     public void IncrementValue();
     public void CreateMine( int valueCell );
-    //public void Display( Vector3 positionStart, float scale);
-    public void Display( int indexI, int indexJ, float scale);
+    public void Display( int indexI, int indexJ, Vector2 scales);
 
 }

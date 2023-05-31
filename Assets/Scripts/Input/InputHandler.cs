@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class InputHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private float _delayClickTime;
-    [SerializeField] private CellView _cellView;
+    
+    private CellView _cellView;
     private float _startClickTime;
     private bool _isClick = false;
     private Button _button;
@@ -19,6 +20,7 @@ public class InputHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     private void Awake()
     {
+        _cellView = GetComponent<CellView>();
         _button = GetComponent<Button>();
     }
 
@@ -38,9 +40,6 @@ public class InputHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         if (IsTimeShort() == false) return;
         OnClickCell?.Invoke(this);
     }
-
-
-  
 
     public void OnPointerDown(PointerEventData eventData)
     {

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
@@ -10,6 +11,8 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     [SerializeField] private Sounds _sounds;
     [SerializeField] private IWindowCommand _backWindowCommand;
     [SerializeField] private Transform _parentField;
+    public BackgroundField BackGroundField { get; private set; }
+    public Rect ImageRectCell { get; private set; }
     public DataSetting DataSetting { get; private set; }
     public UIData UIData => _uiData;
     public Views Views => _views;
@@ -20,11 +23,13 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     public Camera CameraField => Camera.main;
     public override IWindowCommand BackWindowCommand => _backWindowCommand;
     public PoolDataContainer PoolDataContainer { get; private set; }
+    
 
 
     private void Init()
     {
-        
+        BackGroundField = _parentField.GetComponent<BackgroundField>();
+        ImageRectCell = _views.CellView.GetComponent<RectTransform>().rect;
         ScreenAdjusment = new ScreenAdjusment(transform.parent);
         var width = _views.CellView.GetWidth();
         var height = _views.CellView.GetHeight();
@@ -58,10 +63,12 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         }
     }
 
+
+
     private void Start()
     {
         Init();
-        new FieldCells(this);
+        //new FieldCells(this);
     }
 
     public float CalculateScale()
@@ -73,6 +80,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
        var scaleFactorWidth = (rectTransformImageParent.width / 12f) / rectTransformImageChild.width;
        var scaleFactorHeight = (rectTransformImageParent.height / 24f) / rectTransformImageChild.height;
        var scaleFactor = Mathf.Min(scaleFactorWidth,scaleFactorHeight);
+       scaleFactor = 1f; // с этим че то сделать, не считает тут правильно
        return scaleFactor;
     }
     
@@ -89,10 +97,10 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     public Vector2Int GetCountBlocksXY()
     {
         var scale = _gameState.GameFieldData.ScaleBrick;
-        var image = _parentField.GetComponent<Image>();
-        var refPixelsPerUnit = ScreenAdjusment.RefPixelsPerUnit;
-        return new Vector2Int( Mathf.RoundToInt(image.rectTransform.rect.width / (refPixelsPerUnit * scale)),
-              Mathf.RoundToInt(image.rectTransform.rect.height / (refPixelsPerUnit * scale)));
+        //var parentRect = _parentField.GetComponent<RectTransform>().rect;
+        var numberColumns = BackGroundField.Rect.width / (scale * ImageRectCell.width);
+        var numberRows = BackGroundField.Rect.height / (scale * ImageRectCell.height);
+        return new Vector2Int((int)numberColumns, (int)numberRows);
     }
 
     public void SaveScaleValueBricks(TypesOption typeOption, WindowScalingBlocks windowScalingBlocks)
@@ -109,6 +117,8 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         GameState.StopGame();
         GameState.ResetTimeView();
         _gameState.GameFieldData.ScaleBrick = DataSetting.GameData.GetOptionValue(TypesOption.SizeCells);
+        
+        
         foreach (Transform cell in _parentField)
         {
             if (cell.TryGetComponent(out CellView cellview))
