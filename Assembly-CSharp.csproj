@@ -106,6 +106,7 @@
      <Compile Include="Assets\Scripts\Factories\Factory.cs" />
      <Compile Include="Assets\Scripts\UI\UIInputCheck\UIInputCheckSound.cs" />
      <Compile Include="Assets\Scripts\Data\DataSetting.cs" />
+     <Compile Include="Assets\Scripts\UI\BorderField.cs" />
      <Compile Include="Assets\YandexGame\Example\Scripts\DebugViewing.cs" />
      <Compile Include="Assets\Scripts\Sounds\SoundAction.cs" />
      <Compile Include="Assets\Scripts\Factories\FactoryView.cs" />
@@ -194,6 +195,7 @@
      <Compile Include="Assets\Scripts\Data\UIData.cs" />
      <Compile Include="Assets\Scripts\UI\UIHeader.cs" />
      <Compile Include="Assets\Scripts\UI\WindowS\BackOpenerWindow.cs" />
+     <Compile Include="Assets\Scripts\Model\Scale\ScaleCalculator.cs" />
      <Compile Include="Assets\Scripts\SaveData\ScreenData.cs" />
      <Compile Include="Assets\YandexGame\ScriptsYG\ViewingAdsYG.cs" />
      <Compile Include="Assets\Scripts\Views\BrickView.cs" />
@@ -202,7 +204,6 @@
      <Compile Include="Assets\YandexGame\ScriptsYG\LeaderboardYG.cs" />
      <Compile Include="Assets\Scripts\Pooling\Pool Field\PoolDataRoot.cs" />
      <Compile Include="Assets\Scripts\Data\GameSetups.cs" />
-     <Compile Include="Assets\Scripts\Model\Scale\ScaleCalculator.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
