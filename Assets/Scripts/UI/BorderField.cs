@@ -1,47 +1,74 @@
 using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class BorderField : MonoBehaviour
 {
     [SerializeField] private RectTransform _prefabImage;
+    [SerializeField] private RectTransform _rectTransformCanvas;
+    [SerializeField] private RectTransform _prefabBottomLeftCorner;
+    [SerializeField] private RectTransform _prefabTopLeftCorner;
+    [SerializeField] private RectTransform _prefabBottomRightCorner;
+    [SerializeField] private RectTransform _prefabTopRightCorner;
+    [SerializeField] private RectTransform _prefabUpDownBorder;
+    [SerializeField] private RectTransform _prefabLeftBorder;
+    [SerializeField] private RectTransform _prefabRightBorder;
+
     private RectTransform _border;
+    private Vector2 _offsetWorld;
 
     public void Init( RectTransform rectTransformField )
     {
-        Vector3[] corners = new Vector3[4];
+        var corners = new Vector3[4];
         rectTransformField.GetWorldCorners(corners);
-        Vector3 bottomLeftCorner = corners[0];
-        Vector3 topLeftCorner = corners[1];
-        Vector3 topRightCorner = corners[2];
-        Vector3 bottomRightCorner = corners[3];
-
-        DrawImage( bottomLeftCorner, new Vector2(-1f,-1f) );
-        DrawImage( topLeftCorner, new Vector2(-1f, 1f) );
-        DrawImage( topRightCorner, new Vector2(1f, 1f) );
-        DrawImage( bottomRightCorner, new Vector2(1f, -1f) );
-        DrawLine(topLeftCorner,topRightCorner, -Vector2.left, Vector2.up);
-        DrawLine(bottomLeftCorner,bottomRightCorner, -Vector2.left, -Vector2.up);
-        DrawLine(bottomLeftCorner,topLeftCorner, Vector2.up, Vector2.left);
-        DrawLine(bottomRightCorner,topRightCorner, Vector2.up, -Vector2.left);
+        var bottomLeftCorner = corners[0];
+        var topLeftCorner = corners[1];
+        var topRightCorner = corners[2];
+        var bottomRightCorner = corners[3];
+        var rectImage = _prefabImage.rect;
+        var widthImage = rectImage.width;
+        var heightImage = rectImage.height;
+        var lossyScale = _rectTransformCanvas.lossyScale;
+        _offsetWorld = new Vector2( widthImage * lossyScale.x, heightImage * lossyScale.y);
+        DrawBorder( new Vector3[4] {bottomLeftCorner, topLeftCorner, topRightCorner, bottomRightCorner} );
     }
 
-    private void SpawnImage() => _border = Instantiate(_prefabImage, transform.parent);
+    private void SpawnImage( RectTransform image )
+    {
+        _border = Instantiate(image, transform.parent);
+    }
 
-    private void DrawImage( Vector3 position, Vector2 offset  )
+    private void DrawBorder( Vector3[] corners)
+    {
+        DrawLine(corners[1],corners[2], -Vector2.left, Vector2.up, _prefabUpDownBorder);
+        DrawLine(corners[0],corners[3], -Vector2.left, -Vector2.up, _prefabUpDownBorder);
+        DrawLine(corners[0],corners[1], Vector2.up, Vector2.left, _prefabLeftBorder);
+        DrawLine(corners[3],corners[2], Vector2.up, -Vector2.left, _prefabRightBorder);
+        DrawImage( corners[0], new Vector2(-1f,-1f), _prefabBottomLeftCorner );
+        DrawImage( corners[1], new Vector2(-1f, 1f), _prefabTopLeftCorner );
+        DrawImage( corners[2], new Vector2(1f, 1f), _prefabTopRightCorner );
+        DrawImage( corners[3], new Vector2(1f, -1f), _prefabBottomRightCorner );
+    }
+
+    private void DrawImage( Vector3 position, Vector2 offset, RectTransform image  )
     { 
-        SpawnImage();
+        SpawnImage( image );
         var scale = _border.localScale;
        _border.transform.position = position;
        _border.anchoredPosition += offset * scale * _border.rect.width / 2f;
     }
 
-    private void DrawLine( Vector3 firstPosition, Vector3 lastPosition, Vector2 offsetDrawDirection, Vector2 offsetFirst )
+    private void DrawLine( Vector3 firstPosition, Vector3 lastPosition, Vector2 offsetDrawDirection, Vector2 offsetFirst, RectTransform border )
     {
-        var scale = _border.localScale;
-        var sizeBorder = _border.rect.width;
-       DrawImage( firstPosition, offsetFirst );
-        while( Vector2.SqrMagnitude(lastPosition-_border.position) > 0.001f )
+        var scale = border.localScale;
+        var sizeBorder = border.rect.width;
+        DrawImage( firstPosition, offsetFirst, border );
+        var distanceCorner = (lastPosition - firstPosition).magnitude;
+        var countDrawImage = distanceCorner / _offsetWorld.x * 2f;
+       
+        for( int i = 0 ; i < countDrawImage; i++ )
         {
-            DrawImage(_border.position, new Vector2(0f, 0f));
+            DrawImage(_border.position, new Vector2(0f, 0f),border);
             _border.anchoredPosition += offsetDrawDirection * scale * sizeBorder / 2f;
         }
     }

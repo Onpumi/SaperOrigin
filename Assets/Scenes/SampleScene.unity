@@ -9684,6 +9684,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabImage: {fileID: 5201767275100272020, guid: f2f06968d562bdd4d985d250f75785e2, type: 3}
+  _rectTransformCanvas: {fileID: 1210022953}
+  _prefabBottomLeftCorner: {fileID: 318709364981733995, guid: e10ac7ecb5d0f4440b260ff21111b278, type: 3}
+  _prefabTopLeftCorner: {fileID: 735938828093176172, guid: c976a0964df14c447a909d243b482fe6, type: 3}
+  _prefabBottomRightCorner: {fileID: 880267025189594178, guid: 170fa83de4c4449479eb9896b7d8e3d3, type: 3}
+  _prefabTopRightCorner: {fileID: 1625894924178991561, guid: dfd7b93989d8bb746b755e19cb72f529, type: 3}
+  _prefabUpDownBorder: {fileID: 5476107873367736019, guid: 84135685dd7f0e741b4929f8b2ba5e70, type: 3}
+  _prefabLeftBorder: {fileID: 7218943677136829137, guid: 9b1e73d20746e874e80cee9782e936fa, type: 3}
+  _prefabRightBorder: {fileID: 2705006147086365124, guid: 34f0f15ee4087e84db87c17e653a0875, type: 3}
 --- !u!1 &1322331307
 GameObject:
   m_ObjectHideFlags: 0
@@ -14126,7 +14134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3207547, g: 0.18768631, b: 0, a: 1}
+  m_Color: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
