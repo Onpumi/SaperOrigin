@@ -3138,6 +3138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _windowPanel: {fileID: 1779566971}
   _borderField: {fileID: 1320310686}
+  _offset: 0.05
 --- !u!114 &418349024
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -97,9 +97,9 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     public Vector2Int GetCountBlocksXY()
     {
         var scale = _gameState.GameFieldData.ScaleBrick;
-        //var parentRect = _parentField.GetComponent<RectTransform>().rect;
-        var numberColumns = BackGroundField.Rect.width / (scale * ImageRectCell.width);
-        var numberRows = BackGroundField.Rect.height / (scale * ImageRectCell.height);
+        var numberColumns = BackGroundField.Rect.width / (scale * ImageRectCell.width) * BackGroundField.transform.localScale.x;
+        var numberRows = BackGroundField.Rect.height / (scale * ImageRectCell.height) * BackGroundField.transform.localScale.y;
+        //numberRows = numberColumns; если поле в опциях делаем квадратное, это вроде подгонит правильно
         return new Vector2Int((int)numberColumns, (int)numberRows);
     }
 
