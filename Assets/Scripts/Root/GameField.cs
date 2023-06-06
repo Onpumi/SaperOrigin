@@ -23,7 +23,6 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     public Camera CameraField => Camera.main;
     public override IWindowCommand BackWindowCommand => _backWindowCommand;
     public PoolDataContainer PoolDataContainer { get; private set; }
-    
 
 
     private void Init()
@@ -64,41 +63,21 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     }
 
 
-
     private void Start()
     {
         Init();
-        //new FieldCells(this);
+        new FieldCells(this);
     }
 
-    public float CalculateScale()
-    {
-       var imageParent = _parentField.GetComponent<Image>();
-       var imageChild = _views.CellView.GetComponent<Image>();
-       var rectTransformImageParent = imageParent.rectTransform.rect;
-       var rectTransformImageChild = imageChild.rectTransform.rect; //12 23
-       var scaleFactorWidth = (rectTransformImageParent.width / 12f) / rectTransformImageChild.width;
-       var scaleFactorHeight = (rectTransformImageParent.height / 24f) / rectTransformImageChild.height;
-       var scaleFactor = Mathf.Min(scaleFactorWidth,scaleFactorHeight);
-       scaleFactor = 1f; // с этим че то сделать, не считает тут правильно
-       return scaleFactor;
-    }
-    
-    public Vector2 GetSizePerUnit()
-    {
-        var scaleX = _gameState.GameFieldData.ScaleBrick;
-        var scaleY = _gameState.GameFieldData.ScaleBrick;
-        var resolutionCanvas = ScreenAdjusment.ResolutionCanvas;
-        var refPixelsPerUnit = ScreenAdjusment.RefPixelsPerUnit;
-        return new Vector2(resolutionCanvas.x / (refPixelsPerUnit * scaleX),
-            resolutionCanvas.y / (refPixelsPerUnit * scaleY));
-    }
+    public float GetScale() => 1f;
 
     public Vector2Int GetCountBlocksXY()
     {
         var scale = _gameState.GameFieldData.ScaleBrick;
-        var numberColumns = BackGroundField.Rect.width / (scale * ImageRectCell.width) * BackGroundField.transform.localScale.x;
-        var numberRows = BackGroundField.Rect.height / (scale * ImageRectCell.height) * BackGroundField.transform.localScale.y;
+        var numberColumns = BackGroundField.Rect.width / (scale * ImageRectCell.width) *
+                            BackGroundField.transform.localScale.x;
+        var numberRows = BackGroundField.Rect.height / (scale * ImageRectCell.height) *
+                         BackGroundField.transform.localScale.y;
         //numberRows = numberColumns; если поле в опциях делаем квадратное, это вроде подгонит правильно
         return new Vector2Int((int)numberColumns, (int)numberRows);
     }
@@ -117,8 +96,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         GameState.StopGame();
         GameState.ResetTimeView();
         _gameState.GameFieldData.ScaleBrick = DataSetting.GameData.GetOptionValue(TypesOption.SizeCells);
-        
-        
+
         foreach (Transform cell in _parentField)
         {
             if (cell.TryGetComponent(out CellView cellview))
@@ -130,6 +108,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
                 }
             }
         }
+
         new FieldCells(this);
         _uiData.WindowWinner.Hide();
     }

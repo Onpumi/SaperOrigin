@@ -18,7 +18,7 @@ public class BackgroundField : MonoBehaviour
     {
         _rectTransform = GetComponent<RectTransform>();
         _rectTransform.anchorMin = new Vector2(_offset, _offset );
-        _rectTransform.anchorMax = new Vector2(1f - _offset, 1f - _offset );
+        _rectTransform.anchorMax = new Vector2(1f - _offset, 1f - 0.012f );
         _rectTransform.offsetMax = new Vector2(0f, -_windowPanel.RectTransform.rect.height);
         _rectTransform.offsetMin = new Vector2(0f, 0f);
         transform.localScale = new Vector3(1f, 1f); // вот так поле будет прямоугольным 

@@ -36,7 +36,7 @@ public class WindowScalingBlocks : WindowBase
 
     private void Open(bool value)
     {
-        if ( _gameState.Views.GameField == null) return;
+        if (_gameState.Views.GameField == null) return;
         ScaleBricks = _gameState.Views.GameField.GameState.GameFieldData.ScaleBrick;
         transform.gameObject.SetActive(value);
         _gridLayout = GetComponent<GridLayoutGroup>();
@@ -62,9 +62,8 @@ public class WindowScalingBlocks : WindowBase
     public void Display()
     {
         var gameField = _gameState.Views.GameField;
-        if ( gameField.ScreenAdjusment != null)
-            _gridLayout.cellSize = new Vector2(
-                gameField.ScreenAdjusment.PixelsPerUnit * ScaleBricks * (_resolutionRatio),
-                gameField.ScreenAdjusment.PixelsPerUnit * ScaleBricks * (_resolutionRatio));
+        if (gameField.ScreenAdjusment != null)
+            _gridLayout.cellSize = new Vector2(gameField.ScreenAdjusment.PixelsPerUnit * ScaleBricks,
+                gameField.ScreenAdjusment.PixelsPerUnit * ScaleBricks);
     }
 }

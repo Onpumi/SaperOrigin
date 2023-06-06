@@ -6,7 +6,7 @@ public class GameData : SavingData<GameSetups>
     public GameData(string key, GameField gameField)
     {
         base.Key = key;
-        DataSetups._scaleBricks = gameField.CalculateScale();
+        DataSetups._scaleBricks = gameField.GetScale();
     }
 
 
