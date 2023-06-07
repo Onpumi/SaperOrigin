@@ -26,11 +26,10 @@ public class FieldCells
         var scaleX = _gameField.GameState.GameFieldData.ScaleBrick;
         var scaleY = scaleX;
         _gameField.BackGroundField.Init();
-
         FieldCellData = new FieldCellData(countColumns,countRows,new Vector2(scaleX,scaleY));
         _scaleCalculator = new ScaleCalculator(_gameField.BackGroundField.Rect, _gameField.ImageRectCell, FieldCellData );
-        //FieldCellData.UpdateScales(_scaleCalculator.GetFixedScales());
-        FieldCellData = new FieldCellData(countColumns,countRows,_scaleCalculator.GetFixedScales());
+        FieldCellData.UpdateScale(_scaleCalculator.GetFixedScales());
+        //FieldCellData = new FieldCellData(countColumns,countRows,_scaleCalculator.GetFixedScales());
         
         _cells = new Cell[FieldCellData.CountColumns, FieldCellData.CountRows];
         _countCells = _cells.Length;

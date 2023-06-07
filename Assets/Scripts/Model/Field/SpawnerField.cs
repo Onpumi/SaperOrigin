@@ -21,12 +21,12 @@ public class SpawnerField
         for (var i = 0; i < FieldCellData.CountColumns; i++)
         for (var j = 0; j < FieldCellData.CountRows; j++)
         {
-            var cellData = new CellData(i, j, FieldCellData.Scales);
+            var cellData = new CellData(i, j, FieldCellData.Scale);
             var factoryCell = new FactoryCell(_gameField, cellData);
             _cells[i, j] = factoryCell.Create();
             _cells[i, j].CellView.InputHandler.OnClickCell += ActionAfterClickCell;
             _cells[i, j].CellView.InputHandler.OnClickDelay += ActionAfterHoldCell;
-            _cells[i, j].Display(i, j, FieldCellData.Scales);
+            _cells[i, j].Display(i, j, FieldCellData.Scale);
         }
     }
 

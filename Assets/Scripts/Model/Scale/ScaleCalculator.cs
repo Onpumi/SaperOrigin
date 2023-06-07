@@ -20,11 +20,10 @@ public class ScaleCalculator
         var parentHeight = _rectParent.height;
         var imageWidth = _rectImage.width;
         var imageHeight = _rectImage.height;
-        _scalingFactor.x = parentWidth / (imageWidth * _fieldCellData.CountColumns) - _fieldCellData.Scales.x;
-        _scalingFactor.y = parentHeight / (imageHeight * _fieldCellData.CountRows) - _fieldCellData.Scales.y;
-        _fieldCellData.Scales.x += _scalingFactor.x;
-        _fieldCellData.Scales.y += _scalingFactor.y;
-        return _fieldCellData.Scales;
+        _scalingFactor.x = parentWidth / (imageWidth * _fieldCellData.CountColumns) - _fieldCellData.Scale.x;
+        _scalingFactor.y = parentHeight / (imageHeight * _fieldCellData.CountRows) - _fieldCellData.Scale.y;
+        _fieldCellData.AddScaleByVector2(_scalingFactor);
+        return _fieldCellData.Scale;
     }
 
 }

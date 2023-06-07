@@ -16,6 +16,8 @@ public class BorderField : MonoBehaviour
 
     private RectTransform _border;
     private Vector2 _offsetWorld;
+    public float WidthImage => _prefabImage.rect.width;
+    public float HeightImage => _prefabImage.rect.height;
 
     public void Init( RectTransform rectTransformField )
     {
@@ -25,11 +27,8 @@ public class BorderField : MonoBehaviour
         var topLeftCorner = corners[1];
         var topRightCorner = corners[2];
         var bottomRightCorner = corners[3];
-        var rectImage = _prefabImage.rect;
-        var widthImage = rectImage.width;
-        var heightImage = rectImage.height;
         var lossyScale = _rectTransformCanvas.lossyScale;
-        _offsetWorld = new Vector2( widthImage * lossyScale.x, heightImage * lossyScale.y);
+        _offsetWorld = new Vector2( WidthImage * lossyScale.x, HeightImage * lossyScale.y);
         DrawBorder( new Vector3[4] {bottomLeftCorner, topLeftCorner, topRightCorner, bottomRightCorner} );
     }
 

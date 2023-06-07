@@ -93,6 +93,8 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
 
     public void ReloadField()
     {
+        //return;
+        
         GameState.StopGame();
         GameState.ResetTimeView();
         _gameState.GameFieldData.ScaleBrick = DataSetting.GameData.GetOptionValue(TypesOption.SizeCells);

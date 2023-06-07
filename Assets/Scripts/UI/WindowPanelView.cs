@@ -10,7 +10,7 @@ public class WindowPanelView : WindowBase
     {
         RectTransform = GetComponent<RectTransform>();
         SetSafeAreaForRecTransform();
-        SetScaleChildElements();
+        //SetScaleChildElements();
     }
 
     private void SetScaleChildElements()
@@ -19,7 +19,7 @@ public class WindowPanelView : WindowBase
         {
             var uiSizeManager = child.GetComponent<UISizeManager>() ??
                                 throw new ArgumentException("UISizeManager is null");
-            uiSizeManager.SetSize(RectTransform);
+                //  uiSizeManager.SetSize(RectTransform);
         }
     }
 
@@ -32,16 +32,7 @@ public class WindowPanelView : WindowBase
         anchorMin.y /= Screen.height;
         anchorMax.x /= Screen.width;
         anchorMax.y /= Screen.height;
-/*
-        if (Screen.height > Screen.width)
-            _anchorMinY = anchorMax.y - 0.015f;
-        else
-        {
-            _anchorMinY = anchorMax.y - 0.001f;
-        }
-*/
         _anchorMinY = anchorMax.y;
-
         RectTransform.anchorMin = new Vector2(anchorMin.x, _anchorMinY);
         RectTransform.anchorMax = anchorMax;
     }
