@@ -29,7 +29,7 @@ public class CellView : MonoBehaviour, ICellView, IPoolable<CellView>, IView
         HeightSpriteCell = _sprite.rect.height;
         
 //        PixelPerUnit = transform.parent.GetComponent<CanvasScaler>().referencePixelsPerUnit;
-        PixelPerUnit = transform.parent.parent.GetComponent<CanvasScaler>().referencePixelsPerUnit;
+        PixelPerUnit = transform.parent.parent.parent.GetComponent<CanvasScaler>().referencePixelsPerUnit;
     }
 
     private void Start()

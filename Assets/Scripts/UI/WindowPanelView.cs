@@ -3,31 +3,26 @@ using UnityEngine;
 
 public class WindowPanelView : WindowBase
 {
+    [SerializeField] private MenuType _menuType;
     private float _anchorMinY;
+    private Rect SafeArea => Screen.safeArea;
     public RectTransform RectTransform { get; private set; }
 
     private void Awake()
     {
         RectTransform = GetComponent<RectTransform>();
-        SetSafeAreaForRecTransform();
-        //SetScaleChildElements();
-    }
 
-    private void SetScaleChildElements()
-    {
-        foreach (Transform child in transform)
+        if( _menuType == MenuType.Top )
+         SetSafeAreaForRecTransform();
+        else if (_menuType == MenuType.Bottom)
         {
-            var uiSizeManager = child.GetComponent<UISizeManager>() ??
-                                throw new ArgumentException("UISizeManager is null");
-                //  uiSizeManager.SetSize(RectTransform);
+            SetPropertiesBottomMenu();        
         }
     }
-
     private void SetSafeAreaForRecTransform()
     {
-        var safeArea = Screen.safeArea;
-        var anchorMin = safeArea.position;
-        var anchorMax = anchorMin + safeArea.size;
+        var anchorMin = SafeArea.position;
+        var anchorMax = anchorMin + SafeArea.size;
         anchorMin.x /= Screen.width;
         anchorMin.y /= Screen.height;
         anchorMax.x /= Screen.width;
@@ -36,4 +31,25 @@ public class WindowPanelView : WindowBase
         RectTransform.anchorMin = new Vector2(anchorMin.x, _anchorMinY);
         RectTransform.anchorMax = anchorMax;
     }
+
+    private void SetPropertiesBottomMenu()
+    {
+        RectTransform.pivot = Vector2.one * 0.5f;
+        RectTransform.offsetMin = Vector2.zero;
+        RectTransform.offsetMax = Vector2.zero;
+
+        var anchorMin = new Vector2( 0f, 0f);
+        var anchorMax = new Vector2( 1f, 15f / Screen.height);
+        RectTransform.anchorMin = anchorMin;
+        RectTransform.anchorMax = anchorMax;
+    }
+}
+
+public enum MenuType
+{
+    Top,
+    Bottom,
+    Left,
+    Right,
+    Center
 }

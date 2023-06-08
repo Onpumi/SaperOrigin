@@ -120,6 +120,7 @@
      <Compile Include="Assets\Scripts\Views\Interfaces\IBoomView.cs" />
      <Compile Include="Assets\Scripts\UI\WindowScaleBricks.cs" />
      <Compile Include="Assets\YandexGame\WorkingData\SavesYG.cs" />
+     <Compile Include="Assets\Scripts\UI\SectionMenuView.cs" />
      <Compile Include="Assets\Q3DAudio\Scripts\Q3DAudioSource.cs" />
      <Compile Include="Assets\Q3DAudio\Scripts\Q3DAudioGlobalSettings.cs" />
      <Compile Include="Assets\Scripts\Pooling\IPoolFactory.cs" />
@@ -177,7 +178,6 @@
      <Compile Include="Assets\Scripts\UI\WindowConfirmation.cs" />
      <Compile Include="Assets\Scripts\UI\SavingScaleBricks.cs" />
      <Compile Include="Assets\AndroidAPI\Class\AndroidAPI.cs" />
-     <Compile Include="Assets\Scripts\UI\UISettingsButton.cs" />
      <Compile Include="Assets\Scripts\UI\UIInputCheck\UIInputCheck.cs" />
      <Compile Include="Assets\Scripts\UI\WindowBase.cs" />
      <Compile Include="Assets\Scripts\Model\Field\ContainerMines.cs" />
