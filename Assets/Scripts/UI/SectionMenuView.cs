@@ -14,9 +14,12 @@ public class SectionMenuView : MonoBehaviour
     {
         _rectTransform = GetComponent<RectTransform>() ??
                          throw new ArgumentException("RectTransform in SectionMenu is null");
+        if (MenuType != MenuType.Center)
+        {
+            _rectTransform.offsetMin = Vector2.zero;
+            _rectTransform.offsetMax = Vector2.zero;
+        }
         _rectTransform.pivot = new Vector2(0.5f, 0.5f);
-        _rectTransform.offsetMin = Vector2.zero;
-        _rectTransform.offsetMax = Vector2.zero;
         SetProperties();
     }
 
@@ -36,9 +39,12 @@ public class SectionMenuView : MonoBehaviour
         }
         else if (MenuType == MenuType.Center)
         {
-            //_rectTransform.pivot = Vector2.one * 0.5f;
-            //_rectTransform.anchorMin = new Vector2(_rectTransform.anchorMin.x, 0f);
-            //_rectTransform.anchorMax = new Vector2(_rectTransform.anchorMax.x, 1f);
+
+            _rectTransform.anchorMin = new Vector2(0.45f, 0f);
+            _rectTransform.anchorMax = new Vector2(0.55f, 1f);
+            _rectTransform.sizeDelta = new Vector2(0f, 0f);
+            _rectTransform.pivot = new Vector2(0.5f, 0.5f);
+             _rectTransform.anchoredPosition = Vector2.zero;
         }
     }
 }

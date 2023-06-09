@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class WindowPanelView : WindowBase
+public class MenuBarView : WindowBase
 {
     [SerializeField] private MenuType _menuType;
     private float _anchorMinY;
@@ -13,13 +13,13 @@ public class WindowPanelView : WindowBase
         RectTransform = GetComponent<RectTransform>();
 
         if( _menuType == MenuType.Top )
-         SetSafeAreaForRecTransform();
+         SetPropertiesTopMenu();
         else if (_menuType == MenuType.Bottom)
         {
             SetPropertiesBottomMenu();        
         }
     }
-    private void SetSafeAreaForRecTransform()
+    private void SetPropertiesTopMenu()
     {
         var anchorMin = SafeArea.position;
         var anchorMax = anchorMin + SafeArea.size;
@@ -39,7 +39,9 @@ public class WindowPanelView : WindowBase
         RectTransform.offsetMax = Vector2.zero;
 
         var anchorMin = new Vector2( 0f, 0f);
-        var anchorMax = new Vector2( 1f, 15f / Screen.height);
+        //var anchorMax = new Vector2( 1f, 15f / Screen.height);
+        var anchorMax = new Vector2( 1f, 0.02f);
+        
         RectTransform.anchorMin = anchorMin;
         RectTransform.anchorMax = anchorMax;
     }

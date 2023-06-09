@@ -11,6 +11,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     [SerializeField] private Sounds _sounds;
     [SerializeField] private IWindowCommand _backWindowCommand;
     [SerializeField] private Transform _parentField;
+    [SerializeField] private BackgroundField _backgroundField;
     public BackgroundField BackGroundField { get; private set; }
     public Rect ImageRectCell { get; private set; }
     public DataSetting DataSetting { get; private set; }
@@ -74,11 +75,12 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     public Vector2Int GetCountBlocksXY()
     {
         var scale = _gameState.GameFieldData.ScaleBrick;
+        
         var numberColumns = BackGroundField.Rect.width / (scale * ImageRectCell.width) *
                             BackGroundField.transform.localScale.x;
         var numberRows = BackGroundField.Rect.height / (scale * ImageRectCell.height) *
                          BackGroundField.transform.localScale.y;
-        //numberRows = numberColumns; если поле в опциях делаем квадратное, это вроде подгонит правильно
+//        numberRows = numberColumns; // если поле в опциях делаем квадратное, это вроде подгонит правильно
         return new Vector2Int((int)numberColumns, (int)numberRows);
     }
 
@@ -93,8 +95,6 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
 
     public void ReloadField()
     {
-        //return;
-        
         GameState.StopGame();
         GameState.ResetTimeView();
         _gameState.GameFieldData.ScaleBrick = DataSetting.GameData.GetOptionValue(TypesOption.SizeCells);

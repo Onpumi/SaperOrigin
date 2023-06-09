@@ -96,7 +96,7 @@
      <Compile Include="Assets\Scripts\Root\GameFieldData.cs" />
      <Compile Include="Assets\Scripts\Model\Timer\TimerPlayer.cs" />
      <Compile Include="Assets\Scripts\Extensions\IntExtensions.cs" />
-     <Compile Include="Assets\Scripts\UI\WindowPanelView.cs" />
+     <Compile Include="Assets\Scripts\UI\MenuBarView.cs" />
      <Compile Include="Assets\YandexGame\Example\Scripts\LanguageExample.cs" />
      <Compile Include="Assets\Scripts\Views\Interfaces\IFlagView.cs" />
      <Compile Include="Assets\YandexGame\ScriptsYG\Inside\ConfigYG.cs" />

@@ -1,12 +1,12 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BackgroundField : MonoBehaviour
 {
-    [SerializeField] private WindowPanelView _windowPanel;
+    [SerializeField] private MenuBarView _topMenuBar;
+    [SerializeField] private MenuBarView _bottomMenuBar;
     [SerializeField] private BorderField _borderField;
-    [SerializeField] private float _offset = 0.05f;
-    private const float OffsetTop = 0.02f;
+    private const float OffsetLeftRight = 0.05f;
+    private const float OffsetTopBottom = 300f;
     private RectTransform _rectTransform;
     public Rect Rect { get; private set; }
 
@@ -18,19 +18,28 @@ public class BackgroundField : MonoBehaviour
     private void SetProperties()
     {
         _rectTransform = GetComponent<RectTransform>();
-        _rectTransform.anchorMin = Vector2.zero + new Vector2( _offset,_offset);
-        _rectTransform.anchorMax = Vector2.one - new Vector2( _offset, OffsetTop);
-        _rectTransform.offsetMax = new Vector2(0f, -_windowPanel.RectTransform.rect.height-_borderField.HeightImage);
-        _rectTransform.offsetMin = new Vector2(0f, 0f);
+        _rectTransform.anchorMin = Vector2.zero + new Vector2(OffsetLeftRight, 0);
+        _rectTransform.anchorMax = Vector2.one - new Vector2(OffsetLeftRight, 0);
+        var offsetTop = _topMenuBar.RectTransform.rect.height + _borderField.HeightImage * 2f;
+        var offsetBottom = _bottomMenuBar.RectTransform.rect.height + _borderField.HeightImage * 2f;
+        _rectTransform.offsetMax = new Vector2(0f, -offsetTop);
+        _rectTransform.offsetMin = new Vector2(0f, offsetBottom);
+            //  transform.localScale = new Vector3(1f, 1f); // вот так поле будет прямоугольным
+        
+        if (Screen.height > Screen.width)
+            transform.localScale =
+                new Vector3(1f, _rectTransform.rect.width / _rectTransform.rect.height); // так оно станет квадратным
+        else
+            transform.localScale = new Vector3(_rectTransform.rect.height / _rectTransform.rect.width, 1f);
 
-        transform.localScale = new Vector3(1f, 1f); // вот так поле будет прямоугольным 
-        // transform.localScale = new Vector3(1f, _rectTransform.rect.width / _rectTransform.rect.height); // так оно станет квадратным
+          transform.localScale = new Vector3(1f, 1f); // вот так поле будет прямоугольным
+          
         Rect = _rectTransform.rect;
     }
 
     public void Init()
     {
         SetProperties();
-        _borderField.Init( _rectTransform );
+        _borderField.Init(_rectTransform);
     }
 }

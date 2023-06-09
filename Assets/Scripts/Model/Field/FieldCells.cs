@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class FieldCells 
@@ -23,14 +24,15 @@ public class FieldCells
         IsFirstClick = true;
         var countColumns = gameField.GetCountBlocksXY().x;
         var countRows = gameField.GetCountBlocksXY().y;
+
+            //  countColumns = countRows = Math.Min(countColumns, countRows);
         var scaleX = _gameField.GameState.GameFieldData.ScaleBrick;
         var scaleY = scaleX;
         _gameField.BackGroundField.Init();
         FieldCellData = new FieldCellData(countColumns,countRows,new Vector2(scaleX,scaleY));
-        _scaleCalculator = new ScaleCalculator(_gameField.BackGroundField.Rect, _gameField.ImageRectCell, FieldCellData );
+        //_scaleCalculator = new ScaleCalculator(_gameField.BackGroundField.Rect, _gameField.ImageRectCell, FieldCellData );
+        _scaleCalculator = new ScaleCalculator(_gameField.BackGroundField, _gameField.ImageRectCell, FieldCellData );
         FieldCellData.UpdateScale(_scaleCalculator.GetFixedScales());
-        //FieldCellData = new FieldCellData(countColumns,countRows,_scaleCalculator.GetFixedScales());
-        
         _cells = new Cell[FieldCellData.CountColumns, FieldCellData.CountRows];
         _countCells = _cells.Length;
         _firstIndexes = new int[2] { -1, -1 };
