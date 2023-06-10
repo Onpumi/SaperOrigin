@@ -37,13 +37,15 @@ public class MenuBarView : WindowBase
         RectTransform.pivot = Vector2.one * 0.5f;
         RectTransform.offsetMin = Vector2.zero;
         RectTransform.offsetMax = Vector2.zero;
-
         var anchorMin = new Vector2( 0f, 0f);
-        //var anchorMax = new Vector2( 1f, 15f / Screen.height);
-        var anchorMax = new Vector2( 1f, 0.02f);
-        
+        var anchorMax = new Vector2( 1f, 0f);
         RectTransform.anchorMin = anchorMin;
         RectTransform.anchorMax = anchorMax;
+        RectTransform.pivot = Vector2.zero;
+        var heightMenu = (Screen.height >= Screen.width) ? (Screen.height * 0.3f) : (Screen.height * 0.2f);
+        RectTransform.sizeDelta = new Vector2(0f, heightMenu);
+        var anchorPosition = RectTransform.anchoredPosition;
+        RectTransform.anchoredPosition = new Vector2(anchorPosition.x, anchorPosition.y + 100f);
     }
 }
 
