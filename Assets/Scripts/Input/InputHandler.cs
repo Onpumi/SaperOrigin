@@ -1,22 +1,19 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
+using Button = UnityEngine.UI.Button;
+
 
 public class InputHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private float _delayClickTime;
-    
     private CellView _cellView;
     private float _startClickTime;
-    private bool _isClick = false;
+    private bool _isButtonPressed = false;
     private Button _button;
     public CellView CellView => _cellView;
-    public event Action<InputHandler> OnClickCell;
-    public event Action<InputHandler> OnClickDelay;
-    
-
+    public event Action<InputHandler> OnActivateCell;
+    public event Action<InputHandler> OnActivateFlag;
 
     private void Awake()
     {
@@ -27,7 +24,6 @@ public class InputHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     private void OnEnable()
     {
         _button.onClick.AddListener(ActivateClickBlock);
-        
     }
 
     private void OnDisable()
@@ -37,34 +33,49 @@ public class InputHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     private void ActivateClickBlock()
     {
-        if (IsTimeShort() == false) return;
-        OnClickCell?.Invoke(this);
+        if (AllowTimeHoldForDuration() == false) return;
+        OnActivateCell?.Invoke(this);
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         _startClickTime = Time.time;
-        _isClick = true;
+        _isButtonPressed = true;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if( _isClick == true )
-            OnClickCell?.Invoke(this);
-        _isClick = false;
-            
+        //if (_isButtonPressed == true)
+          //  OnActivateCell?.Invoke(this);
+        _isButtonPressed = false;
     }
 
-    public bool IsTimeShort() => ((Time.time - _startClickTime) <= _delayClickTime);
+    public bool AllowTimeHoldForDuration() => ((Time.time - _startClickTime) <= _delayClickTime);
 
     private void Update()
     {
-        if (Input.GetMouseButton(0) == true && _isClick == true && (IsTimeShort() == false) )
+        var inputMouse0 = Input.GetMouseButton(0);
+/*
+        if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Windows)
         {
-            OnClickDelay?.Invoke(this);
-            _isClick = false;
+            var inputMouse1 = Input.GetMouseButton(1);
+
+            if (inputMouse0 && _isClick)
+            {
+                OnActivateCell?.Invoke(this);
+                _isClick = false;
+            }
+            else if (inputMouse1 && _isClick)
+            {
+                OnActivateFlag?.Invoke(this);
+                _isClick = false;
+            }
+        }
+*/
+        if (inputMouse0 == true && _isButtonPressed == true && (AllowTimeHoldForDuration() == false))
+        {
+            OnActivateFlag?.Invoke(this);
+            _isButtonPressed = false;
         }
     }
-    
-    
 }

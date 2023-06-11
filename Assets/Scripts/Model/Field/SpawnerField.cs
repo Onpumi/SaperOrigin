@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class SpawnerField
 {
     private readonly FieldCells _fieldCells;
@@ -24,29 +26,35 @@ public class SpawnerField
             var cellData = new CellData(i, j, FieldCellData.Scale);
             var factoryCell = new FactoryCell(_gameField, cellData);
             _cells[i, j] = factoryCell.Create();
-            _cells[i, j].CellView.InputHandler.OnClickCell += ActionAfterClickCell;
-            _cells[i, j].CellView.InputHandler.OnClickDelay += ActionAfterHoldCell;
+            _cells[i, j].CellView.InputHandler.OnActivateCell += ActionAfterActivateCell;
+            _cells[i, j].CellView.InputHandler.OnActivateFlag += ActionAfterHoldCell;
             _cells[i, j].Display(i, j, FieldCellData.Scale);
         }
     }
 
-    private void ActionAfterClickCell(InputHandler inputHandler)
+    private void ActionAfterActivateCell(InputHandler inputHandler)
     {
         CellView cellView = inputHandler.CellView;
 
         _downAction = new DigDownAction(_fieldCells);
+        
+        //Debug.Log(_gameField.UIData.ControllerButtonMode.Mode);
 
         if (_gameField.UIData.ControllerButtonMode.Mode == ButtonMode.Flag)
         {
             _downAction = new FlagDownAction(_fieldCells, _containerMines);
         }
 
-        if (_fieldCells.IsFirstClick)
+        if ( _fieldCells.IsFirstClick )
         {
+            if( _gameField.UIData.ControllerButtonMode.Mode == ButtonMode.Flag )
+            {
+                //Debug.Log("попытка установить флаг");
+                return;
+            }
             _gameField.GameState.StartGame();
             cellView.InitAction(_fieldCells, new FirstDigDownAction(_fieldCells));
         }
-
         cellView.InitAction(_fieldCells, _downAction);
     }
 

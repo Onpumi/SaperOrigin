@@ -17,6 +17,7 @@ public class Flag
    public bool SetFlag( ContainerMines containerMines)
    {
        var countFlags = containerMines.CountFlags;
+       
 
        if (countFlags <= 0 && Value == false)
        {

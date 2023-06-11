@@ -30,6 +30,7 @@ public class BorderField : MonoBehaviour
         var lossyScale = _rectTransformCanvas.lossyScale;
         _offsetWorld = new Vector2( WidthImage * lossyScale.x, HeightImage * lossyScale.y);
         DrawBorder( new Vector3[4] {bottomLeftCorner, topLeftCorner, topRightCorner, bottomRightCorner} );
+        
     }
 
     private void SpawnImage( RectTransform image )

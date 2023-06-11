@@ -33,7 +33,6 @@ public class ControllerButtonMode : WindowBase, IPointerDownHandler
 
     public void OnPointerDown( PointerEventData eventData )
     {
-     //   SetModePlay();
     }
     
     private void Display()
@@ -65,7 +64,9 @@ public class ControllerButtonMode : WindowBase, IPointerDownHandler
     private void ExchangeScaleUI( Transform transform1, Transform transform2 )
     {
         SetScaleUI( transform1, RectTransform.Edge.Left, RectTransform.Edge.Bottom, 1f );
-        SetScaleUI( transform2, RectTransform.Edge.Right, RectTransform.Edge.Top, 0.5f );
+        //SetScaleUI( transform2, RectTransform.Edge.Right, RectTransform.Edge.Top, 0.5f );
+        transform1.gameObject.SetActive(true);
+        transform2.gameObject.SetActive(false);
     }
 
     private void SetScaleUI( Transform transformUI, RectTransform.Edge edge1, RectTransform.Edge edge2, float scale)
