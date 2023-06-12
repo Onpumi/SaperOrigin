@@ -23,16 +23,9 @@ public class Cell : ICell
         Flag = new Flag(_cellView);
     }
 
-    public void Display(int indexI, int indexJ, Vector2 scales)
+    public void Display(int indexI, int indexJ, Vector2 scale)
     {
-        _cellView.transform.localScale = new Vector3(scales.x, scales.y);
-        Image image = _cellView.GetComponent<Image>();
-        var width = image.rectTransform.rect.width;
-        var height = image.rectTransform.rect.height;
-        image.rectTransform.pivot = Vector2.zero;
-        image.rectTransform.anchorMin = Vector2.zero;
-        image.rectTransform.anchorMax = Vector2.zero;
-        image.rectTransform.anchoredPosition = new Vector2(width * scales.x * indexI, height * scales.y * indexJ);
+        _cellView.Display(indexI, indexJ, scale);
     }
 
     public void CreateMine(int value)

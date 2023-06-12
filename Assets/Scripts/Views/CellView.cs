@@ -6,29 +6,20 @@ public class CellView : MonoBehaviour, ICellView, IPoolable<CellView>, IView
 {
     [SerializeField] private Sprite[] _spriteNumbers;
     [SerializeField] private InputHandler _inputHandler;
-    public float WidthSpriteCell { get; private set; }
-    public float HeightSpriteCell { get; private set; }
-    public float PixelPerUnit { get; private set; }
-    private Sprite _sprite;
     private Image _image;
-    private Transform _canvasParent;
     public InputHandler InputHandler { get; private set; }
     public BrickView BrickView { get; private set; }
     public MineView MineView { get; private set; }
     public FlagView FlagView { get; private set; }
     private IDownAction _downAction;
     public CellData CellData { get; private set; }
+    public RectTransform RectTransform { get; private set; }
 
 
     private void Awake()
     {
-        _sprite = GetComponent<Image>().sprite ?? throw new ArgumentNullException("Sprite cell need is not null!");
+        RectTransform = GetComponent<RectTransform>();
         InputHandler = _inputHandler;
-        WidthSpriteCell = _sprite.rect.width;
-        HeightSpriteCell = _sprite.rect.height;
-        
-//        PixelPerUnit = transform.parent.GetComponent<CanvasScaler>().referencePixelsPerUnit;
-        PixelPerUnit = transform.parent.parent.parent.GetComponent<CanvasScaler>().referencePixelsPerUnit;
     }
 
     private void Start()
@@ -37,10 +28,10 @@ public class CellView : MonoBehaviour, ICellView, IPoolable<CellView>, IView
         BrickView ??= GetComponentInChildren<BrickView>();
     }
 
-    public bool InitAction(FieldCells field, IDownAction downAction)
+    public void InitAction(FieldCells field, IDownAction downAction)
     {
         _downAction = downAction ?? throw new ArgumentNullException("Selection need is not be null");
-        return _downAction.Select(field.Cells[CellData.Index1, CellData.Index2]);
+        _downAction.Select(field.Cells[CellData.Index1, CellData.Index2]);
     }
 
     public void SetTextNumbers(int value)
@@ -50,6 +41,7 @@ public class CellView : MonoBehaviour, ICellView, IPoolable<CellView>, IView
             _image.sprite = _spriteNumbers[value - 1];
         }
     }
+
 
     public void Init(GameField gameField, IViews views, CellData cellData)
     {
@@ -89,20 +81,16 @@ public class CellView : MonoBehaviour, ICellView, IPoolable<CellView>, IView
         return FlagView.Value;
     }
 
-    public void Display(ICell cell, Vector3 positionStart, float scale)
+    public void Display(int indexI, int indexJ, Vector2 scale)
     {
-        var deltaX = PixelPerUnit / WidthSpriteCell;
-        var deltaY = PixelPerUnit / HeightSpriteCell;
-        var widthSprite = WidthSpriteCell * scale * deltaX;
-        var heightSprite = HeightSpriteCell * scale * deltaY;
-        var camera = Camera.main;
-        var currentPosition = new Vector3(positionStart.x, positionStart.y, 0f);
-        var currentPositionScreen = camera.WorldToScreenPoint(currentPosition);
-        currentPositionScreen.x += (float)widthSprite * (float)cell.CellData.Index1;
-        currentPositionScreen.y += (float)heightSprite * (float)cell.CellData.Index2;
-        var resultPosition = camera.ScreenToWorldPoint(currentPositionScreen);
-        transform.position = resultPosition;
-        transform.localScale = new Vector3(scale, scale, 0);
+        transform.localScale = new Vector3(scale.x, scale.y);
+        var rectImage = RectTransform.rect;
+        var width = rectImage.width;
+        var height = rectImage.height;
+        RectTransform.pivot = Vector2.zero;
+        RectTransform.anchorMin = Vector2.zero;
+        RectTransform.anchorMax = Vector2.zero;
+        RectTransform.anchoredPosition = new Vector2(width * scale.x * indexI, height * scale.y * indexJ);
     }
 
     public void SpawnFrom(IPool<CellView> pool)
@@ -116,6 +104,7 @@ public class CellView : MonoBehaviour, ICellView, IPoolable<CellView>, IView
     }
 
     public float GetWidth() => GetComponent<Image>().sprite.rect.width;
+
     public float GetHeight() => GetComponent<Image>().sprite.rect.height;
 
     public Transform GetTransform() => transform;

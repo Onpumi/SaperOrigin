@@ -55,24 +55,24 @@ public class InputHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     private void Update()
     {
         var inputMouse0 = Input.GetMouseButton(0);
-/*
+
         if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Windows)
         {
             var inputMouse1 = Input.GetMouseButton(1);
 
-            if (inputMouse0 && _isClick)
+            if (inputMouse0 && _isButtonPressed)
             {
                 OnActivateCell?.Invoke(this);
-                _isClick = false;
+                _isButtonPressed = false;
             }
-            else if (inputMouse1 && _isClick)
+            else if (inputMouse1 && _isButtonPressed)
             {
                 OnActivateFlag?.Invoke(this);
-                _isClick = false;
+                _isButtonPressed = false;
             }
         }
-*/
-        if (inputMouse0 == true && _isButtonPressed == true && (AllowTimeHoldForDuration() == false))
+
+        else if (inputMouse0 == true && _isButtonPressed == true && (AllowTimeHoldForDuration() == false))
         {
             OnActivateFlag?.Invoke(this);
             _isButtonPressed = false;

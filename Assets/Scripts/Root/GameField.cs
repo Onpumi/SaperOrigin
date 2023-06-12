@@ -1,7 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
 {
@@ -21,7 +19,6 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     public SpriteData SpriteData { get; private set; }
     public GameState GameState => _gameState;
     public Sounds Sounds => _sounds;
-    public Camera CameraField => Camera.main;
     public override IWindowCommand BackWindowCommand => _backWindowCommand;
     public PoolDataContainer PoolDataContainer { get; private set; }
 
@@ -67,7 +64,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     private void Start()
     {
         Init();
-        new FieldCells(this);
+       // new FieldCells(this);
     }
 
     public float GetScale() => 1f;
@@ -75,7 +72,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     public Vector2Int GetCountBlocksXY()
     {
         var scale = _gameState.GameFieldData.ScaleBrick;
-        
+
         var numberColumns = BackGroundField.Rect.width / (scale * ImageRectCell.width) *
                             BackGroundField.transform.localScale.x;
         var numberRows = BackGroundField.Rect.height / (scale * ImageRectCell.height) *
@@ -110,7 +107,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
                 }
             }
         }
-
+        
         new FieldCells(this);
         _uiData.WindowWinner.Hide();
     }
