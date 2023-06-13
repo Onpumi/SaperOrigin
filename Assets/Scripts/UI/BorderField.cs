@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
-using UnityEngine.UI;
 
 public class BorderField : MonoBehaviour
 {
@@ -19,7 +17,7 @@ public class BorderField : MonoBehaviour
     public float WidthImage => _prefabImage.rect.width;
     public float HeightImage => _prefabImage.rect.height;
 
-    public void Init( RectTransform rectTransformField )
+    public void Init(RectTransform rectTransformField)
     {
         var corners = new Vector3[4];
         rectTransformField.GetWorldCorners(corners);
@@ -28,49 +26,48 @@ public class BorderField : MonoBehaviour
         var topRightCorner = corners[2];
         var bottomRightCorner = corners[3];
         var lossyScale = _rectTransformCanvas.lossyScale;
-        _offsetWorld = new Vector2( WidthImage * lossyScale.x, HeightImage * lossyScale.y);
-        DrawBorder( new Vector3[4] {bottomLeftCorner, topLeftCorner, topRightCorner, bottomRightCorner} );
-        
+        _offsetWorld = new Vector2(WidthImage * lossyScale.x, HeightImage * lossyScale.y);
+        DrawBorder(new Vector3[4] { bottomLeftCorner, topLeftCorner, topRightCorner, bottomRightCorner });
     }
 
-    private void SpawnImage( RectTransform image )
+    private void SpawnImage(RectTransform image)
     {
         _border = Instantiate(image, transform.parent);
     }
 
-    private void DrawBorder( Vector3[] corners)
+    private void DrawBorder(Vector3[] corners)
     {
-        DrawLine(corners[1],corners[2], -Vector2.left, Vector2.up, _prefabUpDownBorder);
-        DrawLine(corners[0],corners[3], -Vector2.left, -Vector2.up, _prefabUpDownBorder);
-        DrawLine(corners[0],corners[1], Vector2.up, Vector2.left, _prefabLeftBorder);
-        DrawLine(corners[3],corners[2], Vector2.up, -Vector2.left, _prefabRightBorder);
-        DrawImage( corners[0], new Vector2(-1f,-1f), _prefabBottomLeftCorner );
-        DrawImage( corners[1], new Vector2(-1f, 1f), _prefabTopLeftCorner );
-        DrawImage( corners[2], new Vector2(1f, 1f), _prefabTopRightCorner );
-        DrawImage( corners[3], new Vector2(1f, -1f), _prefabBottomRightCorner );
+        DrawLine(corners[1], corners[2], -Vector2.left, Vector2.up, _prefabUpDownBorder);
+        DrawLine(corners[0], corners[3], -Vector2.left, -Vector2.up, _prefabUpDownBorder);
+        DrawLine(corners[0], corners[1], Vector2.up, Vector2.left, _prefabLeftBorder);
+        DrawLine(corners[3], corners[2], Vector2.up, -Vector2.left, _prefabRightBorder);
+        DrawImage(corners[0], new Vector2(-1f, -1f), _prefabBottomLeftCorner);
+        DrawImage(corners[1], new Vector2(-1f, 1f), _prefabTopLeftCorner);
+        DrawImage(corners[2], new Vector2(1f, 1f), _prefabTopRightCorner);
+        DrawImage(corners[3], new Vector2(1f, -1f), _prefabBottomRightCorner);
     }
 
-    private void DrawImage( Vector3 position, Vector2 offset, RectTransform image  )
-    { 
-        SpawnImage( image );
+    private void DrawImage(Vector3 position, Vector2 offset, RectTransform image)
+    {
+        SpawnImage(image);
         var scale = _border.localScale;
-       _border.transform.position = position;
-       _border.anchoredPosition += offset * scale * _border.rect.width / 2f;
+        _border.transform.position = position;
+        _border.anchoredPosition += offset * scale * _border.rect.width / 2f;
     }
 
-    private void DrawLine( Vector3 firstPosition, Vector3 lastPosition, Vector2 offsetDrawDirection, Vector2 offsetFirst, RectTransform border )
+    private void DrawLine(Vector3 firstPosition, Vector3 lastPosition, Vector2 offsetDrawDirection, Vector2 offsetFirst,
+        RectTransform border)
     {
         var scale = border.localScale;
         var sizeBorder = border.rect.width;
-        DrawImage( firstPosition, offsetFirst, border );
+        DrawImage(firstPosition, offsetFirst, border);
         var distanceCorner = (lastPosition - firstPosition).magnitude;
         var countDrawImage = distanceCorner / _offsetWorld.x * 2f;
-       
-        for( int i = 0 ; i < countDrawImage; i++ )
+
+        for (int i = 0; i < countDrawImage; i++)
         {
-            DrawImage(_border.position, new Vector2(0f, 0f),border);
+            DrawImage(_border.position, new Vector2(0f, 0f), border);
             _border.anchoredPosition += offsetDrawDirection * scale * sizeBorder / 2f;
         }
     }
-    
 }

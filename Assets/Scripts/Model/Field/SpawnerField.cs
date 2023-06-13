@@ -30,6 +30,7 @@ public class SpawnerField
             _cells[i, j].CellView.InputHandler.OnActivateFlag += ActionAfterHoldCell;
             _cells[i, j].Display(i, j, FieldCellData.Scale);
         }
+
     }
 
     private void ActionAfterActivateCell(InputHandler inputHandler)

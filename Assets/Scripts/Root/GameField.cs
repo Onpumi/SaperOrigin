@@ -64,7 +64,6 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     private void Start()
     {
         Init();
-       // new FieldCells(this);
     }
 
     public float GetScale() => 1f;
@@ -72,7 +71,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     public Vector2Int GetCountBlocksXY()
     {
         var scale = _gameState.GameFieldData.ScaleBrick;
-
+        
         var numberColumns = BackGroundField.Rect.width / (scale * ImageRectCell.width) *
                             BackGroundField.transform.localScale.x;
         var numberRows = BackGroundField.Rect.height / (scale * ImageRectCell.height) *
@@ -107,7 +106,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
                 }
             }
         }
-        
+        BackGroundField.Init();
         new FieldCells(this);
         _uiData.WindowWinner.Hide();
     }

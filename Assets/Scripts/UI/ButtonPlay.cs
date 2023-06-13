@@ -40,7 +40,6 @@ public class ButtonPlay : WindowBase, IPointerDownHandler
     {
         _gameState.Views.GameField.ReloadField();
         Display( _activeUI );
-        //_gameState.InitPreviousWindow( _mainWindow );
     }
 
     public override void OpenCanvasByPressingEscape( IWindowCommand windowCommand ) => Open();
