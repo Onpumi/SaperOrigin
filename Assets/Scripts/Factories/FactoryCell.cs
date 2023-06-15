@@ -11,6 +11,7 @@ public class FactoryCell : IFactoryCell
     {
         _cellData = cellData;
         _factoryCellView = new FactoryViewPool<CellView>(gameField.PoolDataContainer.RootCells.PoolData.Pool, gameField.transform);
+     //   _factoryCellView = new FactoryViewPool<CellView>(gameField.PoolDataContainer.RootCells.PoolData.Pool, gameField.ParentFieldTest);
         _views = gameField.Views;
         _gameField = gameField;
     }

@@ -8,7 +8,6 @@ public class ScaleCalculator
     private FieldCellData _fieldCellData;
     private BackgroundField _backgroundField;
 
-    //public ScaleCalculator( Rect rectParent, Rect rectImage, FieldCellData fieldCellData )
     public ScaleCalculator( BackgroundField backgroundField, Rect rectImage, FieldCellData fieldCellData )
     {
         _rectParent = backgroundField.Rect;

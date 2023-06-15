@@ -20,17 +20,17 @@ public class SpawnerField
     public void CreateBlocks()
     {
         _gameField = _fieldCells.GameField;
-        for (var i = 0; i < FieldCellData.CountColumns; i++)
         for (var j = 0; j < FieldCellData.CountRows; j++)
+        for (var i = 0; i < FieldCellData.CountColumns; i++)
         {
             var cellData = new CellData(i, j, FieldCellData.Scale);
             var factoryCell = new FactoryCell(_gameField, cellData);
+            
             _cells[i, j] = factoryCell.Create();
             _cells[i, j].CellView.InputHandler.OnActivateCell += ActionAfterActivateCell;
             _cells[i, j].CellView.InputHandler.OnActivateFlag += ActionAfterHoldCell;
             _cells[i, j].Display(i, j, FieldCellData.Scale);
         }
-
     }
 
     private void ActionAfterActivateCell(InputHandler inputHandler)

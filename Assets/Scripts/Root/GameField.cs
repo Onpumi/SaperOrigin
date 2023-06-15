@@ -10,6 +10,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     [SerializeField] private IWindowCommand _backWindowCommand;
     [SerializeField] private Transform _parentField;
     [SerializeField] private BackgroundField _backgroundField;
+    public Transform ParentFieldTest;
     public BackgroundField BackGroundField { get; private set; }
     public Rect ImageRectCell { get; private set; }
     public DataSetting DataSetting { get; private set; }
@@ -35,7 +36,8 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         _gameState.GameFieldData.ScaleBrick = DataSetting.GameData.GetOptionValue(TypesOption.SizeCells);
         SetPercentMine((TypesGame)DataSetting.GameData.GetDifficultValue());
         var parent = _parentField;
-        PoolDataContainer = new PoolDataContainer(_views, parent, 1000);
+        //parent = ParentFieldTest;
+        PoolDataContainer = new PoolDataContainer(_views, parent, 4);
     }
 
     public override void Enable()
@@ -67,6 +69,14 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     }
 
     public float GetScale() => 1f;
+    
+    
+    private void OnRectTransformDimensionsChange()
+    {
+     //ReloadField();
+        //new FieldCells(this);
+    }
+
 
     public Vector2Int GetCountBlocksXY()
     {
@@ -74,6 +84,10 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         
         var numberColumns = BackGroundField.Rect.width / (scale * ImageRectCell.width) *
                             BackGroundField.transform.localScale.x;
+        
+        //Debug.Log(BackGroundField.Rect.width);
+
+        
         var numberRows = BackGroundField.Rect.height / (scale * ImageRectCell.height) *
                          BackGroundField.transform.localScale.y;
 //        numberRows = numberColumns; // если поле в опциях делаем квадратное, это вроде подгонит правильно
@@ -89,8 +103,10 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         }
     }
 
+
     public void ReloadField()
     {
+        if (GameState == null) return;
         GameState.StopGame();
         GameState.ResetTimeView();
         _gameState.GameFieldData.ScaleBrick = DataSetting.GameData.GetOptionValue(TypesOption.SizeCells);

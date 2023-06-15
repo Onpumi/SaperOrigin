@@ -26,9 +26,13 @@ public class FieldCells
         var countRows = gameField.GetCountBlocksXY().y;
         var scaleX = _gameField.GameState.GameFieldData.ScaleBrick;
         var scaleY = scaleX;
+        scaleX = scaleY = 1;
+        (countColumns,countRows) = _gameField.BackGroundField.InitGRID(100);
+
         FieldCellData = new FieldCellData(countColumns, countRows, new Vector2(scaleX, scaleY));
-        _scaleCalculator = new ScaleCalculator(_gameField.BackGroundField, _gameField.ImageRectCell, FieldCellData);
-        FieldCellData.UpdateScale(_scaleCalculator.GetFixedScales());
+       
+       // _scaleCalculator = new ScaleCalculator(_gameField.BackGroundField, _gameField.ImageRectCell, FieldCellData);
+       // FieldCellData.UpdateScale(_scaleCalculator.GetFixedScales());
         _cells = new Cell[FieldCellData.CountColumns, FieldCellData.CountRows];
         _countCells = _cells.Length;
         _firstIndexes = new int[2] { -1, -1 };
@@ -36,6 +40,7 @@ public class FieldCells
         _spawnerField = new SpawnerField(this, _cells);
         _spawnerField.CreateBlocks();
     }
+
 
     public void ConfirmFirstClick()
     {
