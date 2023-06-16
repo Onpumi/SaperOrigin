@@ -158,7 +158,7 @@
      <Compile Include="Assets\Scripts\UI\WindowReference.cs" />
      <Compile Include="Assets\YandexGame\ScriptsYG\PromptYG.cs" />
      <Compile Include="Assets\Scripts\JavaScript\ClassForJavaScript.cs" />
-     <Compile Include="Assets\Scripts\Data\IViews.cs" />
+     <Compile Include="Assets\Scripts\Data\Intefaces\IViews.cs" />
      <Compile Include="Assets\YandexGame\Example\Scripts\GetPlayerData.cs" />
      <Compile Include="Assets\Scripts\UI\WindowPause.cs" />
      <Compile Include="Assets\YandexGame\ScriptsYG\Inside\CallingAnEvent.cs" />

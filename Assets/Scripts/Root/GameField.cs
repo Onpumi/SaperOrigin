@@ -9,41 +9,25 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     [SerializeField] private Sounds _sounds;
     [SerializeField] private IWindowCommand _backWindowCommand;
     [SerializeField] private Transform _parentField;
-    [SerializeField] private BackgroundField _backgroundField;
-    public Transform ParentFieldTest;
     public BackgroundField BackGroundField { get; private set; }
-    public Rect ImageRectCell { get; private set; }
     public DataSetting DataSetting { get; private set; }
     public UIData UIData => _uiData;
     public Views Views => _views;
-    public ScreenAdjusment ScreenAdjusment { get; private set; }
-    public SpriteData SpriteData { get; private set; }
     public GameState GameState => _gameState;
     public Sounds Sounds => _sounds;
     public override IWindowCommand BackWindowCommand => _backWindowCommand;
     public PoolDataContainer PoolDataContainer { get; private set; }
 
-
     private void Init()
     {
         BackGroundField = _parentField.GetComponent<BackgroundField>();
-        ImageRectCell = _views.CellView.GetComponent<RectTransform>().rect;
-        ScreenAdjusment = new ScreenAdjusment(transform.parent);
-        var width = _views.CellView.GetWidth();
-        var height = _views.CellView.GetHeight();
-        SpriteData = new SpriteData(width, height);
         DataSetting = new DataSetting(this);
         _gameState.GameFieldData.ScaleBrick = DataSetting.GameData.GetOptionValue(TypesOption.SizeCells);
         SetPercentMine((TypesGame)DataSetting.GameData.GetDifficultValue());
         var parent = _parentField;
-        //parent = ParentFieldTest;
-        PoolDataContainer = new PoolDataContainer(_views, parent, 4);
+        PoolDataContainer = new PoolDataContainer(_views, parent, 5000);
     }
-
-    public override void Enable()
-    {
-    }
-
+   
     public void SetPercentMine(TypesGame typesGame)
     {
         switch (typesGame)
@@ -62,37 +46,12 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         }
     }
 
-
     private void Start()
     {
         Init();
     }
 
     public float GetScale() => 1f;
-    
-    
-    private void OnRectTransformDimensionsChange()
-    {
-     //ReloadField();
-        //new FieldCells(this);
-    }
-
-
-    public Vector2Int GetCountBlocksXY()
-    {
-        var scale = _gameState.GameFieldData.ScaleBrick;
-        
-        var numberColumns = BackGroundField.Rect.width / (scale * ImageRectCell.width) *
-                            BackGroundField.transform.localScale.x;
-        
-        //Debug.Log(BackGroundField.Rect.width);
-
-        
-        var numberRows = BackGroundField.Rect.height / (scale * ImageRectCell.height) *
-                         BackGroundField.transform.localScale.y;
-//        numberRows = numberColumns; // если поле в опциях делаем квадратное, это вроде подгонит правильно
-        return new Vector2Int((int)numberColumns, (int)numberRows);
-    }
 
     public void SaveScaleValueBricks(TypesOption typeOption, WindowScalingBlocks windowScalingBlocks)
     {
@@ -122,8 +81,12 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
                 }
             }
         }
-        BackGroundField.Init();
-        new FieldCells(this);
+        
+        BackGroundField.Init(this);
+        var scale = GameState.GameFieldData.ScaleBrick;
+        var (countColumns, countRows) = BackGroundField.InitGRID(100f * scale);
+        new FieldCells(this, countColumns, countRows);
+        BackGroundField.BorderField.Init(BackGroundField.RectTransform);
         _uiData.WindowWinner.Hide();
     }
 

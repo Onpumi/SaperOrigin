@@ -1,21 +1,20 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using UnityEngine.Serialization;
 
 public  class Views : SerializedMonoBehaviour, IViews
 {
-    [SerializeField] private MineView _mineView;
-    [SerializeField] private CellView _cellView;
-    [SerializeField] private FlagView _flagView;
-    [SerializeField] private BrickView _brickView;
-    [SerializeField] private BoomView _boomView;
+    [SerializeField] private MineView _prefabMineView;
+    [SerializeField] private CellView _prefabCellView;
+    [SerializeField] private FlagView _prefabFlagView;
+    [SerializeField] private BrickView _prefabBrickView;
     [SerializeField] private GameField _gameField;
     [SerializeField] private List<IView> _views;
-    public MineView MineView => _mineView;
-    public CellView CellView => _cellView;
-    public FlagView FlagView => _flagView;
-    public BrickView BrickView => _brickView;
-    public IBoomView BoomView => _boomView;
+    public MineView MineView => _prefabMineView;
+    public CellView CellView => _prefabCellView;
+    public FlagView FlagView => _prefabFlagView;
+    public BrickView BrickView => _prefabBrickView;
     public GameField GameField => _gameField;
     public List<IView> View => _views;
 

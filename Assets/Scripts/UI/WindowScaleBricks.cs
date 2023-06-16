@@ -32,7 +32,6 @@ public class WindowScaleBricks : WindowBase
     public override void OpenWindow()
     {
         Open();
-        _windowScalingBlocks.CalculateAdditionalScale(_canvasScaler);
         _sliderSizeCells.OpenMenuSizeCells();
     }
 

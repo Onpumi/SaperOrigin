@@ -10,12 +10,12 @@ public class BackgroundField : MonoBehaviour
     [SerializeField] private MenuBarView _topMenuBar;
     [SerializeField] private MenuBarView _bottomMenuBar;
     [SerializeField] private BorderField _borderField;
-    [SerializeField] private TMP_Text _textMeshPro;
     [SerializeField] private RectTransform _rectTransform;
     [SerializeField] private RectTransform _rectParentTransform;
-    private const float OffsetLeftRight = 0.05f;
-    private float _offsetSpace;
+    public BorderField BorderField => _borderField;
+    public RectTransform RectTransform => _rectTransform;
     private GridLayoutGroup _gridLayoutGroup;
+    private float _cellSize;
 
     public Rect Rect { get; private set; }
 
@@ -24,7 +24,7 @@ public class BackgroundField : MonoBehaviour
         _gridLayoutGroup = GetComponent<GridLayoutGroup>();
     }
 
-    private void SetProperties()
+    private void SetProperties(GameField gameField)
     {
         var topMenuRectTransform = _topMenuBar.RectTransform;
         var bottomMenuRectTransform = _bottomMenuBar.RectTransform;
@@ -43,7 +43,7 @@ public class BackgroundField : MonoBehaviour
         var bottom = bottomMenuRectTransform.anchoredPosition.y;
         var topSizeOffsetMenu = topMenuRectTransform.sizeDelta.y * 0.5f;
         var bottomSizeOffsetMenu = bottomMenuRectTransform.sizeDelta.y * 0.5f;
-        var centerVerticalPosition = ( (bottom - bottomSizeOffsetMenu) - (top - topSizeOffsetMenu)) * 0.5f;
+        var centerVerticalPosition = ((bottom - bottomSizeOffsetMenu) - (top - topSizeOffsetMenu)) * 0.5f;
         _rectTransform.anchoredPosition = new Vector2(_rectParentTransform.anchoredPosition.x, centerVerticalPosition);
 
 /*        
@@ -59,6 +59,7 @@ public class BackgroundField : MonoBehaviour
 
     public (int, int) InitGRID(float cellSize)
     {
+        _cellSize = cellSize;
         var cellSizeX = cellSize;
         var cellSizeY = cellSize;
         var rect = _rectTransform.rect;
@@ -80,9 +81,26 @@ public class BackgroundField : MonoBehaviour
         return (countColumns, countRows);
     }
 
-    public void Init()
+    public (int, int) UpdatePropertiesInGrid(int countColumns)
     {
-        SetProperties();
-        _borderField.Init(_rectTransform);
+        _gridLayoutGroup.constraintCount = countColumns;
+        if (Screen.width > Screen.height)
+        {
+            var widthParent = _rectTransform.rect.width;
+            var differenceCountColumns = (int)(widthParent / _cellSize) - countColumns;
+            _rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,
+                _rectParentTransform.rect.width - 2f * (_borderField.WidthImage + 50f) -
+                differenceCountColumns * _cellSize);
+        }
+        int countRows;
+        (countColumns, countRows) = InitGRID(_cellSize);
+        return (countColumns, countRows) ;
+    }
+
+    public void Init(GameField gameField)
+    {
+        SetProperties(gameField);
+        if (Screen.width <= Screen.height)
+            _borderField.Init(_rectTransform);
     }
 }

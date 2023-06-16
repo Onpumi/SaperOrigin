@@ -15,17 +15,6 @@ public class WindowScalingBlocks : WindowBase
         Open(true);
     }
 
-    public void CalculateAdditionalScale(CanvasScaler canvasScaler)
-    {
-        var resolutionCanvasY = _gameState.Views.GameField.ScreenAdjusment.ResolutionCanvas.y;
-        if (Screen.height > Screen.width)
-            _resolutionRatio =
-                canvasScaler.referenceResolution.x / resolutionCanvasY;
-        else
-            _resolutionRatio =
-                canvasScaler.referenceResolution.y / resolutionCanvasY;
-    }
-
     private void Open(bool value)
     {
         if (_gameState.Views.GameField == null) return;
@@ -55,7 +44,7 @@ public class WindowScalingBlocks : WindowBase
     public void Display()
     {
         var gameField = _gameState.Views.GameField;
-        if (gameField.ScreenAdjusment != null)
+        //if (gameField.ScreenAdjusment != null)
             _gridLayout.cellSize = Vector2.one * 100f * ScaleBricks;
     }
 }

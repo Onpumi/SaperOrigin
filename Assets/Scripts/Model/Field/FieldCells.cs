@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class FieldCells
@@ -13,24 +12,22 @@ public class FieldCells
     public ContainerMines ContainerMines { get; private set; }
     private readonly int _percentMine = 15;
     private readonly int _countCells;
-    private ScaleCalculator _scaleCalculator;
     public bool IsFirstClick { get; private set; }
     public ICell[,] Cells => _cells;
     public GameField GameField => _gameField;
 
-    public FieldCells(GameField gameField)
+    public FieldCells(GameField gameField, int countColumns, int countRows )
     {
         _gameField = gameField;
         IsFirstClick = true;
-        var countColumns = gameField.GetCountBlocksXY().x;
-        var countRows = gameField.GetCountBlocksXY().y;
-        var scale = _gameField.GameState.GameFieldData.ScaleBrick;
-        (countColumns,countRows) = _gameField.BackGroundField.InitGRID(100f * scale);
-
+        
+        if (Screen.width > Screen.height )
+        {
+            countColumns =  (int) (countColumns / (int)(countColumns / countRows) / 1.5f);
+            (countColumns, countRows) = _gameField.BackGroundField.UpdatePropertiesInGrid(countColumns);
+        }
+        
         FieldCellData = new FieldCellData(countColumns, countRows, new Vector2(1, 1));
-       
-       // _scaleCalculator = new ScaleCalculator(_gameField.BackGroundField, _gameField.ImageRectCell, FieldCellData);
-       // FieldCellData.UpdateScale(_scaleCalculator.GetFixedScales());
         _cells = new Cell[FieldCellData.CountColumns, FieldCellData.CountRows];
         _countCells = _cells.Length;
         _firstIndexes = new int[2] { -1, -1 };

@@ -732,8 +732,6 @@ MonoBehaviour:
   _gameState: {fileID: 2038550280}
   _sounds: {fileID: 269132601}
   _parentField: {fileID: 103083158}
-  _backgroundField: {fileID: 103083157}
-  ParentFieldTest: {fileID: 0}
 --- !u!114 &103083157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -749,7 +747,6 @@ MonoBehaviour:
   _topMenuBar: {fileID: 1779566971}
   _bottomMenuBar: {fileID: 633069017}
   _borderField: {fileID: 1320310686}
-  _textMeshPro: {fileID: 0}
   _rectTransform: {fileID: 103083158}
   _rectParentTransform: {fileID: 1974903563}
 --- !u!224 &103083158
@@ -784,7 +781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.009433985, g: 0.009433985, b: 0.009433985, a: 1}
+  m_Color: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5012,8 +5009,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1490382524}
   m_HandleRect: {fileID: 1490382523}
   m_Direction: 2
-  m_Value: 1.0000001
-  m_Size: 0.5393487
+  m_Value: 1.0000004
+  m_Size: 0.53934884
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5572,11 +5569,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  _mineView: {fileID: 9005108687923012427, guid: f085fd33314a7eb419849b8cc0d558fc, type: 3}
-  _cellView: {fileID: 8810420558800810911, guid: 34608a66a27607d43b837fb09ae3fa85, type: 3}
-  _flagView: {fileID: 1989260111861421937, guid: f870637b3cec30c41887d4d91679cd00, type: 3}
-  _brickView: {fileID: 6303002758217621924, guid: 70dc0ee44e98dcc4abf0c624cf930a31, type: 3}
-  _boomView: {fileID: 1045116040469999158, guid: a5d689fd408b70048939b9de9d7f97ae, type: 3}
+  _prefabMineView: {fileID: 9005108687923012427, guid: f085fd33314a7eb419849b8cc0d558fc, type: 3}
+  _prefabCellView: {fileID: 8810420558800810911, guid: 34608a66a27607d43b837fb09ae3fa85, type: 3}
+  _prefabFlagView: {fileID: 1989260111861421937, guid: f870637b3cec30c41887d4d91679cd00, type: 3}
+  _prefabBrickView: {fileID: 6303002758217621924, guid: 70dc0ee44e98dcc4abf0c624cf930a31, type: 3}
   _gameField: {fileID: 103083156}
 --- !u!4 &679129202
 Transform:
@@ -9722,7 +9718,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -33.399414, y: 475.99997}
+  m_AnchoredPosition: {x: -33.399414, y: 475.99994}
   m_SizeDelta: {x: -178.2, y: 3295.7}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1248663098
