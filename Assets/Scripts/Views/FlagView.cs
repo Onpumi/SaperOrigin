@@ -6,6 +6,8 @@ public class FlagView : MonoBehaviour, IFlagView, IPoolable<FlagView>
 {
     [SerializeField] private CellView _parent;
     [SerializeField] private Sprite _spriteError;
+    [SerializeField] private RectTransform _rectTransform;
+    public RectTransform RectTransform => _rectTransform;
     private Image _image;
     public bool Value { get; private set; }
 

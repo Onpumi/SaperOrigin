@@ -1,5 +1,3 @@
-using UnityEngine;
-using UnityEngine.UI;
 
 public class Cell : ICell
 {
@@ -21,11 +19,6 @@ public class Cell : ICell
         IsFlagged = false;
         CellData = cellView.CellData;
         Flag = new Flag(_cellView);
-    }
-
-    public void Display(int indexI, int indexJ, Vector2 scale)
-    {
-        _cellView.Display(indexI, indexJ, scale);
     }
 
     public void CreateMine(int value)

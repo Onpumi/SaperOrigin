@@ -8,15 +8,7 @@ public class WindowScalingBlocks : WindowBase
     public float ScaleBricks { get; private set; }
     private GridLayoutGroup _gridLayout;
     private float _resolutionRatio;
-
-
     public override void OpenMenuSizeCells() => Open(true);
-
-
-    private void Awake()
-    {
-        _gridLayout = GetComponent<GridLayoutGroup>();
-    }
 
     private void OnEnable()
     {
@@ -41,6 +33,7 @@ public class WindowScalingBlocks : WindowBase
         transform.gameObject.SetActive(value);
         _gridLayout = GetComponent<GridLayoutGroup>();
 
+
         foreach (Transform child in transform)
         {
             child.gameObject.SetActive(value);
@@ -63,7 +56,6 @@ public class WindowScalingBlocks : WindowBase
     {
         var gameField = _gameState.Views.GameField;
         if (gameField.ScreenAdjusment != null)
-            _gridLayout.cellSize = new Vector2(gameField.ScreenAdjusment.PixelsPerUnit * ScaleBricks,
-                gameField.ScreenAdjusment.PixelsPerUnit * ScaleBricks);
+            _gridLayout.cellSize = Vector2.one * 100f * ScaleBricks;
     }
 }

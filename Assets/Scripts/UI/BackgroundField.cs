@@ -16,7 +16,7 @@ public class BackgroundField : MonoBehaviour
     private const float OffsetLeftRight = 0.05f;
     private float _offsetSpace;
     private GridLayoutGroup _gridLayoutGroup;
-    
+
     public Rect Rect { get; private set; }
 
     private void Awake()
@@ -26,39 +26,25 @@ public class BackgroundField : MonoBehaviour
 
     private void SetProperties()
     {
-        
-        
-//        _rectTransform.anchorMin = Vector2.zero;
-  //      _rectTransform.anchorMax = Vector2.one;
-    //    _rectTransform.anchoredPosition = Vector2.zero;
-
-    //transform.localScale = Vector2.zero;
-    
-/*
-        _rectTransform.pivot = new Vector2(0.5f, 0.5f);
-        transform.localScale = new Vector3(1f, 1f); 
         var topMenuRectTransform = _topMenuBar.RectTransform;
         var bottomMenuRectTransform = _bottomMenuBar.RectTransform;
         var heightBottomMenu = bottomMenuRectTransform.rect.height;
         var heightTopMenu = topMenuRectTransform.rect.height;
         var positionBottomRect = bottomMenuRectTransform.anchoredPosition;
-        var offsetTop = heightTopMenu + _borderField.HeightImage * 2f;
-        _offsetSpace = 30f;
+        var positionTopRect = topMenuRectTransform.anchoredPosition;
         var offsetBottom = heightBottomMenu + _borderField.HeightImage +
-                           positionBottomRect.y + _offsetSpace;
-        _rectTransform.offsetMax = new Vector2(-_borderField.WidthImage-50f, -offsetTop);
-        _rectTransform.offsetMin = new Vector2(_borderField.WidthImage+50f, offsetBottom);
-*/
-
-        var topMenuRectTransform = _topMenuBar.RectTransform;
-        var bottomMenuRectTransform = _bottomMenuBar.RectTransform;
-        var heightBottomMenu = bottomMenuRectTransform.rect.height;
-        var heightTopMenu = topMenuRectTransform.rect.height;
-
-
-        _rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,_rectParentTransform.rect.width - 300f);
-        _rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _rectParentTransform.rect.height - heightTopMenu - heightBottomMenu - Screen.safeArea.size.y );
-
+                           positionBottomRect.y;
+        var offsetTop = heightTopMenu + _borderField.HeightImage * 2f - positionTopRect.y;
+        _rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,
+            _rectParentTransform.rect.width - 2f * (_borderField.WidthImage + 50f));
+        _rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,
+            _rectParentTransform.rect.height - offsetTop - offsetBottom - 100f);
+        var top = topMenuRectTransform.anchoredPosition.y;
+        var bottom = bottomMenuRectTransform.anchoredPosition.y;
+        var topSizeOffsetMenu = topMenuRectTransform.sizeDelta.y * 0.5f;
+        var bottomSizeOffsetMenu = bottomMenuRectTransform.sizeDelta.y * 0.5f;
+        var centerVerticalPosition = ( (bottom - bottomSizeOffsetMenu) - (top - topSizeOffsetMenu)) * 0.5f;
+        _rectTransform.anchoredPosition = new Vector2(_rectParentTransform.anchoredPosition.x, centerVerticalPosition);
 
 /*        
     if (Screen.height > Screen.width)
@@ -68,11 +54,10 @@ public class BackgroundField : MonoBehaviour
         transform.localScale = new Vector3(_rectTransform.rect.height / _rectTransform.rect.width, 1f);
 */
         Rect = _rectTransform.rect;
-        
     }
 
 
-    public (int, int) InitGRID( float cellSize )
+    public (int, int) InitGRID(float cellSize)
     {
         var cellSizeX = cellSize;
         var cellSizeY = cellSize;
@@ -92,7 +77,6 @@ public class BackgroundField : MonoBehaviour
         _gridLayoutGroup.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
         _gridLayoutGroup.constraintCount = countColumns;
         _gridLayoutGroup.childAlignment = TextAnchor.LowerCenter;
-        //Debug.Log(countColumns + " " + countRows);
         return (countColumns, countRows);
     }
 

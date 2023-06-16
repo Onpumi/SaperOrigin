@@ -1,51 +1,47 @@
 using UnityEngine;
-using  UnityEngine.UI;
+using UnityEngine.UI;
 
 public class MineView : MonoBehaviour, IMineView, IPoolable<MineView>
 
 {
     [SerializeField] private float _scale = 0.7f;
+    [SerializeField] private RectTransform _rectTransform;
+    [SerializeField] private Color _explosionColor = Color.red;
+    public RectTransform RectTransform => _rectTransform;
     private Transform _parent;
+
     private void Awake()
     {
-        transform.localScale = new Vector3(_scale, _scale,_scale);
+        transform.localScale = new Vector3(_scale, _scale, _scale);
         transform.gameObject.SetActive(false);
         _parent = transform.parent;
     }
 
-    public float GetWidth()
-    {
-        return GetComponent<Image>().sprite.rect.width;
-    }
 
     public void SetActive(bool value)
     {
-        transform.gameObject.SetActive( value );
+        transform.gameObject.SetActive(value);
     }
 
-    public float GetHeight()
+    public void SetParent( Transform parent )
     {
-        return GetComponent<Image>().sprite.rect.height;
+        _parent = parent;
+        transform.SetParent(parent);
     }
-    
-    public void ActivateMine( bool isExposion = false )
+
+    public void ActivateMine(bool isExposion = false)
     {
         gameObject.SetActive(true);
-      //  if( isExposion == true ) _parent.GetComponent<Image>().color = Color.red;  // исправить это!!
-        transform.localScale = Vector3.one * _scale;
+        if (isExposion == true)
+            _parent.GetComponent<Image>().color = _explosionColor;
     }
 
-    public Transform GetTransform() => transform;
-    
-    public void SpawnFrom( IPool<MineView> pool )
+    public void SpawnFrom(IPool<MineView> pool)
     {
-        //transform.gameObject.SetActive(true);
     }
 
-        
     public void Despawn()
     {
         transform.gameObject.SetActive(false);
     }
-
 }

@@ -4,16 +4,12 @@ using UnityEngine.UI;
 
 public class BrickView : MonoBehaviour, IBrickView, IPoolable<BrickView>
 {
+    [SerializeField] private RectTransform _rectTransform;
+    public RectTransform RectTransform => _rectTransform;
     private void OnEnable() => transform.gameObject.SetActive(true);
     private void OnDisable() => transform.gameObject.SetActive(false);
     public void SetActive( bool value ) => transform.gameObject.SetActive(value);
     
-    public RectTransform RectTransform { get; private set; }
-
-    private void Awake()
-    {
-        RectTransform = GetComponent<RectTransform>();
-    }
 
     public void SpawnFrom( IPool<BrickView> pool )
     {

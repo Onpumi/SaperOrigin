@@ -89,3 +89,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scale: 0.7
+  _rectTransform: {fileID: 7456780778703237875}
+  _explosionColor: {r: 1, g: 0, b: 0, a: 1}

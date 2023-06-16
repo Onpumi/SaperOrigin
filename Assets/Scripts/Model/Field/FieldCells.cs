@@ -24,12 +24,10 @@ public class FieldCells
         IsFirstClick = true;
         var countColumns = gameField.GetCountBlocksXY().x;
         var countRows = gameField.GetCountBlocksXY().y;
-        var scaleX = _gameField.GameState.GameFieldData.ScaleBrick;
-        var scaleY = scaleX;
-        scaleX = scaleY = 1;
-        (countColumns,countRows) = _gameField.BackGroundField.InitGRID(100);
+        var scale = _gameField.GameState.GameFieldData.ScaleBrick;
+        (countColumns,countRows) = _gameField.BackGroundField.InitGRID(100f * scale);
 
-        FieldCellData = new FieldCellData(countColumns, countRows, new Vector2(scaleX, scaleY));
+        FieldCellData = new FieldCellData(countColumns, countRows, new Vector2(1, 1));
        
        // _scaleCalculator = new ScaleCalculator(_gameField.BackGroundField, _gameField.ImageRectCell, FieldCellData);
        // FieldCellData.UpdateScale(_scaleCalculator.GetFixedScales());

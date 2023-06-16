@@ -6,6 +6,7 @@ public class MenuBarView : WindowBase
     private float _anchorMinY;
     private Rect SafeArea => Screen.safeArea;
     public RectTransform RectTransform { get; private set; }
+    public const float OffsetFromBottom = 100f;
 
     private void Awake()
     {
@@ -38,11 +39,10 @@ public class MenuBarView : WindowBase
         RectTransform.anchorMin = anchorMin;
         RectTransform.anchorMax = anchorMax;
         RectTransform.pivot = Vector2.zero;
-        //var heightMenu = (Screen.height >= Screen.width) ? (Screen.height * 0.3f) : (Screen.height * 0.2f);
-        var heightMenu = 100f;
+        var heightMenu = 200f;
         RectTransform.sizeDelta = new Vector2(0f, heightMenu);
         var anchorPosition = RectTransform.anchoredPosition;
-        RectTransform.anchoredPosition = new Vector2(anchorPosition.x, anchorPosition.y + 100f);
+        RectTransform.anchoredPosition = new Vector2(anchorPosition.x, anchorPosition.y + OffsetFromBottom);
     }
 }
 
