@@ -1,3 +1,4 @@
+using System.Drawing;
 using UnityEngine;
 
 public class BorderField : MonoBehaviour
@@ -11,7 +12,9 @@ public class BorderField : MonoBehaviour
     [SerializeField] private RectTransform _prefabUpDownBorder;
     [SerializeField] private RectTransform _prefabLeftBorder;
     [SerializeField] private RectTransform _prefabRightBorder;
-
+    [SerializeField] private RectTransform _rectTransform;
+    [SerializeField] private float _sizeBorder = 0.5f;
+    public RectTransform RectTransform => _rectTransform;
     private RectTransform _border;
     private Vector2 _offsetWorld;
     public float WidthImage => _prefabImage.rect.width;
@@ -50,7 +53,7 @@ public class BorderField : MonoBehaviour
     private void DrawImage(Vector3 position, Vector2 offset, RectTransform image)
     {
         SpawnImage(image);
-        var scale = _border.localScale;
+        var scale = _border.localScale ;
         _border.transform.position = position;
         _border.anchoredPosition += offset * scale * _border.rect.width / 2f;
     }

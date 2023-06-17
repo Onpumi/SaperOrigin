@@ -1,18 +1,28 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
+[RequireComponent(typeof(GridLayoutGroup))]
 public class SectionMenuView : MonoBehaviour
 {
     [SerializeField] private MenuType MenuType;
     [SerializeField] private RectTransform _centerImage;
     [SerializeField] private RectTransform _parentRectTransform;
+    [SerializeField] private BorderField _borderField;
     private RectTransform _rectTransform;
+    private GridLayoutGroup _gridLayoutGroup;
+    private int _countChild;
 
 
     private void Start()
     {
         _rectTransform = GetComponent<RectTransform>() ??
                          throw new ArgumentException("RectTransform in SectionMenu is null");
+        _gridLayoutGroup = GetComponent<GridLayoutGroup>();
+
+        _countChild = transform.childCount;
+        
+
         if (MenuType != MenuType.Center)
         {
             _rectTransform.offsetMin = Vector2.zero;
@@ -38,12 +48,37 @@ public class SectionMenuView : MonoBehaviour
         {
             _rectTransform.anchorMin = new Vector2(0.5f, 0f);
             _rectTransform.anchorMax = new Vector2(1f, 1f);
-            _rectTransform.offsetMin = new Vector2(heightParent/2f,0f);
+            if (_borderField != null)
+            {
+                _rectTransform.offsetMin = new Vector2(heightParent / 2f + _borderField.WidthImage,
+                    0f + _borderField.HeightImage);
+                _rectTransform.offsetMax = new Vector2(-_borderField.WidthImage, -_borderField.HeightImage);
+            }
         }
         else if (MenuType == MenuType.Center)
         {
             _rectTransform.pivot = new Vector2(0.5f, 0.5f);
             _rectTransform.sizeDelta = new Vector2(heightParent, heightParent);
         }
+        
+        
+        if (MenuType != MenuType.Center)
+        {
+            var rectMenu = _rectTransform.rect;
+            var width = rectMenu.width;
+            var height = rectMenu.height;
+            var halfWidth = rectMenu.width * 0.5f;
+            var lengthSpace = 30;
+            var countBlocks = _countChild;
+            var countSpaces = _countChild + 1;
+            var cellSizeX = (width - countSpaces * lengthSpace) / countBlocks;
+            _gridLayoutGroup.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+            _gridLayoutGroup.constraintCount = _countChild;
+            _gridLayoutGroup.padding.left = (int)lengthSpace;
+            _gridLayoutGroup.padding.right = (int)lengthSpace;
+            _gridLayoutGroup.spacing = new Vector2(lengthSpace, 0);
+            _gridLayoutGroup.cellSize = new Vector2(cellSizeX,height); 
+        }
+        
     }
 }

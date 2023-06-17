@@ -25,7 +25,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         _gameState.GameFieldData.ScaleBrick = DataSetting.GameData.GetOptionValue(TypesOption.SizeCells);
         SetPercentMine((TypesGame)DataSetting.GameData.GetDifficultValue());
         var parent = _parentField;
-        PoolDataContainer = new PoolDataContainer(_views, parent, 5000);
+        PoolDataContainer = new PoolDataContainer(_views, parent, 500);
     }
    
     public void SetPercentMine(TypesGame typesGame)

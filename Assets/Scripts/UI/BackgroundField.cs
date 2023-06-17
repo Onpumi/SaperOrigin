@@ -78,6 +78,7 @@ public class BackgroundField : MonoBehaviour
         _gridLayoutGroup.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
         _gridLayoutGroup.constraintCount = countColumns;
         _gridLayoutGroup.childAlignment = TextAnchor.LowerCenter;
+        _gridLayoutGroup.startCorner = GridLayoutGroup.Corner.LowerLeft;
         return (countColumns, countRows);
     }
 
