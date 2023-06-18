@@ -122,8 +122,9 @@
      <Compile Include="Assets\YandexGame\WorkingData\SavesYG.cs" />
      <Compile Include="Assets\Scripts\UI\SectionMenuView.cs" />
      <Compile Include="Assets\Q3DAudio\Scripts\Q3DAudioSource.cs" />
-     <Compile Include="Assets\Q3DAudio\Scripts\Q3DAudioGlobalSettings.cs" />
+     <Compile Include="Assets\Scripts\Model\Timer\TimeBuilder.cs" />
      <Compile Include="Assets\Scripts\Pooling\IPoolFactory.cs" />
+     <Compile Include="Assets\Q3DAudio\Scripts\Q3DAudioGlobalSettings.cs" />
      <Compile Include="Assets\Scripts\Model\Cell\Cell.cs" />
      <Compile Include="Assets\Scripts\Pooling\Pool Field\PoolDataBuilder.cs" />
      <Compile Include="Assets\Scripts\Factories\FactoryMineView.cs" />
@@ -151,6 +152,7 @@
      <Compile Include="Assets\Scripts\UI\UIInputCheck\UIInputCheckComplexity.cs" />
      <Compile Include="Assets\YandexGame\ScriptsYG\PaymentsYG.cs" />
      <Compile Include="Assets\Scripts\Model\Actions\FlagDownAction.cs" />
+     <Compile Include="Assets\Scripts\Views\DigitalView.cs" />
      <Compile Include="Assets\Q3DAudio\Scripts\Q3DAudioManager.cs" />
      <Compile Include="Assets\Scripts\Tools\VibratorWrapper.cs" />
      <Compile Include="Assets\Scripts\UI\ButtonPause.cs" />
@@ -185,6 +187,7 @@
      <Compile Include="Assets\Scripts\Setting\ISettings.cs" />
      <Compile Include="Assets\Scripts\Data\Intefaces\IPoolData.cs" />
      <Compile Include="Assets\YandexGame\ScriptsYG\ImageLoadYG.cs" />
+     <Compile Include="Assets\Scripts\Factories\FactoryViewPool.cs" />
      <Compile Include="Assets\Scripts\UI\UIInputCheck\UICheckButton.cs" />
      <Compile Include="Assets\Scripts\Pooling\Pool.cs" />
      <Compile Include="Assets\Scripts\UI\ControllerButtonMode.cs" />
@@ -204,8 +207,8 @@
      <Compile Include="Assets\YandexGame\ScriptsYG\LeaderboardYG.cs" />
      <Compile Include="Assets\Scripts\Pooling\Pool Field\PoolDataRoot.cs" />
      <Compile Include="Assets\Scripts\Data\GameSetups.cs" />
-     <Compile Include="Assets\Scripts\Views\DigitalView.cs" />
-     <Compile Include="Assets\Scripts\Model\Timer\TimeBuilder.cs" />
+     <Compile Include="Assets\Scripts\MyLongRunningOperation.cs" />
+     <Compile Include="Assets\Scripts\SliderProgress.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

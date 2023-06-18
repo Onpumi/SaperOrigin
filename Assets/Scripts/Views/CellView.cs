@@ -6,23 +6,23 @@ public class CellView : MonoBehaviour, ICellView, IPoolable<CellView>, IView
 {
     [SerializeField] private Sprite[] _spriteNumbers;
     [SerializeField] private InputHandler _inputHandler;
-    private Image _image;
+
+    [SerializeField] private Image _image;
+    [SerializeField] private BrickView _brickView;
+    [SerializeField] private FlagView _flagView;
+    [SerializeField] private MineView _mineView;
+
     public InputHandler InputHandler { get; private set; }
-    public BrickView BrickView { get; private set; }
-    public MineView MineView { get; private set; }
-    public FlagView FlagView { get; private set; }
+    public BrickView BrickView => _brickView;
+    public FlagView FlagView => _flagView;
+    public MineView MineView => _mineView;
+
     private IDownAction _downAction;
     public CellData CellData { get; private set; }
 
     private void Awake()
     {
         InputHandler = _inputHandler;
-    }
-
-    private void Start()
-    {
-        _image = GetComponent<Image>();
-        BrickView ??= GetComponentInChildren<BrickView>();
     }
 
     public void InitAction(FieldCells field, IDownAction downAction)
@@ -45,43 +45,6 @@ public class CellView : MonoBehaviour, ICellView, IPoolable<CellView>, IView
         cellData.Index1.TryThrowIfLessThanZero();
         cellData.Index2.TryThrowIfLessThanZero();
         CellData = cellData;
-        var parent = transform;
-        FactoryViewPool<BrickView> factoryBrickView =
-            new FactoryViewPool<BrickView>(gameField.PoolDataContainer.RootBricks.PoolData.Pool, parent);
-        BrickView = factoryBrickView.Create();
-        if (BrickView.transform.parent != parent)
-            BrickView.transform.SetParent(parent);
-        BrickView.transform.localPosition = Vector2.zero;
-        InitAnchors(BrickView.RectTransform);
-
-        FactoryViewPool<MineView> factoryMineView =
-            new FactoryViewPool<MineView>(gameField.PoolDataContainer.RootMines.PoolData.Pool, parent);
-        MineView = factoryMineView.Create();
-
-        if (MineView.transform.parent != parent)
-            MineView.SetParent(parent);
-
-        InitAnchors(MineView.RectTransform);
-
-        FactoryViewPool<FlagView> factoryFlagView =
-            new FactoryViewPool<FlagView>(gameField.PoolDataContainer.RootFlags.PoolData.Pool, parent);
-
-        FlagView = factoryFlagView.Create();
-
-        if (FlagView.transform.parent != parent)
-            FlagView.transform.SetParent(parent);
-
-        InitAnchors(FlagView.RectTransform);
-        FlagView.InitFlag(false);
-    }
-
-
-    private void InitAnchors(RectTransform rectTransform)
-    {
-        rectTransform.anchorMin = Vector2.zero;
-        rectTransform.anchorMax = Vector2.one;
-        rectTransform.offsetMax = Vector2.zero;
-        rectTransform.offsetMin = Vector2.zero;
     }
 
     public bool InitFlag(bool value)
@@ -90,20 +53,16 @@ public class CellView : MonoBehaviour, ICellView, IPoolable<CellView>, IView
         return FlagView.Value;
     }
 
-
     public void SpawnFrom(IPool<CellView> pool)
     {
         transform.gameObject.SetActive(true);
+        transform.GetChild(0).gameObject.SetActive(true);
     }
 
     public void Despawn()
     {
         transform.gameObject.SetActive(false);
     }
-
-    public float GetWidth() => GetComponent<Image>().sprite.rect.width;
-
-    public float GetHeight() => GetComponent<Image>().sprite.rect.height;
 
     public Transform GetTransform() => transform;
 }

@@ -15,25 +15,28 @@ public class FieldCells
     public bool IsFirstClick { get; private set; }
     public ICell[,] Cells => _cells;
     public GameField GameField => _gameField;
+    public bool FinishLoad = false;
 
-    public FieldCells(GameField gameField, int countColumns, int countRows )
+    public FieldCells(GameField gameField, int countColumns, int countRows)
     {
         _gameField = gameField;
         IsFirstClick = true;
-        
-        if (Screen.width > Screen.height )
+
+        if (Screen.width > Screen.height)
         {
-            countColumns =  (int) (countColumns / (int)(countColumns / countRows) / 1.5f);
+            countColumns = (int)(countColumns / (int)(countColumns / countRows) / 1.5f);
             (countColumns, countRows) = _gameField.BackGroundField.UpdatePropertiesInGrid(countColumns);
         }
-        
+
         FieldCellData = new FieldCellData(countColumns, countRows, new Vector2(1, 1));
         _cells = new Cell[FieldCellData.CountColumns, FieldCellData.CountRows];
         _countCells = _cells.Length;
         _firstIndexes = new int[2] { -1, -1 };
         ContainerMines = new ContainerMines(this._gameField, _cells, _firstIndexes);
-        _spawnerField = new SpawnerField(this, _cells);
+        if (_spawnerField == null)
+            _spawnerField = new SpawnerField(this, _cells);
         _spawnerField.CreateBlocks();
+        FinishLoad = true;
     }
 
 

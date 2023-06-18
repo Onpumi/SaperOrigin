@@ -43,6 +43,21 @@ public class MenuBarView : WindowBase
         RectTransform.sizeDelta = new Vector2(0f, heightMenu);
         var anchorPosition = RectTransform.anchoredPosition;
         RectTransform.anchoredPosition = new Vector2(anchorPosition.x, anchorPosition.y + OffsetFromBottom);
+
+      
+    }
+
+    public void FitWidth(float width)
+    {
+        
+        if (Screen.width > Screen.height)
+        {
+            var currentWidth = RectTransform.rect.width;
+            var deltaOffset = ((currentWidth - width) * 0.5f) / currentWidth;
+            RectTransform.anchorMin = new Vector2(deltaOffset, 0);
+            RectTransform.anchorMax = new Vector2(1-deltaOffset, 0);
+        }
+
     }
 }
 

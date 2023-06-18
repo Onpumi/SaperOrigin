@@ -15,6 +15,7 @@ public class BorderField : MonoBehaviour
     [SerializeField] private RectTransform _rectTransform;
     [SerializeField] private float _sizeBorder = 0.5f;
     public RectTransform RectTransform => _rectTransform;
+    
     private RectTransform _border;
     private Vector2 _offsetWorld;
     public float WidthImage => _prefabImage.rect.width;
@@ -73,4 +74,6 @@ public class BorderField : MonoBehaviour
             _border.anchoredPosition += offsetDrawDirection * scale * sizeBorder / 2f;
         }
     }
+    
+  
 }

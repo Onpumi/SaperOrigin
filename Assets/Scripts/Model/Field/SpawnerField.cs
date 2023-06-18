@@ -8,6 +8,7 @@ public class SpawnerField
     private readonly FieldCellData FieldCellData;
     private readonly Cell[,] _cells;
     private IDownAction _downAction;
+    private FactoryViewPool<CellView> _factoryCellView;
 
     public SpawnerField(FieldCells fieldCells, Cell[,] cells)
     {
@@ -15,6 +16,8 @@ public class SpawnerField
         _cells = cells;
         FieldCellData = fieldCells.FieldCellData;
         _containerMines = fieldCells.ContainerMines;
+        _factoryCellView = new FactoryViewPool<CellView>(fieldCells.GameField.PoolDataContainer.RootCells.PoolData.Pool,
+            fieldCells.GameField.transform);
     }
 
     public void CreateBlocks()
@@ -24,8 +27,10 @@ public class SpawnerField
         for (var i = 0; i < FieldCellData.CountColumns; i++)
         {
             var cellData = new CellData(i, j, FieldCellData.Scale);
-            var factoryCell = new FactoryCell(_gameField, cellData);
-            _cells[i, j] = factoryCell.Create();
+            CellView cellView = _factoryCellView.Create();
+            cellView.Init(_gameField, _fieldCells.GameField.GameState.Views, cellData);
+            _cells[i, j] = new Cell(cellView);
+            _cells[i, j].Create(cellView);
             _cells[i, j].CellView.InputHandler.OnActivateCell += ActionAfterActivateCell;
             _cells[i, j].CellView.InputHandler.OnActivateFlag += ActionAfterHoldCell;
         }

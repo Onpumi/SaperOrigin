@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
@@ -9,6 +10,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     [SerializeField] private Sounds _sounds;
     [SerializeField] private IWindowCommand _backWindowCommand;
     [SerializeField] private Transform _parentField;
+    [SerializeField] private SliderProgress _sliderProgress;
     public BackgroundField BackGroundField { get; private set; }
     public DataSetting DataSetting { get; private set; }
     public UIData UIData => _uiData;
@@ -18,6 +20,17 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     public override IWindowCommand BackWindowCommand => _backWindowCommand;
     public PoolDataContainer PoolDataContainer { get; private set; }
 
+    private FieldCells _fieldCells;
+
+    public bool IsLoadPoolFinish { get; private set; }
+
+
+    private void Awake()
+    {
+        IsLoadPoolFinish = false;
+        PoolDataContainer = new PoolDataContainer(_views, _parentField, 1000);
+    }
+
     private void Init()
     {
         BackGroundField = _parentField.GetComponent<BackgroundField>();
@@ -25,9 +38,9 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         _gameState.GameFieldData.ScaleBrick = DataSetting.GameData.GetOptionValue(TypesOption.SizeCells);
         SetPercentMine((TypesGame)DataSetting.GameData.GetDifficultValue());
         var parent = _parentField;
-        PoolDataContainer = new PoolDataContainer(_views, parent, 500);
+        
     }
-   
+
     public void SetPercentMine(TypesGame typesGame)
     {
         switch (typesGame)
@@ -48,6 +61,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
 
     private void Start()
     {
+        StartCoroutine(StartProgress());
         Init();
     }
 
@@ -76,19 +90,44 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
             {
                 foreach (Transform child in cellview.transform)
                 {
-                    cellview.BrickView.Despawn();
+//                    cellview.BrickView.Despawn();
                     cellview.Despawn();
                 }
             }
         }
-        
+
         BackGroundField.Init(this);
         var scale = GameState.GameFieldData.ScaleBrick;
         var (countColumns, countRows) = BackGroundField.InitGRID(100f * scale);
-        new FieldCells(this, countColumns, countRows);
-        BackGroundField.BorderField.Init(BackGroundField.RectTransform);
+      //  StartCoroutine(StartProgress());
+        _fieldCells = new FieldCells(this, countColumns, countRows);
+        //BackGroundField.BorderField.Init(BackGroundField.RectTransform);
+        //if (Screen.width > Screen.height)
+          //  BackGroundField.FitSizeMenu();
         _uiData.WindowWinner.Hide();
     }
+
+
+    public void StartProgressLoad()
+    {
+        StartCoroutine(StartProgress());
+    }
+    
+    
+    IEnumerator StartProgress()
+    {
+        _sliderProgress.transform.gameObject.SetActive(true);
+        for (int i = 0; i < 100; i++)
+        {
+            float progress = Mathf.Clamp01(i / 100f);
+            _sliderProgress.UpdateValue(progress);
+            yield return null;
+        }
+        _sliderProgress.UpdateValue(1);
+        IsLoadPoolFinish = true;
+        _sliderProgress.transform.gameObject.SetActive(false);
+    }
+    
 
     public void ActivateWindowsWin() => _uiData.WindowWinner.Display(_uiData.WindowTimer);
 

@@ -16,6 +16,7 @@ public class BackgroundField : MonoBehaviour
     public RectTransform RectTransform => _rectTransform;
     private GridLayoutGroup _gridLayoutGroup;
     private float _cellSize;
+    public float Width { get; private set; }
 
     public Rect Rect { get; private set; }
 
@@ -65,6 +66,7 @@ public class BackgroundField : MonoBehaviour
         var rect = _rectTransform.rect;
         var width = rect.width;
         var height = rect.height;
+        Width = width;
         int countColumns = (int)(rect.width / cellSize);
         int countRows = (int)(rect.height / cellSize);
         Vector2 scalingFactor;
@@ -79,6 +81,7 @@ public class BackgroundField : MonoBehaviour
         _gridLayoutGroup.constraintCount = countColumns;
         _gridLayoutGroup.childAlignment = TextAnchor.LowerCenter;
         _gridLayoutGroup.startCorner = GridLayoutGroup.Corner.LowerLeft;
+        
         return (countColumns, countRows);
     }
 
@@ -104,4 +107,10 @@ public class BackgroundField : MonoBehaviour
         if (Screen.width <= Screen.height)
             _borderField.Init(_rectTransform);
     }
+
+    public void FitSizeMenu()
+    {
+        _bottomMenuBar.FitWidth(Screen.height);
+    }
+    
 }

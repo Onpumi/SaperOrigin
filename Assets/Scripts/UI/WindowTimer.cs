@@ -40,7 +40,6 @@ public class WindowTimer : WindowBase
     {
         ResetValue();
         _seconds = 0;
-        var RectBorder = _borderField.RectTransform.rect;
         var widthCell = (_rectTransform.rect.width ) / _digitalViews.Length;
         var heightCell = _rectTransform.rect.height;
         _gridLayoutGroup.cellSize = new Vector2(widthCell, heightCell);
@@ -54,6 +53,7 @@ public class WindowTimer : WindowBase
         _stringBuilder.Append(text);
         
         _time = DateTime.Today;
+        _timeBuilder.DisplayDigitals( _time.ToString("mm:ss"));
         _seconds = 0;
     }
 

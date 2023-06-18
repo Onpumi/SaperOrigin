@@ -1,7 +1,7 @@
 
 public class Cell : ICell
 {
-    private readonly CellView _cellView;
+    private CellView _cellView;
     public Flag Flag { get; private set; }
     public int Value { get; private set; }
     public bool IsOpen { get; private set; }
@@ -47,4 +47,11 @@ public class Cell : ICell
         Value++;
         _cellView.SetTextNumbers(Value);
     }
+
+    public void Create( CellView cellView)
+    {
+        //_cellView = cellView;
+    }
+    
+    
 }
