@@ -18,7 +18,7 @@ public class WindowWinner : WindowBase
         Open();
         transform.SetAsLastSibling();
         _buttonPlay.Enable();
-        _textTimeResult.text = _textTimeResult.text + windowTimer.TimeValue;
+        //_textTimeResult.text = _textTimeResult.text + windowTimer.TimeValue;
     }
 
     public override void OpenCanvasByPressingEscape( IWindowCommand windowCommand ) => Hide();

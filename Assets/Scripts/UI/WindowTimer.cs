@@ -12,7 +12,7 @@ public class WindowTimer : WindowBase
     [SerializeField] private BorderField _borderField; 
     private DateTime _time = DateTime.Today;
     private StringBuilder _stringBuilder;
-    public string TimeValue => _tmpText.text;
+//    public string TimeValue => _tmpText.text;
     private bool _isPause = false;
     private float _seconds;
     private DigitalView[] _digitalViews;
@@ -44,7 +44,7 @@ public class WindowTimer : WindowBase
         var heightCell = _rectTransform.rect.height;
         _gridLayoutGroup.cellSize = new Vector2(widthCell, heightCell);
         InvokeRepeating(nameof(UpdateTimer), 0, _deltaTime);
-        _borderField.Init(_rectTransform);
+        //_borderField.Init(_rectTransform);
     }
 
     public void ResetValue()
@@ -77,12 +77,6 @@ public class WindowTimer : WindowBase
 
     public void PauseTime(bool value) => _isPause = value;
 
-    public void Display(float elapsedTime)
-    {
-        Debug.Log(elapsedTime);
-    }
+  
 
-    private void Update()
-    {
-    }
 }

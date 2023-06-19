@@ -8,7 +8,7 @@ public class SpawnerField
     private readonly FieldCellData FieldCellData;
     private readonly Cell[,] _cells;
     private IDownAction _downAction;
-    private FactoryViewPool<CellView> _factoryCellView;
+    private IPoolFactory<CellView> _factoryCellView;
 
     public SpawnerField(FieldCells fieldCells, Cell[,] cells)
     {
@@ -16,8 +16,9 @@ public class SpawnerField
         _cells = cells;
         FieldCellData = fieldCells.FieldCellData;
         _containerMines = fieldCells.ContainerMines;
-        _factoryCellView = new FactoryViewPool<CellView>(fieldCells.GameField.PoolDataContainer.RootCells.PoolData.Pool,
-            fieldCells.GameField.transform);
+        //_factoryCellView = new FactoryViewPool<CellView>(fieldCells.GameField.PoolDataContainer.RootCells.PoolData.Pool,
+          //  fieldCells.GameField.transform);
+          _factoryCellView = fieldCells.GameField.FactoryCellViewPool;
     }
 
     public void CreateBlocks()
@@ -26,14 +27,47 @@ public class SpawnerField
         for (var j = 0; j < FieldCellData.CountRows; j++)
         for (var i = 0; i < FieldCellData.CountColumns; i++)
         {
+            
             var cellData = new CellData(i, j, FieldCellData.Scale);
-            CellView cellView = _factoryCellView.Create();
-            cellView.Init(_gameField, _fieldCells.GameField.GameState.Views, cellData);
-            _cells[i, j] = new Cell(cellView);
-            _cells[i, j].Create(cellView);
+            if (_cells[i, j] == null)
+            {
+                CellView cellView = _gameField.Pool.Get();
+                cellView.Init(_gameField, _fieldCells.GameField.GameState.Views, cellData);
+                
+                _cells[i, j] = new Cell(cellView);
+            }
+            else
+            {
+                _cells[i,j].Spawn( _gameField.Pool );
+                _cells[i,j].Reset();
+            }
             _cells[i, j].CellView.InputHandler.OnActivateCell += ActionAfterActivateCell;
             _cells[i, j].CellView.InputHandler.OnActivateFlag += ActionAfterHoldCell;
+
+        
+/*
+            if (_cells[i, j] == null)
+            {
+                _cells[i, j] = new Cell(_gameField.Pool.Get());
+            }
+            else
+            {
+               _cells[i,j].Spawn(_gameField.Pool);   
+            }
+            _cells[i, j].CellView.InputHandler.OnActivateCell += ActionAfterActivateCell;
+            _cells[i, j].CellView.InputHandler.OnActivateFlag += ActionAfterHoldCell;
+  */          
         }
+    }
+
+    public void ResetBlocs()
+    {
+        for (var j = 0; j < FieldCellData.CountRows; j++)
+        for (var i = 0; i < FieldCellData.CountColumns; i++)
+        {
+            _cells[i,j].Reset();
+        }
+
     }
 
     private void ActionAfterActivateCell(InputHandler inputHandler)
@@ -41,7 +75,6 @@ public class SpawnerField
         CellView cellView = inputHandler.CellView;
 
         _downAction = new DigDownAction(_fieldCells);
-
 
         if (_gameField.UIData.ControllerButtonMode.Mode == ButtonMode.Flag)
         {

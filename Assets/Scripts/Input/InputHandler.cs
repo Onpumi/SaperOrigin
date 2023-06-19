@@ -45,8 +45,6 @@ public class InputHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        //if (_isButtonPressed == true)
-          //  OnActivateCell?.Invoke(this);
         _isButtonPressed = false;
     }
 

@@ -19,10 +19,12 @@ public class CellView : MonoBehaviour, ICellView, IPoolable<CellView>, IView
 
     private IDownAction _downAction;
     public CellData CellData { get; private set; }
+    private  Sprite _emptySprite; 
 
     private void Awake()
     {
         InputHandler = _inputHandler;
+        _emptySprite = _image.sprite;
     }
 
     public void InitAction(FieldCells field, IDownAction downAction)
@@ -37,6 +39,11 @@ public class CellView : MonoBehaviour, ICellView, IPoolable<CellView>, IView
         {
             _image.sprite = _spriteNumbers[value - 1];
         }
+    }
+
+    public void ResetSprite()
+    {
+        _image.sprite = _emptySprite;
     }
 
 

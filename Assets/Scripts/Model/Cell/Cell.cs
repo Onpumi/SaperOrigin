@@ -1,4 +1,6 @@
 
+using UnityEngine.PlayerLoop;
+
 public class Cell : ICell
 {
     private CellView _cellView;
@@ -19,6 +21,13 @@ public class Cell : ICell
         IsFlagged = false;
         CellData = cellView.CellData;
         Flag = new Flag(_cellView);
+    }
+
+    public void Reset()
+    {
+        Value = 0;
+        IsOpen = IsInitMine = IsFlagged = false;
+        ResetValue();
     }
 
     public void CreateMine(int value)
@@ -48,10 +57,33 @@ public class Cell : ICell
         _cellView.SetTextNumbers(Value);
     }
 
-    public void Create( CellView cellView)
+    private void ResetValue()
     {
-        //_cellView = cellView;
+        _cellView.ResetSprite();
+        _cellView.BrickView.SetActive(true);
+        _cellView.MineView.SetActive(false);
+        _cellView.InputHandler.enabled = true;
+        _cellView.MineView.Reset();
+        Flag.Reset();
     }
+
+    public void Despawn()
+    {
+        _cellView.Despawn();
+    }
+
+    public void Spawn( Pool<CellView> pool )
+    {
+        _cellView.SpawnFrom( pool );
+        Value = 0;
+        IsOpen = false;
+        IsInitMine = false;
+        IsFlagged = false;
+        CellData = _cellView.CellData;
+        Flag = new Flag(_cellView);
+    }
+
+  
     
     
 }

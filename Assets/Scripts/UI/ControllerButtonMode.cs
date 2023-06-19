@@ -16,6 +16,13 @@ public class ControllerButtonMode : WindowBase, IPointerDownHandler
         Display();
         _uiMine.transform.SetAsLastSibling();
         _button = GetComponent<Button>();
+#if UNITY_EDITOR
+        return;
+#endif
+        if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Windows)
+        {
+            Hide();
+        }
     }
 
     private void OnEnable()

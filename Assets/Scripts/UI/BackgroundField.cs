@@ -104,8 +104,8 @@ public class BackgroundField : MonoBehaviour
     public void Init(GameField gameField)
     {
         SetProperties(gameField);
-        if (Screen.width <= Screen.height)
-            _borderField.Init(_rectTransform);
+      //  if (Screen.width <= Screen.height)
+        //    _borderField.Init(_rectTransform);
     }
 
     public void FitSizeMenu()

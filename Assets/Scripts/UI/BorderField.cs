@@ -1,4 +1,3 @@
-using System.Drawing;
 using UnityEngine;
 
 public class BorderField : MonoBehaviour
@@ -41,6 +40,7 @@ public class BorderField : MonoBehaviour
 
     private void DrawBorder(Vector3[] corners)
     {
+        /*
         DrawLine(corners[1], corners[2], -Vector2.left, Vector2.up, _prefabUpDownBorder);
         DrawLine(corners[0], corners[3], -Vector2.left, -Vector2.up, _prefabUpDownBorder);
         DrawLine(corners[0], corners[1], Vector2.up, Vector2.left, _prefabLeftBorder);
@@ -49,6 +49,7 @@ public class BorderField : MonoBehaviour
         DrawImage(corners[1], new Vector2(-1f, 1f), _prefabTopLeftCorner);
         DrawImage(corners[2], new Vector2(1f, 1f), _prefabTopRightCorner);
         DrawImage(corners[3], new Vector2(1f, -1f), _prefabBottomRightCorner);
+        */
     }
 
     private void DrawImage(Vector3 position, Vector2 offset, RectTransform image)

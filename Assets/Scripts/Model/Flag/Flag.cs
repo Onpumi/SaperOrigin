@@ -41,6 +41,8 @@ public class Flag
         else return Value;
     }
 
+    public void Reset() => RemoveFlag();
+
     private bool RemoveFlag() => Value = _cellView.InitFlag(false);
 
     private bool AddFlag() => Value = _cellView.InitFlag(true);

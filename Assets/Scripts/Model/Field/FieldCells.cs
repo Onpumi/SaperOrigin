@@ -3,7 +3,7 @@ using UnityEngine;
 public class FieldCells
 {
     private readonly GameField _gameField;
-    private readonly Cell[,] _cells;
+    private Cell[,] _cells;
     private readonly int[] _firstIndexes;
     private SpawnerField _spawnerField;
     private int _countOpen;
@@ -11,11 +11,13 @@ public class FieldCells
     public FieldCellData FieldCellData { get; private set; }
     public ContainerMines ContainerMines { get; private set; }
     private readonly int _percentMine = 15;
-    private readonly int _countCells;
+    private int _countCells;
     public bool IsFirstClick { get; private set; }
     public ICell[,] Cells => _cells;
     public GameField GameField => _gameField;
     public bool FinishLoad = false;
+    private int _countRows;
+    private int _countColumns;
 
     public FieldCells(GameField gameField, int countColumns, int countRows)
     {
@@ -28,15 +30,49 @@ public class FieldCells
             (countColumns, countRows) = _gameField.BackGroundField.UpdatePropertiesInGrid(countColumns);
         }
 
+        _countRows = countRows;
+        _countColumns = countColumns;
+
         FieldCellData = new FieldCellData(countColumns, countRows, new Vector2(1, 1));
         _cells = new Cell[FieldCellData.CountColumns, FieldCellData.CountRows];
         _countCells = _cells.Length;
         _firstIndexes = new int[2] { -1, -1 };
         ContainerMines = new ContainerMines(this._gameField, _cells, _firstIndexes);
+        _spawnerField = new SpawnerField(this, _cells);
+        _spawnerField.CreateBlocks();
+        FinishLoad = true;
+    }
+
+    public void CreateField(GameField gameField, int countColumns, int countRows)
+    {
+        if (Screen.width > Screen.height)
+        {
+            countColumns = (int)(countColumns / (int)(countColumns / countRows) / 1.5f);
+            (countColumns, countRows) = _gameField.BackGroundField.UpdatePropertiesInGrid(countColumns);
+        }
+
+        FieldCellData = new FieldCellData(countColumns, countRows, new Vector2(1, 1));
+        _cells = new Cell[FieldCellData.CountColumns, FieldCellData.CountRows];
+        _countCells = _cells.Length;
+        ContainerMines = new ContainerMines(this._gameField, _cells, _firstIndexes);
         if (_spawnerField == null)
             _spawnerField = new SpawnerField(this, _cells);
         _spawnerField.CreateBlocks();
-        FinishLoad = true;
+    }
+
+    public void ResetField()
+    {
+        IsFirstClick = true;
+        _countFlagTrue = 0;
+        _countOpen = 0;
+        _spawnerField.ResetBlocs();
+    }
+
+    public void DespawnField()
+    {
+        for (int i = 0; i < _countColumns; i++)
+        for (int j = 0; j < _countRows; j++)
+            _cells[i, j].Despawn();
     }
 
 
@@ -87,7 +123,12 @@ public class FieldCells
         _countFlagTrue++;
     }
 
-    public bool isWin() => (_countFlagTrue + _countOpen) >= _countCells;
+    public bool isWin()
+    {
+        return (_countFlagTrue + _countOpen) >= _countCells;
+    }
+
+    private int I = 0;
 
     public bool TryOpen(ICell cell)
     {
