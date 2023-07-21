@@ -53,6 +53,14 @@ public class CellView : MonoBehaviour, ICellView, IPoolable<CellView>, IView
         cellData.Index2.TryThrowIfLessThanZero();
         CellData = cellData;
     }
+    
+    public void Init(CellData cellData)
+    {
+        cellData.Index1.TryThrowIfLessThanZero();
+        cellData.Index2.TryThrowIfLessThanZero();
+        CellData = cellData;
+    }
+
 
     public bool InitFlag(bool value)
     {

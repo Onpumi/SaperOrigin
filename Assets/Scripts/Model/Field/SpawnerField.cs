@@ -29,42 +29,26 @@ public class SpawnerField
         {
             
             var cellData = new CellData(i, j, FieldCellData.Scale);
+               
             if (_cells[i, j] == null)
             {
                 CellView cellView = _gameField.Pool.Get();
                 cellView.Init(_gameField, _fieldCells.GameField.GameState.Views, cellData);
-                
                 _cells[i, j] = new Cell(cellView);
             }
-            else
-            {
-                _cells[i,j].Spawn( _gameField.Pool );
-                _cells[i,j].Reset();
-            }
             _cells[i, j].CellView.InputHandler.OnActivateCell += ActionAfterActivateCell;
             _cells[i, j].CellView.InputHandler.OnActivateFlag += ActionAfterHoldCell;
-
-        
-/*
-            if (_cells[i, j] == null)
-            {
-                _cells[i, j] = new Cell(_gameField.Pool.Get());
-            }
-            else
-            {
-               _cells[i,j].Spawn(_gameField.Pool);   
-            }
-            _cells[i, j].CellView.InputHandler.OnActivateCell += ActionAfterActivateCell;
-            _cells[i, j].CellView.InputHandler.OnActivateFlag += ActionAfterHoldCell;
-  */          
         }
     }
 
-    public void ResetBlocs()
+    public void ResetBlocs( FieldCells _fieldCells)
     {
+        var FieldCellData = _fieldCells.FieldCellData;
         for (var j = 0; j < FieldCellData.CountRows; j++)
         for (var i = 0; i < FieldCellData.CountColumns; i++)
         {
+            var cellData = new CellData(i, j, FieldCellData.Scale);
+            _cells[i,j].Spawn( _gameField.Pool, cellData );
             _cells[i,j].Reset();
         }
 

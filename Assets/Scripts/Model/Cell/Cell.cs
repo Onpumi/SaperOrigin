@@ -72,7 +72,7 @@ public class Cell : ICell
         _cellView.Despawn();
     }
 
-    public void Spawn( Pool<CellView> pool )
+    public void Spawn( Pool<CellView> pool, CellData cellData )
     {
         _cellView.SpawnFrom( pool );
         Value = 0;

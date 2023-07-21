@@ -25,22 +25,19 @@ public static class ScreenExtensions
         Screen.autorotateToLandscapeRight = false;
         Screen.autorotateToPortraitUpsideDown = false;
     }
-
 }
 
 
 public static class CanvasExtensions
 {
-    public static CanvasScaler SetResolutionToScreen(this CanvasScaler canvasScaler, Transform parent = null )
+    public static CanvasScaler SetResolutionToScreen(this CanvasScaler canvasScaler, Transform parent = null)
     {
         if (canvasScaler == null)
         {
             if (parent != null) canvasScaler = parent.GetComponent<CanvasScaler>();
-
         }
-        canvasScaler.referenceResolution = new UnityEngine.Vector2(Screen.width,Screen.height);
+
+        canvasScaler.referenceResolution = new UnityEngine.Vector2(Screen.width, Screen.height);
         return canvasScaler;
     }
 }
-
-

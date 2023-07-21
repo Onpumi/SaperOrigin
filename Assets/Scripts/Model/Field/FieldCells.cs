@@ -43,29 +43,24 @@ public class FieldCells
         FinishLoad = true;
     }
 
-    public void CreateField(GameField gameField, int countColumns, int countRows)
+  
+    public void ResetField( int countColumns, int countRows, float scale)
     {
         if (Screen.width > Screen.height)
         {
             countColumns = (int)(countColumns / (int)(countColumns / countRows) / 1.5f);
             (countColumns, countRows) = _gameField.BackGroundField.UpdatePropertiesInGrid(countColumns);
         }
+        _countRows = countRows;
+        _countColumns = countColumns;
 
         FieldCellData = new FieldCellData(countColumns, countRows, new Vector2(1, 1));
-        _cells = new Cell[FieldCellData.CountColumns, FieldCellData.CountRows];
-        _countCells = _cells.Length;
-        ContainerMines = new ContainerMines(this._gameField, _cells, _firstIndexes);
-        if (_spawnerField == null)
-            _spawnerField = new SpawnerField(this, _cells);
-        _spawnerField.CreateBlocks();
-    }
-
-    public void ResetField()
-    {
+        _countCells = countRows * countColumns;
         IsFirstClick = true;
         _countFlagTrue = 0;
         _countOpen = 0;
-        _spawnerField.ResetBlocs();
+        ContainerMines = new ContainerMines(this._gameField, _cells, _firstIndexes);
+        _spawnerField.ResetBlocs( this );
     }
 
     public void DespawnField()
@@ -132,6 +127,7 @@ public class FieldCells
 
     public bool TryOpen(ICell cell)
     {
+        if (cell == null) return false;
         if (cell.IsOpen == true || cell.IsFlagged) return true;
 
         cell.Open();
