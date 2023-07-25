@@ -1,6 +1,7 @@
 using UnityEngine;
 public  class VibratorWrapper
 {
+    /*
     private AndroidJavaObject vibrator = null;
     
     public VibratorWrapper()
@@ -19,5 +20,5 @@ public  class VibratorWrapper
       #endif
     }
     
-    
+    */
 }

@@ -57,8 +57,6 @@ public class WindowTimer : WindowBase
         _seconds = 0;
     }
 
-    private int count = 0;
-
     private void UpdateTimer()
     {
         if (_isPause == false)

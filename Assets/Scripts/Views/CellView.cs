@@ -79,5 +79,5 @@ public class CellView : MonoBehaviour, ICellView, IPoolable<CellView>, IView
         transform.gameObject.SetActive(false);
     }
 
-    public Transform GetTransform() => transform;
+   // public Transform GetTransform() => transform;
 }

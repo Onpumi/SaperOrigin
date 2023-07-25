@@ -28,23 +28,11 @@ public class BackButton : WindowBase, IPointerDownHandler, IPointerUpHandler
         {
             if (Application.platform == RuntimePlatform.WebGLPlayer)
             {
-                Application.ExternalCall("quit");
-                //System.Reflection.Assembly.GetExecutingAssembly().GetType("UnityEngine.Application").GetMethod("Quit").Invoke(null, null);
-                //YandexGame.SaveProgress();
             }
             else
             {
                 Application.Quit();
             }
-            //Application.OpenURL("about:blank");
-            //System.Diagnostics.Process.GetCurrentProcess().Kill();
-            
-            //System.Reflection.Assembly.GetExecutingAssembly().GetType("UnityEngine.Application").GetMethod("Quit").Invoke(null, null);
-            //var jsFunction = "ExitJS";
-            //Application.ExternalCall(jsFunction);
-      //      if (confirm("Вы действительно хотите закрыть окно браузера?")) {
-//                window.close();
-           // }
 
         }
         
@@ -58,6 +46,7 @@ public class BackButton : WindowBase, IPointerDownHandler, IPointerUpHandler
     
     public void OnPointerUp(PointerEventData eventData)
     {
+/*
         TryBackAction();
         if( _windowCommand == _gameState.UIData.WindowPause ) return;
         if (_windowCommand != null)
@@ -66,7 +55,7 @@ public class BackButton : WindowBase, IPointerDownHandler, IPointerUpHandler
                 _gameState.BackPreviousWindow.Open(_windowCommand);
             _gameState.CurrentInitWindow(_windowCommand.BackWindowCommand);
         }
-
+*/
     }
 
     public void TryBackAction()

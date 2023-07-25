@@ -41,7 +41,7 @@ public class FlagView : MonoBehaviour, IFlagView, IPoolable<FlagView>
 
     public void SetParent( ICell cell )
     {
-        transform.SetParent(cell.CellView.GetTransform());
+        //transform.SetParent(cell.CellView.GetTransform());
     }
 
     public void Display()

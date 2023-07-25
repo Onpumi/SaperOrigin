@@ -3,9 +3,9 @@ using UnityEngine;
 public class FieldCells
 {
     private readonly GameField _gameField;
-    private Cell[,] _cells;
+    private readonly Cell[,] _cells;
     private readonly int[] _firstIndexes;
-    private SpawnerField _spawnerField;
+    private readonly SpawnerField _spawnerField;
     private int _countOpen;
     private int _countFlagTrue;
     public FieldCellData FieldCellData { get; private set; }
@@ -123,8 +123,6 @@ public class FieldCells
         return (_countFlagTrue + _countOpen) >= _countCells;
     }
 
-    private int I = 0;
-
     public bool TryOpen(ICell cell)
     {
         if (cell == null) return false;
@@ -152,8 +150,6 @@ public class FieldCells
 
         return true;
     }
-
-    private int count = 0;
 
     private void FindNeighbourEmptyCellsAndOpen(ICell[,] cells, int index1, int index2)
     {
