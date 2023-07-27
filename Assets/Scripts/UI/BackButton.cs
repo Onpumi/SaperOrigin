@@ -10,9 +10,9 @@ public class BackButton : WindowBase, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private IWindowCommand _windowCommand;
     [SerializeField] private IBackToPreviousWindowCommand _backToPreviousWindowCommand;
 
-    public override void ConfirmAction( bool value )
+    public override void ConfirmAction(bool value)
     {
-        if ( _backActionMenu == BackActionMenu.ReturnMainMenu && value == true )
+        if (_backActionMenu == BackActionMenu.ReturnMainMenu && value == true)
         {
             _windowCommand.Hide();
             if (_backToPreviousWindowCommand != null)
@@ -33,21 +33,18 @@ public class BackButton : WindowBase, IPointerDownHandler, IPointerUpHandler
             {
                 Application.Quit();
             }
-
         }
-        
     }
-    
 
-    public void OnPointerDown( PointerEventData eventData )
+
+    public void OnPointerDown(PointerEventData eventData)
     {
-        
     }
-    
+
     public void OnPointerUp(PointerEventData eventData)
     {
-/*
         TryBackAction();
+/*
         if( _windowCommand == _gameState.UIData.WindowPause ) return;
         if (_windowCommand != null)
         { 
@@ -60,11 +57,9 @@ public class BackButton : WindowBase, IPointerDownHandler, IPointerUpHandler
 
     public void TryBackAction()
     {
-
         if (_backActionMenu != BackActionMenu.ReturnPlayGame)
         {
-            
-             _gameState.UIData.WindowConfirmation.ActivateWindow(this);
+            _gameState.UIData.WindowConfirmation.ActivateWindow(this);
         }
         else
         {
@@ -72,11 +67,7 @@ public class BackButton : WindowBase, IPointerDownHandler, IPointerUpHandler
             _gameState.ActivatePause(false);
             _gameState.CurrentInitWindow(_windowCommand.BackWindowCommand);
         }
-  
-
     }
-    
-    
 }
 
 

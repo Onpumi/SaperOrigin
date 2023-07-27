@@ -40,5 +40,5 @@ public class GameData : SavingData<GameSetups>
     }
 
 
-    public void InitScale(float scale) => DataSetups._scaleBricks = scale;
+  //  public void InitScale(float scale) => DataSetups._scaleBricks = scale;
 }

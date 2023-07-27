@@ -21,12 +21,11 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     public PoolDataContainer PoolDataContainer { get; private set; }
 
     private FieldCells _fieldCells;
-    public Pool<CellView> Pool { get; private set;  }
+    public Pool<CellView> Pool { get; private set; }
 
     public bool IsLoadPoolFinish { get; private set; }
     private IPoolFactory<CellView> _factoryCellViewPool;
     public IPoolFactory<CellView> FactoryCellViewPool => _factoryCellViewPool;
-
 
 
     private void Awake()
@@ -88,9 +87,9 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         _gameState.GameFieldData.ScaleBrick = DataSetting.GameData.GetOptionValue(TypesOption.SizeCells);
         BackGroundField.Init(this);
         var scale = GameState.GameFieldData.ScaleBrick;
-          if (_fieldCells != null)
+        if (_fieldCells != null)
             _fieldCells.DespawnField();
-          
+
         var (countColumns, countRows) = BackGroundField.InitGRID(100f * scale);
 
         if (_fieldCells == null)
@@ -99,7 +98,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         }
         else
         {
-            _fieldCells.ResetField( countColumns, countRows, scale );
+            _fieldCells.ResetField(countColumns, countRows, scale);
         }
 
         //BackGroundField.BorderField.Init(BackGroundField.RectTransform);

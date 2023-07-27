@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2937658377073500080}
   - component: {fileID: -5585817570760856440}
   - component: {fileID: 7584221791910618002}
+  - component: {fileID: 8058499926642044677}
   m_Layer: 5
   m_Name: Block
   m_TagString: Untagged
@@ -31,6 +32,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7194602299593669417}
   - {fileID: 7137863399857958350}
@@ -163,6 +165,30 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8058499926642044677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810420558800810909}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 100, y: 100}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1001 &321170017831526205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -188,27 +214,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7456780778703237875, guid: f085fd33314a7eb419849b8cc0d558fc, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7456780778703237875, guid: f085fd33314a7eb419849b8cc0d558fc, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7456780778703237875, guid: f085fd33314a7eb419849b8cc0d558fc, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7456780778703237875, guid: f085fd33314a7eb419849b8cc0d558fc, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7456780778703237875, guid: f085fd33314a7eb419849b8cc0d558fc, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7456780778703237875, guid: f085fd33314a7eb419849b8cc0d558fc, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456780778703237875, guid: f085fd33314a7eb419849b8cc0d558fc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456780778703237875, guid: f085fd33314a7eb419849b8cc0d558fc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456780778703237875, guid: f085fd33314a7eb419849b8cc0d558fc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7456780778703237875, guid: f085fd33314a7eb419849b8cc0d558fc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -228,15 +266,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7456780778703237875, guid: f085fd33314a7eb419849b8cc0d558fc, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7456780778703237875, guid: f085fd33314a7eb419849b8cc0d558fc, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7456780778703237875, guid: f085fd33314a7eb419849b8cc0d558fc, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7456780778703237875, guid: f085fd33314a7eb419849b8cc0d558fc, type: 3}
       propertyPath: m_AnchoredPosition.x

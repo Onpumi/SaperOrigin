@@ -14,6 +14,7 @@ public class WindowCountMines : WindowBase
 
     public void Display( int countMines )
     {
+        gameObject.SetActive(true);
         _tmpText.text =  Convert.ToString( countMines );
     }
     

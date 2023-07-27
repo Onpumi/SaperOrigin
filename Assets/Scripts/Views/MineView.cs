@@ -11,15 +11,15 @@ public class MineView : MonoBehaviour, IMineView, IPoolable<MineView>
     private Image _imageBackGround;
     private Color _colorBackGround;
     public RectTransform RectTransform => _rectTransform;
-    
-     
+
+
     private Color _color;
 
     private void Awake()
     {
+        _parent = transform.parent;
         transform.localScale = new Vector3(_scale, _scale, _scale);
         transform.gameObject.SetActive(false);
-        _parent = transform.parent;
         _imageBackGround = _parent.GetComponent<Image>();
         _colorBackGround = _imageBackGround.color;
     }
@@ -30,11 +30,6 @@ public class MineView : MonoBehaviour, IMineView, IPoolable<MineView>
         transform.gameObject.SetActive(value);
     }
 
-    public void SetParent( Transform parent )
-    {
-        _parent = parent;
-        transform.SetParent(parent);
-    }
 
     public void ActivateMine(bool isExposion = false)
     {

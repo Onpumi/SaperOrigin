@@ -19,7 +19,7 @@ public class CellView : MonoBehaviour, ICellView, IPoolable<CellView>, IView
 
     private IDownAction _downAction;
     public CellData CellData { get; private set; }
-    private  Sprite _emptySprite; 
+    private Sprite _emptySprite;
 
     private void Awake()
     {
@@ -53,14 +53,13 @@ public class CellView : MonoBehaviour, ICellView, IPoolable<CellView>, IView
         cellData.Index2.TryThrowIfLessThanZero();
         CellData = cellData;
     }
-    
+
     public void Init(CellData cellData)
     {
         cellData.Index1.TryThrowIfLessThanZero();
         cellData.Index2.TryThrowIfLessThanZero();
         CellData = cellData;
     }
-
 
     public bool InitFlag(bool value)
     {
@@ -78,6 +77,4 @@ public class CellView : MonoBehaviour, ICellView, IPoolable<CellView>, IView
     {
         transform.gameObject.SetActive(false);
     }
-
-   // public Transform GetTransform() => transform;
 }
