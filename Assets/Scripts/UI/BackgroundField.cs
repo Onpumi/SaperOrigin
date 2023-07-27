@@ -75,12 +75,12 @@ public class BackgroundField : MonoBehaviour
         cellSizeX += scalingFactor.x;
         cellSizeY += scalingFactor.y;
         _gridLayoutGroup.cellSize = new Vector2(cellSizeX, cellSizeY);
-        _gridLayoutGroup.startAxis = GridLayoutGroup.Axis.Horizontal;
+        _gridLayoutGroup.startAxis = GridLayoutGroup.Axis.Vertical;
         _gridLayoutGroup.spacing = new Vector2(0, 0);
         _gridLayoutGroup.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
         _gridLayoutGroup.constraintCount = countColumns;
         _gridLayoutGroup.childAlignment = TextAnchor.LowerCenter;
-        _gridLayoutGroup.startCorner = GridLayoutGroup.Corner.LowerLeft;
+        _gridLayoutGroup.startCorner = GridLayoutGroup.Corner.LowerRight;
         
         return (countColumns, countRows);
     }

@@ -24,8 +24,11 @@ public class SpawnerField
     public void CreateBlocks()
     {
         _gameField = _fieldCells.GameField;
-        for (var j = 0; j < FieldCellData.CountRows; j++)
-        for (var i = 0; i < FieldCellData.CountColumns; i++)
+   //     for (var j = 0; j < FieldCellData.CountRows; j++)
+   //     for (var i = 0; i < FieldCellData.CountColumns; i++)
+        for (var j = 0; j < FieldCellData.CountColumns; j++)
+        for (var i = 0; i < FieldCellData.CountRows; i++)
+
         {
             
             var cellData = new CellData(i, j, FieldCellData.Scale);
@@ -38,14 +41,16 @@ public class SpawnerField
             }
             _cells[i, j].CellView.InputHandler.OnActivateCell += ActionAfterActivateCell;
             _cells[i, j].CellView.InputHandler.OnActivateFlag += ActionAfterHoldCell;
+            _cells[i,j].CellView.BrickView.SetValue(i,j);
         }
     }
 
     public void ResetBlocs( FieldCells _fieldCells)
     {
         var FieldCellData = _fieldCells.FieldCellData;
-        for (var j = 0; j < FieldCellData.CountRows; j++)
-        for (var i = 0; i < FieldCellData.CountColumns; i++)
+
+        for (var i = 0; i < FieldCellData.CountRows; i++)
+        for (var j = 0; j < FieldCellData.CountColumns; j++)
         {
             var cellData = new CellData(i, j, FieldCellData.Scale);
             _cells[i,j].Spawn( _gameField.Pool, cellData );

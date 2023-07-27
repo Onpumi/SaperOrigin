@@ -29,12 +29,16 @@ public class FieldCells
             countColumns = (int)(countColumns / (int)(countColumns / countRows) / 1.5f);
             (countColumns, countRows) = _gameField.BackGroundField.UpdatePropertiesInGrid(countColumns);
         }
-
+        
         _countRows = countRows;
         _countColumns = countColumns;
+        
+        Debug.Log(countRows + " " + countColumns);
 
         FieldCellData = new FieldCellData(countColumns, countRows, new Vector2(1, 1));
-        _cells = new Cell[FieldCellData.CountColumns, FieldCellData.CountRows];
+       //  _cells = new Cell[FieldCellData.CountColumns, FieldCellData.CountRows];
+       //_cells = new Cell[FieldCellData.CountRows, FieldCellData.CountColumns];
+        _cells = new Cell[500, 500];
         _countCells = _cells.Length;
         _firstIndexes = new int[2] { -1, -1 };
         ContainerMines = new ContainerMines(this._gameField, _cells, _firstIndexes);
@@ -65,8 +69,11 @@ public class FieldCells
 
     public void DespawnField()
     {
-        for (int i = 0; i < _countColumns; i++)
-        for (int j = 0; j < _countRows; j++)
+//        for (int i = 0; i < _countColumns; i++)
+//        for (int j = 0; j < _countRows; j++)
+        for (int i = 0; i < _countRows; i++)
+        for (int j = 0; j < _countColumns; j++)
+
             _cells[i, j].Despawn();
     }
 
@@ -88,13 +95,15 @@ public class FieldCells
     public void GenerateMines()
     {
         var countCells = FieldCellData.CountColumns * FieldCellData.CountRows;
-        ContainerMines.GenerateMines(_percentMine, countCells);
+        ContainerMines.GenerateMines(_percentMine, countCells, FieldCellData );
     }
 
     public void InitGrid()
     {
-        for (var i = 0; i < FieldCellData.CountColumns; i++)
-        for (var j = 0; j < FieldCellData.CountRows; j++)
+        //for (var i = 0; i < FieldCellData.CountColumns; i++)
+        //for (var j = 0; j < FieldCellData.CountRows; j++)
+        for (var i = 0; i < FieldCellData.CountRows; i++)
+        for (var j = 0; j < FieldCellData.CountColumns; j++)
         {
             if (_cells[i, j].Value != -1)
             {
@@ -102,8 +111,11 @@ public class FieldCells
                 for (int m = -1; m < 2; m++)
                 {
                     if (i + n >= 0 && j + m >= 0 &&
-                        i + n <= _cells.GetLength(0) - 1 &&
-                        j + m <= _cells.GetLength(1) - 1 &&
+//                        i + n <= _cells.GetLength(0) - 1 &&
+//                        j + m <= _cells.GetLength(1) - 1 &&
+                        i + n <= FieldCellData.CountRows - 1 &&
+                        j + m <= FieldCellData.CountColumns - 1 &&
+
                         _cells[i + n, j + m].Value == -1)
                     {
                         _cells[i, j].IncrementValue();
@@ -157,8 +169,11 @@ public class FieldCells
         for (int m = -1; m < 2; m++)
         {
             if (index1 + n >= 0 && index2 + m >= 0 &&
-                index1 + n <= FieldCellData.CountColumns - 1 &&
-                index2 + m <= FieldCellData.CountRows - 1 &&
+//                index1 + n <= FieldCellData.CountColumns - 1 &&
+//                index2 + m <= FieldCellData.CountRows - 1 &&
+                index1 + n <= FieldCellData.CountRows - 1 &&
+                index2 + m <= FieldCellData.CountColumns - 1 &&
+
                 cells[index1 + n, index2 + m].Value >= 0)
                 TryOpen(cells[index1 + n, index2 + m]);
         }
