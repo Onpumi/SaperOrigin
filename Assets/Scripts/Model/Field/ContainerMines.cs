@@ -22,25 +22,19 @@ public class ContainerMines
     {
         percentMine = _gameField.GameState.GameFieldData.PercentMine;
         _maxCountMines = countCells * percentMine / 100;
-        //List<int>[] arrayIndexes = new List<int>[_cells.GetLength(1)];
         List<int>[] arrayIndexes = new List<int>[fieldCellData.CountRows];
 
-        
 
         for (int j = 0; _maxCountMines > 0; j++)
         {
-            //if (j >= _cells.GetLength(1) - 1) j = 0;
             if (j >= fieldCellData.CountRows - 1) j = 0;
-            //if( j < 0 || j > _cells.GetLength(1)-1) throw new IndexOutOfRangeException(j.ToString());
             if (j < 0 || j > fieldCellData.CountRows - 1) throw new IndexOutOfRangeException(j.ToString());
             if (arrayIndexes[j] == null) arrayIndexes[j] = new List<int>();
-            //var indexRandom = UnityEngine.Random.Range(0, _cells.GetLength(0));
             var indexRandom = UnityEngine.Random.Range(0, fieldCellData.CountColumns);
             var maxIteration = 300000;
             var iteration = 0;
             while (DeniedSetMines(indexRandom, j) && iteration < maxIteration)
             {
-                //indexRandom = UnityEngine.Random.Range(0, _cells.GetLength(0));
                 indexRandom = UnityEngine.Random.Range(0, fieldCellData.CountRows);
                 iteration++;
             }
@@ -58,11 +52,13 @@ public class ContainerMines
             }
 
             arrayIndexes[j].Add(indexRandom);
-            _cells[indexRandom, j].CreateMine(-1);
+            var cell = _cells[indexRandom, j];
+            if (cell is not null)
+                cell.CreateMine(-1);
             CountMines++;
             _maxCountMines--;
-            //if (j >= _cells.GetLength(1) - 1) j = 0;
-            if (j >= fieldCellData.CountColumns - 1) j = 0;
+            //if (j >= fieldCellData.CountColumns - 1) j = 0;
+            if (j >= fieldCellData.CountRows - 1) j = 0;
         }
 
         CountFlags = CountMines;

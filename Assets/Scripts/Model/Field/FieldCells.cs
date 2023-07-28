@@ -29,15 +29,12 @@ public class FieldCells
             countColumns = (int)(countColumns / (int)(countColumns / countRows) / 1.5f);
             (countColumns, countRows) = _gameField.BackGroundField.UpdatePropertiesInGrid(countColumns);
         }
-        
+
         _countRows = countRows;
         _countColumns = countColumns;
-        
-        Debug.Log(countRows + " " + countColumns);
-
         FieldCellData = new FieldCellData(countColumns, countRows, new Vector2(1, 1));
-       //  _cells = new Cell[FieldCellData.CountColumns, FieldCellData.CountRows];
-       //_cells = new Cell[FieldCellData.CountRows, FieldCellData.CountColumns];
+        //  _cells = new Cell[FieldCellData.CountColumns, FieldCellData.CountRows];
+        //_cells = new Cell[FieldCellData.CountRows, FieldCellData.CountColumns];
         _cells = new Cell[500, 500];
         _countCells = _cells.Length;
         _firstIndexes = new int[2] { -1, -1 };
@@ -47,14 +44,15 @@ public class FieldCells
         FinishLoad = true;
     }
 
-  
-    public void ResetField( int countColumns, int countRows, float scale)
+
+    public void ResetField(int countColumns, int countRows, float scale)
     {
         if (Screen.width > Screen.height)
         {
             countColumns = (int)(countColumns / (int)(countColumns / countRows) / 1.5f);
             (countColumns, countRows) = _gameField.BackGroundField.UpdatePropertiesInGrid(countColumns);
         }
+
         _countRows = countRows;
         _countColumns = countColumns;
 
@@ -64,7 +62,7 @@ public class FieldCells
         _countFlagTrue = 0;
         _countOpen = 0;
         ContainerMines = new ContainerMines(this._gameField, _cells, _firstIndexes);
-        _spawnerField.ResetBlocs( this );
+        _spawnerField.ResetBlocs(this);
     }
 
     public void DespawnField()
@@ -95,7 +93,7 @@ public class FieldCells
     public void GenerateMines()
     {
         var countCells = FieldCellData.CountColumns * FieldCellData.CountRows;
-        ContainerMines.GenerateMines(_percentMine, countCells, FieldCellData );
+        ContainerMines.GenerateMines(_percentMine, countCells, FieldCellData);
     }
 
     public void InitGrid()
@@ -115,7 +113,6 @@ public class FieldCells
 //                        j + m <= _cells.GetLength(1) - 1 &&
                         i + n <= FieldCellData.CountRows - 1 &&
                         j + m <= FieldCellData.CountColumns - 1 &&
-
                         _cells[i + n, j + m].Value == -1)
                     {
                         _cells[i, j].IncrementValue();
@@ -173,7 +170,6 @@ public class FieldCells
 //                index2 + m <= FieldCellData.CountRows - 1 &&
                 index1 + n <= FieldCellData.CountRows - 1 &&
                 index2 + m <= FieldCellData.CountColumns - 1 &&
-
                 cells[index1 + n, index2 + m].Value >= 0)
                 TryOpen(cells[index1 + n, index2 + m]);
         }
@@ -183,7 +179,7 @@ public class FieldCells
     {
         foreach (var cell in _cells)
         {
-            if (cell.IsOpen) continue;
+            if ( cell is null || cell.IsOpen ) continue;
             cell.Open();
             if (cell.IsInitMine) cell.CellView.MineView.ActivateMine(false);
             if (cell.IsInitMine == false && cell.CellView.FlagView.Value)
