@@ -15,7 +15,6 @@ public class FieldCells
     public bool IsFirstClick { get; private set; }
     public ICell[,] Cells => _cells;
     public GameField GameField => _gameField;
-    public bool FinishLoad = false;
     private int _countRows;
     private int _countColumns;
 
@@ -33,15 +32,13 @@ public class FieldCells
         _countRows = countRows;
         _countColumns = countColumns;
         FieldCellData = new FieldCellData(countColumns, countRows, new Vector2(1, 1));
-        //  _cells = new Cell[FieldCellData.CountColumns, FieldCellData.CountRows];
         //_cells = new Cell[FieldCellData.CountRows, FieldCellData.CountColumns];
-        _cells = new Cell[500, 500];
+        _cells = new Cell[1000, 1000];
         _countCells = _cells.Length;
         _firstIndexes = new int[2] { -1, -1 };
         ContainerMines = new ContainerMines(this._gameField, _cells, _firstIndexes);
         _spawnerField = new SpawnerField(this, _cells);
         _spawnerField.CreateBlocks();
-        FinishLoad = true;
     }
 
 
@@ -71,7 +68,6 @@ public class FieldCells
 //        for (int j = 0; j < _countRows; j++)
         for (int i = 0; i < _countRows; i++)
         for (int j = 0; j < _countColumns; j++)
-
             _cells[i, j].Despawn();
     }
 

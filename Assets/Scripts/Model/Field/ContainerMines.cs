@@ -24,19 +24,15 @@ public class ContainerMines
         _maxCountMines = countCells * percentMine / 100;
         List<int>[] arrayIndexes = new List<int>[fieldCellData.CountRows];
 
-
         for (int j = 0; _maxCountMines > 0; j++)
         {
-            if (j >= fieldCellData.CountRows - 1) j = 0;
+            if (j >= fieldCellData.CountColumns - 1) j = 0;
             if (j < 0 || j > fieldCellData.CountRows - 1) throw new IndexOutOfRangeException(j.ToString());
             if (arrayIndexes[j] == null) arrayIndexes[j] = new List<int>();
-            var indexRandom = UnityEngine.Random.Range(0, fieldCellData.CountColumns);
-            var maxIteration = 300000;
-            var iteration = 0;
-            while (DeniedSetMines(indexRandom, j) && iteration < maxIteration)
+            var indexRandom = UnityEngine.Random.Range(0, fieldCellData.CountRows);
+            while (DeniedSetMines(indexRandom, j))
             {
                 indexRandom = UnityEngine.Random.Range(0, fieldCellData.CountRows);
-                iteration++;
             }
 
             if (arrayIndexes[j].Count > 0)
@@ -54,11 +50,12 @@ public class ContainerMines
             arrayIndexes[j].Add(indexRandom);
             var cell = _cells[indexRandom, j];
             if (cell is not null)
+            {
                 cell.CreateMine(-1);
+            }
+
             CountMines++;
             _maxCountMines--;
-            //if (j >= fieldCellData.CountColumns - 1) j = 0;
-            if (j >= fieldCellData.CountRows - 1) j = 0;
         }
 
         CountFlags = CountMines;

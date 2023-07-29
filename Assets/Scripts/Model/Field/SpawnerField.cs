@@ -1,4 +1,3 @@
-using UnityEngine;
 
 public class SpawnerField
 {
@@ -8,7 +7,6 @@ public class SpawnerField
     private readonly FieldCellData FieldCellData;
     private readonly Cell[,] _cells;
     private IDownAction _downAction;
-    private IPoolFactory<CellView> _factoryCellView;
 
     public SpawnerField(FieldCells fieldCells, Cell[,] cells)
     {
@@ -16,36 +14,30 @@ public class SpawnerField
         _cells = cells;
         FieldCellData = fieldCells.FieldCellData;
         _containerMines = fieldCells.ContainerMines;
-        //_factoryCellView = new FactoryViewPool<CellView>(fieldCells.GameField.PoolDataContainer.RootCells.PoolData.Pool,
-          //  fieldCells.GameField.transform);
-          _factoryCellView = fieldCells.GameField.FactoryCellViewPool;
     }
 
     public void CreateBlocks()
     {
         _gameField = _fieldCells.GameField;
-   //     for (var j = 0; j < FieldCellData.CountRows; j++)
-   //     for (var i = 0; i < FieldCellData.CountColumns; i++)
         for (var j = 0; j < FieldCellData.CountColumns; j++)
         for (var i = 0; i < FieldCellData.CountRows; i++)
-
         {
-            
             var cellData = new CellData(i, j, FieldCellData.Scale);
-               
+
             if (_cells[i, j] == null)
             {
                 CellView cellView = _gameField.Pool.Get();
                 cellView.Init(_gameField, _fieldCells.GameField.GameState.Views, cellData);
                 _cells[i, j] = new Cell(cellView);
             }
+
             _cells[i, j].CellView.InputHandler.OnActivateCell += ActionAfterActivateCell;
             _cells[i, j].CellView.InputHandler.OnActivateFlag += ActionAfterHoldCell;
-            _cells[i,j].CellView.BrickView.SetValue(i,j);
+            _cells[i, j].CellView.BrickView.SetValue(i, j);
         }
     }
 
-    public void ResetBlocs( FieldCells _fieldCells)
+    public void ResetBlocs(FieldCells _fieldCells)
     {
         var FieldCellData = _fieldCells.FieldCellData;
 
@@ -53,10 +45,12 @@ public class SpawnerField
         for (var j = 0; j < FieldCellData.CountColumns; j++)
         {
             var cellData = new CellData(i, j, FieldCellData.Scale);
-            _cells[i,j].Spawn( _gameField.Pool, cellData );
-            _cells[i,j].Reset();
+            if (_cells[i, j] != null)
+            {
+                _cells[i, j].Spawn(_gameField.Pool, cellData);
+                _cells[i, j].Reset();
+            }
         }
-
     }
 
     private void ActionAfterActivateCell(InputHandler inputHandler)
