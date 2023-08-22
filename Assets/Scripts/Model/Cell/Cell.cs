@@ -1,5 +1,4 @@
 
-using UnityEngine.PlayerLoop;
 
 public class Cell : ICell
 {
@@ -72,6 +71,7 @@ public class Cell : ICell
         _cellView.Despawn();
     }
 
+    /*
     public void Spawn( Pool<CellView> pool, CellData cellData )
     {
         _cellView.SpawnFrom( pool );
@@ -81,6 +81,21 @@ public class Cell : ICell
         IsFlagged = false;
         CellData = _cellView.CellData;
         Flag = new Flag(_cellView);
+        ResetValue();
+    }
+    */
+
+    public void Spawn(Pool<CellView> pool, CellData cellData)
+    {
+        _cellView = pool.Get();
+        //_cellView.SpawnFrom( pool );
+        Value = 0;
+        IsOpen = false;
+        IsInitMine = false;
+        IsFlagged = false;
+        CellData = _cellView.CellData;
+        Flag = new Flag(_cellView);
+        ResetValue();
     }
 
   

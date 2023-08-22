@@ -1,15 +1,10 @@
-using System;
-using Cysharp.Threading.Tasks.Triggers;
 using UnityEngine;
-using UnityEngine.UI;
-using YG;
 
 public class MainWindow : WindowBase, IBackToPreviousWindowCommand
 {
     [SerializeField] private GameState _gameState;
     [SerializeField] private ClassForJavaScript _js;
     private bool _isReadyExit = true; 
-    
     
     public override void OpenCanvasByPressingEscape( IWindowCommand windowCommand )
     {

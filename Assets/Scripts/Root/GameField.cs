@@ -32,7 +32,8 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     {
         IsLoadPoolFinish = false;
         _factoryCellViewPool = new PrefabFactory<CellView>(Views.CellView, transform);
-        Pool = new Pool<CellView>(_factoryCellViewPool, 10000);
+     //   Pool = new Pool<CellView>(_factoryCellViewPool, 10000);
+     Pool = new Pool<CellView>(_factoryCellViewPool, 500);
     }
 
     private void Init()
@@ -100,6 +101,9 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         {
             _fieldCells.ResetField(countColumns, countRows, scale);
         }
+
+
+        BackGroundField.FitSizeMenu();
 
         //BackGroundField.BorderField.Init(BackGroundField.RectTransform);
         //if (Screen.width > Screen.height)

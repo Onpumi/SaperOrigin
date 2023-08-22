@@ -1,6 +1,3 @@
-using System;
-using TMPro;
-using Tools;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -81,7 +78,7 @@ public class BackgroundField : MonoBehaviour
         _gridLayoutGroup.constraintCount = countColumns;
         _gridLayoutGroup.childAlignment = TextAnchor.LowerCenter;
         _gridLayoutGroup.startCorner = GridLayoutGroup.Corner.LowerRight;
-        
+
         return (countColumns, countRows);
     }
 
@@ -96,21 +93,28 @@ public class BackgroundField : MonoBehaviour
                 _rectParentTransform.rect.width - 2f * (_borderField.WidthImage + 50f) -
                 differenceCountColumns * _cellSize);
         }
+
         int countRows;
         (countColumns, countRows) = InitGRID(_cellSize);
-        return (countColumns, countRows) ;
+        return (countColumns, countRows);
     }
 
     public void Init(GameField gameField)
     {
         SetProperties(gameField);
-      //  if (Screen.width <= Screen.height)
+       // var rectTransformMenuBar = _topMenuBar.GetComponent<RectTransform>();
+        
+        //  if (Screen.width <= Screen.height)
         //    _borderField.Init(_rectTransform);
     }
 
     public void FitSizeMenu()
     {
-        _bottomMenuBar.FitWidth(Screen.height);
+        var rectTransformMenuBar = _topMenuBar.GetComponent<RectTransform>();
+        var anchorYMin = rectTransformMenuBar.anchorMin.y;
+        var anchorYMax = rectTransformMenuBar.anchorMax.y;
+        rectTransformMenuBar.anchorMin = new Vector2(0.5f, anchorYMin );
+        rectTransformMenuBar.anchorMax = new Vector2(0.5f, anchorYMax );
+        rectTransformMenuBar.sizeDelta = new Vector2( _rectTransform.sizeDelta.x, rectTransformMenuBar.sizeDelta.y );
     }
-    
 }

@@ -1,3 +1,4 @@
+using UnityEngine;
 
 public class SpawnerField
 {
@@ -19,18 +20,14 @@ public class SpawnerField
     public void CreateBlocks()
     {
         _gameField = _fieldCells.GameField;
+        var FieldCellData = _fieldCells.FieldCellData;
         for (var j = 0; j < FieldCellData.CountColumns; j++)
         for (var i = 0; i < FieldCellData.CountRows; i++)
         {
             var cellData = new CellData(i, j, FieldCellData.Scale);
-
-            if (_cells[i, j] == null)
-            {
-                CellView cellView = _gameField.Pool.Get();
-                cellView.Init(_gameField, _fieldCells.GameField.GameState.Views, cellData);
-                _cells[i, j] = new Cell(cellView);
-            }
-
+            CellView cellView = _gameField.Pool.Get();
+            cellView.Init(_gameField, _fieldCells.GameField.GameState.Views, cellData);
+            _cells[i, j] = new Cell(cellView);
             _cells[i, j].CellView.InputHandler.OnActivateCell += ActionAfterActivateCell;
             _cells[i, j].CellView.InputHandler.OnActivateFlag += ActionAfterHoldCell;
             _cells[i, j].CellView.BrickView.SetValue(i, j);
@@ -39,24 +36,36 @@ public class SpawnerField
 
     public void ResetBlocs(FieldCells _fieldCells)
     {
+        _gameField = _fieldCells.GameField;
         var FieldCellData = _fieldCells.FieldCellData;
 
-        for (var i = 0; i < FieldCellData.CountRows; i++)
         for (var j = 0; j < FieldCellData.CountColumns; j++)
+        for (var i = 0; i < FieldCellData.CountRows; i++)
         {
             var cellData = new CellData(i, j, FieldCellData.Scale);
-            if (_cells[i, j] != null)
+            if (_cells[i, j] == null)
             {
-                _cells[i, j].Spawn(_gameField.Pool, cellData);
-                _cells[i, j].Reset();
+                CellView cellView = _gameField.Pool.Get();
+                cellView.Init(_gameField, _fieldCells.GameField.GameState.Views, cellData);
+                _cells[i, j] = new Cell(cellView);
             }
+            else
+            {
+                _cells[i,j].Spawn(_gameField.Pool, cellData);
+                _cells[i,j].CellView.Init(_gameField, _fieldCells.GameField.GameState.Views, cellData);
+            }
+            _cells[i,j].CellView.BrickView.SetValue(i, j);
+            _cells[i, j].CellView.InputHandler.OnActivateCell += ActionAfterActivateCell;
+            _cells[i, j].CellView.InputHandler.OnActivateFlag += ActionAfterHoldCell;
+
         }
+
     }
 
     private void ActionAfterActivateCell(InputHandler inputHandler)
     {
+        
         CellView cellView = inputHandler.CellView;
-
         _downAction = new DigDownAction(_fieldCells);
 
         if (_gameField.UIData.ControllerButtonMode.Mode == ButtonMode.Flag)

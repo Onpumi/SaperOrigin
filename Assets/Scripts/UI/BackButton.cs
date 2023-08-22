@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using YG;
 
 
 public class BackButton : WindowBase, IPointerDownHandler, IPointerUpHandler
@@ -44,15 +43,18 @@ public class BackButton : WindowBase, IPointerDownHandler, IPointerUpHandler
     public void OnPointerUp(PointerEventData eventData)
     {
         TryBackAction();
-/*
-        if( _windowCommand == _gameState.UIData.WindowPause ) return;
+        ExitFromCurrentWindow();
+    }
+
+    private void ExitFromCurrentWindow()
+    {
+        if (_windowCommand == _gameState.UIData.WindowPause) return;
         if (_windowCommand != null)
-        { 
-            if( _windowCommand == _gameState.UIData.WindowSettings)
+        {
+            if (_windowCommand == _gameState.UIData.WindowSettings)
                 _gameState.BackPreviousWindow.Open(_windowCommand);
             _gameState.CurrentInitWindow(_windowCommand.BackWindowCommand);
         }
-*/
     }
 
     public void TryBackAction()

@@ -32,7 +32,6 @@ public class FieldCells
         _countRows = countRows;
         _countColumns = countColumns;
         FieldCellData = new FieldCellData(countColumns, countRows, new Vector2(1, 1));
-        //_cells = new Cell[FieldCellData.CountRows, FieldCellData.CountColumns];
         _cells = new Cell[1000, 1000];
         _countCells = _cells.Length;
         _firstIndexes = new int[2] { -1, -1 };
@@ -52,9 +51,12 @@ public class FieldCells
 
         _countRows = countRows;
         _countColumns = countColumns;
-
+        IsFirstClick = true;
+        _firstIndexes[0] = -1;
+        _firstIndexes[1] = -1;
+        
         FieldCellData = new FieldCellData(countColumns, countRows, new Vector2(1, 1));
-        _countCells = countRows * countColumns;
+        _countCells = _cells.Length;
         IsFirstClick = true;
         _countFlagTrue = 0;
         _countOpen = 0;
@@ -64,11 +66,10 @@ public class FieldCells
 
     public void DespawnField()
     {
-//        for (int i = 0; i < _countColumns; i++)
-//        for (int j = 0; j < _countRows; j++)
         for (int i = 0; i < _countRows; i++)
         for (int j = 0; j < _countColumns; j++)
-            _cells[i, j].Despawn();
+            if (_cells[i, j] != null)
+                _cells[i, j].Despawn();
     }
 
 
@@ -94,8 +95,6 @@ public class FieldCells
 
     public void InitGrid()
     {
-        //for (var i = 0; i < FieldCellData.CountColumns; i++)
-        //for (var j = 0; j < FieldCellData.CountRows; j++)
         for (var i = 0; i < FieldCellData.CountRows; i++)
         for (var j = 0; j < FieldCellData.CountColumns; j++)
         {
@@ -105,8 +104,6 @@ public class FieldCells
                 for (int m = -1; m < 2; m++)
                 {
                     if (i + n >= 0 && j + m >= 0 &&
-//                        i + n <= _cells.GetLength(0) - 1 &&
-//                        j + m <= _cells.GetLength(1) - 1 &&
                         i + n <= FieldCellData.CountRows - 1 &&
                         j + m <= FieldCellData.CountColumns - 1 &&
                         _cells[i + n, j + m].Value == -1)
@@ -175,7 +172,7 @@ public class FieldCells
     {
         foreach (var cell in _cells)
         {
-            if ( cell is null || cell.IsOpen ) continue;
+            if (cell is null || cell.IsOpen) continue;
             cell.Open();
             if (cell.IsInitMine) cell.CellView.MineView.ActivateMine(false);
             if (cell.IsInitMine == false && cell.CellView.FlagView.Value)
