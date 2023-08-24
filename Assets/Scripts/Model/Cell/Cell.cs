@@ -1,5 +1,8 @@
 
 
+using Cysharp.Threading.Tasks;
+using UnityEngine;
+
 public class Cell : ICell
 {
     private CellView _cellView;
@@ -20,13 +23,6 @@ public class Cell : ICell
         IsFlagged = false;
         CellData = cellView.CellData;
         Flag = new Flag(_cellView);
-    }
-
-    public void Reset()
-    {
-        Value = 0;
-        IsOpen = IsInitMine = IsFlagged = false;
-        ResetValue();
     }
 
     public void CreateMine(int value)
@@ -66,29 +62,22 @@ public class Cell : ICell
         Flag.Reset();
     }
 
-    public void Despawn()
+
+    public void Despawn( Pool<CellView> pool )
     {
-        _cellView.Despawn();
+        //_cellView.Despawn();
+        pool.Return(_cellView);
     }
 
-    /*
-    public void Spawn( Pool<CellView> pool, CellData cellData )
+    public void Destroy()
     {
-        _cellView.SpawnFrom( pool );
-        Value = 0;
-        IsOpen = false;
-        IsInitMine = false;
-        IsFlagged = false;
-        CellData = _cellView.CellData;
-        Flag = new Flag(_cellView);
-        ResetValue();
+        _cellView.Destroy();
     }
-    */
+
 
     public void Spawn(Pool<CellView> pool, CellData cellData)
     {
-        _cellView = pool.Get();
-        //_cellView.SpawnFrom( pool );
+        _cellView.SpawnFrom(pool);
         Value = 0;
         IsOpen = false;
         IsInitMine = false;
@@ -98,7 +87,38 @@ public class Cell : ICell
         ResetValue();
     }
 
-  
-    
-    
+    public void Spawn(CellView cellView, CellData cellData)
+    {
+        _cellView = cellView;
+        Value = 0;
+        IsOpen = false;
+        IsInitMine = false;
+        IsFlagged = false;
+        CellData = cellView.CellData;
+        Flag = new Flag(_cellView);
+        ResetValue();
+    }
+
+
+    public void UpdateCellData()
+    {
+        CellData = CellView.CellData;
+    }
+
+
+    public void Init( CellView cellView )
+    {
+        _cellView = cellView;
+        Value = 0;
+        IsOpen = false;
+        IsInitMine = false;
+        IsFlagged = false;
+        CellData = cellView.CellData;
+        Flag = new Flag(_cellView);
+        ResetValue();
+    }
+
+
+
+
 }

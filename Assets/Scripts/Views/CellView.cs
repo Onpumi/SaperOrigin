@@ -45,15 +45,6 @@ public class CellView : MonoBehaviour, ICellView, IPoolable<CellView>, IView
     {
         _image.sprite = _emptySprite;
     }
-
-
-    public void Init(GameField gameField, IViews views, CellData cellData)
-    {
-        cellData.Index1.TryThrowIfLessThanZero();
-        cellData.Index2.TryThrowIfLessThanZero();
-        CellData = cellData;
-    }
-
     public void Init(CellData cellData)
     {
         cellData.Index1.TryThrowIfLessThanZero();
@@ -73,6 +64,11 @@ public class CellView : MonoBehaviour, ICellView, IPoolable<CellView>, IView
         transform.GetChild(0).gameObject.SetActive(true);
     }
 
+    public void Destroy()
+    {
+        Destroy(transform);
+    }
+    
     public void Despawn()
     {
         transform.gameObject.SetActive(false);

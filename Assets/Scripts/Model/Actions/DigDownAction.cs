@@ -22,7 +22,6 @@ public class DigDownAction : IDownAction
     {
         _fieldCells.GameField.GameState.StopGame();
         _fieldCells.OpenAll();
-       // _fieldCells.Reset(); // иззза этого ломается кое че, проверить что можно убрать
         if (_fieldCells.isWin() && cell.IsInitMine == false)
         {
             _fieldCells.GameField.ActivateWindowsWin();

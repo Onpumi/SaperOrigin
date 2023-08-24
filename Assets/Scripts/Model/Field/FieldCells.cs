@@ -54,22 +54,41 @@ public class FieldCells
         IsFirstClick = true;
         _firstIndexes[0] = -1;
         _firstIndexes[1] = -1;
-        
         FieldCellData = new FieldCellData(countColumns, countRows, new Vector2(1, 1));
         _countCells = _cells.Length;
         IsFirstClick = true;
         _countFlagTrue = 0;
         _countOpen = 0;
         ContainerMines = new ContainerMines(this._gameField, _cells, _firstIndexes);
+        _spawnerField.Init(this);
         _spawnerField.ResetBlocs(this);
     }
 
     public void DespawnField()
     {
-        for (int i = 0; i < _countRows; i++)
-        for (int j = 0; j < _countColumns; j++)
+        var countRows = _cells.GetLength(0);
+        var countColumns = _cells.GetLength(1);
+        for (int i = 0; i < countRows; i++)
+        for (int j = 0; j < countColumns; j++)
             if (_cells[i, j] != null)
-                _cells[i, j].Despawn();
+            {
+                //_cells[i, j].Despawn();
+                _cells[i, j].Despawn( _gameField.Pool );
+            }
+    }
+    
+    public void DestroyField()
+    {
+        var countRows = _cells.GetLength(0);
+        var countColumns = _cells.GetLength(1);
+        for (int i = 0; i < countRows; i++)
+        for (int j = 0; j < countColumns; j++)
+            if (_cells[i, j] != null)
+            {
+
+                _cells[i, j].Destroy();
+                _cells[i, j] = null;
+            }
     }
 
 

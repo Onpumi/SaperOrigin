@@ -18,10 +18,17 @@ public class BrickView : MonoBehaviour, IBrickView
         //_text.text = "";
     }
 
+    public void SetValue(int value)
+    {
+        _text.text = value + " ";
+    }
+
     public void SetColor()
     {
         var image = GetComponent<Image>();
         image.color = Color.green;
     }
+    
+    
     
 }

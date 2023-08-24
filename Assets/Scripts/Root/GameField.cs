@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
 {
@@ -11,6 +12,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     [SerializeField] private IWindowCommand _backWindowCommand;
     [SerializeField] private Transform _parentField;
     [SerializeField] private SliderProgress _sliderProgress;
+    [SerializeField] private Transform _poolParent;
     public BackgroundField BackGroundField { get; private set; }
     public DataSetting DataSetting { get; private set; }
     public UIData UIData => _uiData;
@@ -21,19 +23,28 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     public PoolDataContainer PoolDataContainer { get; private set; }
 
     private FieldCells _fieldCells;
+
     public Pool<CellView> Pool { get; private set; }
+
 
     public bool IsLoadPoolFinish { get; private set; }
     private IPoolFactory<CellView> _factoryCellViewPool;
     public IPoolFactory<CellView> FactoryCellViewPool => _factoryCellViewPool;
+
+    private bool _isFirstLoad = true;
 
 
     private void Awake()
     {
         IsLoadPoolFinish = false;
         _factoryCellViewPool = new PrefabFactory<CellView>(Views.CellView, transform);
-     //   Pool = new Pool<CellView>(_factoryCellViewPool, 10000);
-     Pool = new Pool<CellView>(_factoryCellViewPool, 500);
+        GeneratePool();
+    }
+
+
+    public void GeneratePool()
+    {
+        Pool = new Pool<CellView>(_factoryCellViewPool, 500);
     }
 
     private void Init()
@@ -80,6 +91,12 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     }
 
 
+    public void ResetField()
+    {
+        _isFirstLoad = true;
+        _fieldCells = null;
+    }
+
     public void ReloadField()
     {
         if (GameState == null) return;
@@ -88,30 +105,39 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         _gameState.GameFieldData.ScaleBrick = DataSetting.GameData.GetOptionValue(TypesOption.SizeCells);
         BackGroundField.Init(this);
         var scale = GameState.GameFieldData.ScaleBrick;
-        if (_fieldCells != null)
+       if (_fieldCells != null)
             _fieldCells.DespawnField();
 
         var (countColumns, countRows) = BackGroundField.InitGRID(100f * scale);
 
-        if (_fieldCells == null)
+        if (_fieldCells == null || _isFirstLoad)
         {
             _fieldCells = new FieldCells(this, countColumns, countRows);
+            _isFirstLoad = false;
         }
         else
         {
             _fieldCells.ResetField(countColumns, countRows, scale);
         }
-
-
         BackGroundField.FitSizeMenu();
-
         //BackGroundField.BorderField.Init(BackGroundField.RectTransform);
         //if (Screen.width > Screen.height)
         //  BackGroundField.FitSizeMenu();
         _uiData.WindowWinner.Hide();
     }
 
-
+    public void DestroyAll()
+    {
+        foreach ( Transform child in transform)
+        {
+            //Pool.Return(child.GetComponent<CellView>());
+            Destroy(child.transform.gameObject);
+        }
+    }
+    
+    
+    
+    
     public void StartProgressLoad()
     {
         StartCoroutine(StartProgress());

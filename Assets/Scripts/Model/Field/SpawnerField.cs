@@ -1,11 +1,8 @@
-using UnityEngine;
-
 public class SpawnerField
 {
     private readonly FieldCells _fieldCells;
-    private readonly ContainerMines _containerMines;
+    private ContainerMines _containerMines;
     private GameField _gameField;
-    private readonly FieldCellData FieldCellData;
     private readonly Cell[,] _cells;
     private IDownAction _downAction;
 
@@ -13,7 +10,12 @@ public class SpawnerField
     {
         _fieldCells = fieldCells;
         _cells = cells;
-        FieldCellData = fieldCells.FieldCellData;
+        _containerMines = fieldCells.ContainerMines;
+    }
+
+
+    public void Init( FieldCells fieldCells )
+    {
         _containerMines = fieldCells.ContainerMines;
     }
 
@@ -26,7 +28,8 @@ public class SpawnerField
         {
             var cellData = new CellData(i, j, FieldCellData.Scale);
             CellView cellView = _gameField.Pool.Get();
-            cellView.Init(_gameField, _fieldCells.GameField.GameState.Views, cellData);
+            cellView.transform.SetParent(_gameField.transform);
+            cellView.Init(cellData);
             _cells[i, j] = new Cell(cellView);
             _cells[i, j].CellView.InputHandler.OnActivateCell += ActionAfterActivateCell;
             _cells[i, j].CellView.InputHandler.OnActivateFlag += ActionAfterHoldCell;
@@ -36,8 +39,9 @@ public class SpawnerField
 
     public void ResetBlocs(FieldCells _fieldCells)
     {
-        _gameField = _fieldCells.GameField;
         var FieldCellData = _fieldCells.FieldCellData;
+
+        int count = 0;
 
         for (var j = 0; j < FieldCellData.CountColumns; j++)
         for (var i = 0; i < FieldCellData.CountRows; i++)
@@ -46,25 +50,28 @@ public class SpawnerField
             if (_cells[i, j] == null)
             {
                 CellView cellView = _gameField.Pool.Get();
-                cellView.Init(_gameField, _fieldCells.GameField.GameState.Views, cellData);
+           //     cellView.transform.SetParent(_gameField.transform);
+                cellView.Init(cellData);
                 _cells[i, j] = new Cell(cellView);
             }
             else
             {
-                _cells[i,j].Spawn(_gameField.Pool, cellData);
-                _cells[i,j].CellView.Init(_gameField, _fieldCells.GameField.GameState.Views, cellData);
+                 _cells[i,j].Spawn(_gameField.Pool, cellData );
+//                _cells[i, j].CellView.Init(cellData);
+//                _cells[i, j].CellView.transform.SetParent(_gameField.transform);
             }
-            _cells[i,j].CellView.BrickView.SetValue(i, j);
+            
+            _cells[i, j].UpdateCellData();
+            var index1 = _cells[i, j].CellData.Index1;
+            var index2 = _cells[i, j].CellData.Index2;
+            _cells[i, j].CellView.BrickView.SetValue(i, j);
             _cells[i, j].CellView.InputHandler.OnActivateCell += ActionAfterActivateCell;
             _cells[i, j].CellView.InputHandler.OnActivateFlag += ActionAfterHoldCell;
-
         }
-
     }
 
     private void ActionAfterActivateCell(InputHandler inputHandler)
     {
-        
         CellView cellView = inputHandler.CellView;
         _downAction = new DigDownAction(_fieldCells);
 
