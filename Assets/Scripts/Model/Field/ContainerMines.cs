@@ -6,12 +6,12 @@ public class ContainerMines
 {
     private int _maxCountMines;
     private readonly GameField _gameField;
-    private readonly ICell[,] _cells;
+    private readonly Cell[,] _cells;
     private readonly int[] _firstIndexes;
     public int CountMines { get; private set; }
     public int CountFlags { get; private set; }
 
-    public ContainerMines(GameField gameField, ICell[,] cells, int[] firstIndexes)
+    public ContainerMines(GameField gameField, Cell[,] cells, int[] firstIndexes)
     {
         _gameField = gameField;
         _cells = cells;

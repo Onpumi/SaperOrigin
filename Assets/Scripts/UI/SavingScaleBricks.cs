@@ -7,6 +7,7 @@ public class SavingScaleBricks : WindowBase
     [SerializeField] private GameState _gameState;
     [SerializeField] private WindowScaleBricks _windowScaleBricks;
     [SerializeField] private WindowScalingBlocks _windowScalingBlocks;
+    [SerializeField] private WindowConfirmation _windowConfirmation;
     private Button _buttonSave;
 
     private void Awake()
@@ -19,11 +20,24 @@ public class SavingScaleBricks : WindowBase
 
     private void OnClickButton()
     {
-        _gameState.Views.GameField.SaveScaleValueBricks(TypesOption.SizeCells, _windowScalingBlocks);
-        _gameState.Views.GameField.DestroyAll();
-        _gameState.Views.GameField.ResetField();   
-        _gameState.Views.GameField.GeneratePool();
-        _gameState.Views.GameField.ReloadField();
-        _windowScaleBricks.Hide();
+        if( _windowConfirmation != null )
+          _windowConfirmation.ActivateWindow(this);
+        
+       
     }
+
+    public override void ConfirmAction(bool value)
+    {
+        if (value == true)
+        {
+            _gameState.Views.GameField.SaveScaleValueBricks(TypesOption.SizeCells, _windowScalingBlocks);
+            _gameState.Views.GameField.DestroyAll();
+            _gameState.Views.GameField.ResetField();   
+            _gameState.Views.GameField.GeneratePool();
+            _gameState.Views.GameField.ReloadField();
+            _windowScaleBricks.Hide();     
+        }
+    }
+    
+    
 }

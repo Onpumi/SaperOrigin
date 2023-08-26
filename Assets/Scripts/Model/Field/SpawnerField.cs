@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class SpawnerField
 {
     private readonly FieldCells _fieldCells;
@@ -28,7 +30,7 @@ public class SpawnerField
         {
             var cellData = new CellData(i, j, FieldCellData.Scale);
             CellView cellView = _gameField.Pool.Get();
-            cellView.transform.SetParent(_gameField.transform);
+        //    cellView.transform.SetParent(_gameField.transform);
             cellView.Init(cellData);
             _cells[i, j] = new Cell(cellView);
             _cells[i, j].CellView.InputHandler.OnActivateCell += ActionAfterActivateCell;
@@ -50,23 +52,20 @@ public class SpawnerField
             if (_cells[i, j] == null)
             {
                 CellView cellView = _gameField.Pool.Get();
-           //     cellView.transform.SetParent(_gameField.transform);
                 cellView.Init(cellData);
                 _cells[i, j] = new Cell(cellView);
+                _cells[i, j].CellView.InputHandler.OnActivateCell += ActionAfterActivateCell;
+                _cells[i, j].CellView.InputHandler.OnActivateFlag += ActionAfterHoldCell;
             }
             else
             {
                  _cells[i,j].Spawn(_gameField.Pool, cellData );
-//                _cells[i, j].CellView.Init(cellData);
-//                _cells[i, j].CellView.transform.SetParent(_gameField.transform);
             }
             
             _cells[i, j].UpdateCellData();
             var index1 = _cells[i, j].CellData.Index1;
             var index2 = _cells[i, j].CellData.Index2;
             _cells[i, j].CellView.BrickView.SetValue(i, j);
-            _cells[i, j].CellView.InputHandler.OnActivateCell += ActionAfterActivateCell;
-            _cells[i, j].CellView.InputHandler.OnActivateFlag += ActionAfterHoldCell;
         }
     }
 

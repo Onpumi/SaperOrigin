@@ -8,6 +8,7 @@ public class WindowScaleBricks : WindowBase
     [SerializeField] private SliderSizeCells _sliderSizeCells;
     [SerializeField] private WindowScalingBlocks _windowScalingBlocks;
     [SerializeField] private IWindowCommand _backWindowCommand;
+    [SerializeField] private WindowConfirmation _windowConfirmation;
     public override IWindowCommand BackWindowCommand => _backWindowCommand;
     private CanvasScaler _canvasScaler;
 

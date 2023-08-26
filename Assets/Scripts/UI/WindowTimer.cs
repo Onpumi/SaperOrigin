@@ -11,19 +11,20 @@ public class WindowTimer : WindowBase
     [SerializeField] private Sprite[] _sprites;
     [SerializeField] private BorderField _borderField; 
     private DateTime _time = DateTime.Today;
-    private StringBuilder _stringBuilder;
-//    public string TimeValue => _tmpText.text;
+    private StringBuilder _timeFinish;
     private bool _isPause = false;
     private float _seconds;
     private DigitalView[] _digitalViews;
     private TimeBuilder _timeBuilder;
     private GridLayoutGroup _gridLayoutGroup;
     private RectTransform _rectTransform;
+    private float _widthCell;
+    private float _heightCell;
 
 
     private void Start()
     {
-        _stringBuilder = new StringBuilder();
+        _timeFinish = new StringBuilder();
         _digitalViews = new DigitalView[transform.childCount];
         int count = 0;
         foreach (Transform view in transform)
@@ -32,26 +33,29 @@ public class WindowTimer : WindowBase
         }
         _gridLayoutGroup = GetComponent<GridLayoutGroup>();
         _rectTransform = GetComponent<RectTransform>();
-       
         _timeBuilder = new TimeBuilder(_sprites, _digitalViews);
+        InitSizeFieldTime();
+    }
+
+
+    private void InitSizeFieldTime()
+    {
+        _widthCell = (_rectTransform.rect.width ) / _digitalViews.Length;
+        _heightCell = _rectTransform.rect.height;
+        _gridLayoutGroup.cellSize = new Vector2(_widthCell, _heightCell);
     }
 
     public void StartTimer()
     {
+        _timeFinish.Clear();
         ResetValue();
         _seconds = 0;
-        var widthCell = (_rectTransform.rect.width ) / _digitalViews.Length;
-        var heightCell = _rectTransform.rect.height;
-        _gridLayoutGroup.cellSize = new Vector2(widthCell, heightCell);
+        InitSizeFieldTime();
         InvokeRepeating(nameof(UpdateTimer), 0, _deltaTime);
-        //_borderField.Init(_rectTransform);
     }
 
     public void ResetValue()
     {
-        var text = DateTime.Today.ToString("mm:ss");
-        _stringBuilder.Append(text);
-        
         _time = DateTime.Today;
         _timeBuilder.DisplayDigitals( _time.ToString("mm:ss"));
         _seconds = 0;
@@ -69,9 +73,12 @@ public class WindowTimer : WindowBase
 
     public void StopTimer()
     {
+        _timeFinish.Append(_time.ToString("mm:ss"));
         ResetValue();
         CancelInvoke(nameof(UpdateTimer));
     }
+
+    public string GetTimeResult() => _timeFinish.ToString();
 
     public void PauseTime(bool value) => _isPause = value;
 

@@ -14,8 +14,8 @@ public class BrickView : MonoBehaviour, IBrickView
 
     public void SetValue( int i, int j)
     {
-        _text.text = i + "," + j;
-        //_text.text = "";
+        // _text.text = i + "," + j;
+        _text.text = "";
     }
 
     public void SetValue(int value)

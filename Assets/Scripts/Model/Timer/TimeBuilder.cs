@@ -10,7 +10,6 @@ public class TimeBuilder
     public TimeBuilder(Sprite[] sprites, DigitalView[] digitalViews)
     {
         _digitalViews = digitalViews;
-
         _sprites = sprites;
     }
 

@@ -6,8 +6,9 @@ public class WindowWinner : WindowBase
 
     [SerializeField] private GameState _gameState;
     [SerializeField] private IWindowCommand _buttonPlay;
-    [SerializeField] private TMP_Text _textTimeResult; 
-    
+    [SerializeField] private TMP_Text _textTimeResult;
+    [SerializeField] private WindowTimer _windowTimer;
+    private const string TitleTime = "Время игры составило: ";
     private void Awake()
     {
          Hide();
@@ -18,7 +19,7 @@ public class WindowWinner : WindowBase
         Open();
         transform.SetAsLastSibling();
         _buttonPlay.Enable();
-        //_textTimeResult.text = _textTimeResult.text + windowTimer.TimeValue;
+        _textTimeResult.text = TitleTime + _windowTimer.GetTimeResult();
     }
 
     public override void OpenCanvasByPressingEscape( IWindowCommand windowCommand ) => Hide();

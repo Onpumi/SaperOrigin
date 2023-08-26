@@ -6,6 +6,7 @@ public class FieldCells
     private readonly Cell[,] _cells;
     private readonly int[] _firstIndexes;
     private readonly SpawnerField _spawnerField;
+    private const int MaxCountCellInRowOrColumn = 1000;
     private int _countOpen;
     private int _countFlagTrue;
     public FieldCellData FieldCellData { get; private set; }
@@ -15,8 +16,6 @@ public class FieldCells
     public bool IsFirstClick { get; private set; }
     public ICell[,] Cells => _cells;
     public GameField GameField => _gameField;
-    private int _countRows;
-    private int _countColumns;
 
     public FieldCells(GameField gameField, int countColumns, int countRows)
     {
@@ -29,11 +28,9 @@ public class FieldCells
             (countColumns, countRows) = _gameField.BackGroundField.UpdatePropertiesInGrid(countColumns);
         }
 
-        _countRows = countRows;
-        _countColumns = countColumns;
         FieldCellData = new FieldCellData(countColumns, countRows, new Vector2(1, 1));
-        _cells = new Cell[1000, 1000];
-        _countCells = _cells.Length;
+        _cells = new Cell[ MaxCountCellInRowOrColumn, MaxCountCellInRowOrColumn];
+        _countCells = countColumns * countRows;
         _firstIndexes = new int[2] { -1, -1 };
         ContainerMines = new ContainerMines(this._gameField, _cells, _firstIndexes);
         _spawnerField = new SpawnerField(this, _cells);
@@ -49,13 +46,11 @@ public class FieldCells
             (countColumns, countRows) = _gameField.BackGroundField.UpdatePropertiesInGrid(countColumns);
         }
 
-        _countRows = countRows;
-        _countColumns = countColumns;
         IsFirstClick = true;
         _firstIndexes[0] = -1;
         _firstIndexes[1] = -1;
         FieldCellData = new FieldCellData(countColumns, countRows, new Vector2(1, 1));
-        _countCells = _cells.Length;
+        _countCells = countColumns * countRows;
         IsFirstClick = true;
         _countFlagTrue = 0;
         _countOpen = 0;
@@ -72,26 +67,11 @@ public class FieldCells
         for (int j = 0; j < countColumns; j++)
             if (_cells[i, j] != null)
             {
-                //_cells[i, j].Despawn();
                 _cells[i, j].Despawn( _gameField.Pool );
             }
     }
     
-    public void DestroyField()
-    {
-        var countRows = _cells.GetLength(0);
-        var countColumns = _cells.GetLength(1);
-        for (int i = 0; i < countRows; i++)
-        for (int j = 0; j < countColumns; j++)
-            if (_cells[i, j] != null)
-            {
-
-                _cells[i, j].Destroy();
-                _cells[i, j] = null;
-            }
-    }
-
-
+   
     public void ConfirmFirstClick()
     {
         IsFirstClick = false;
@@ -178,8 +158,6 @@ public class FieldCells
         for (int m = -1; m < 2; m++)
         {
             if (index1 + n >= 0 && index2 + m >= 0 &&
-//                index1 + n <= FieldCellData.CountColumns - 1 &&
-//                index2 + m <= FieldCellData.CountRows - 1 &&
                 index1 + n <= FieldCellData.CountRows - 1 &&
                 index2 + m <= FieldCellData.CountColumns - 1 &&
                 cells[index1 + n, index2 + m].Value >= 0)
