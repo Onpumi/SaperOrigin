@@ -3,6 +3,7 @@ using UnityEngine;
 public class MenuBarView : WindowBase
 {
     [SerializeField] private MenuType _menuType;
+    [SerializeField] private RectTransform _rectTransformFieldCells;
     private float _anchorMinY;
     private Rect SafeArea => Screen.safeArea;
     public RectTransform RectTransform { get; private set; }
@@ -12,9 +13,16 @@ public class MenuBarView : WindowBase
     {
         RectTransform = GetComponent<RectTransform>();
 
-        if (_menuType == MenuType.Top) SetPropertiesTopMenu();
-        else if (_menuType == MenuType.Bottom) SetPropertiesBottomMenu();
+        if (_menuType == MenuType.Top)
+        {
+            SetPropertiesTopMenu();
+        }
+        else if (_menuType == MenuType.Bottom)
+        {
+            SetPropertiesBottomMenu();
+        }
     }
+    
 
     private void SetPropertiesTopMenu()
     {

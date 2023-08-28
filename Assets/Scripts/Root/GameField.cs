@@ -119,7 +119,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         {
             _fieldCells.ResetField(countColumns, countRows, scale);
         }
-        BackGroundField.FitSizeMenu();
+          BackGroundField.FitSizeMenu();
         //BackGroundField.BorderField.Init(BackGroundField.RectTransform);
         //if (Screen.width > Screen.height)
         //  BackGroundField.FitSizeMenu();

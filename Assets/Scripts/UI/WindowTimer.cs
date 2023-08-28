@@ -40,9 +40,11 @@ public class WindowTimer : WindowBase
 
     private void InitSizeFieldTime()
     {
-        _widthCell = (_rectTransform.rect.width ) / _digitalViews.Length;
+        // _widthCell = (_rectTransform.rect.width ) / _digitalViews.Length;
+        _widthCell = 50f;
         _heightCell = _rectTransform.rect.height;
-        _gridLayoutGroup.cellSize = new Vector2(_widthCell, _heightCell);
+       _gridLayoutGroup.cellSize = new Vector2(_widthCell, _heightCell);
+     
     }
 
     public void StartTimer()

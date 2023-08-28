@@ -22,20 +22,18 @@ public class SavingScaleBricks : WindowBase
     {
         if( _windowConfirmation != null )
           _windowConfirmation.ActivateWindow(this);
-        
-       
     }
 
     public override void ConfirmAction(bool value)
     {
         if (value == true)
         {
+            _windowScaleBricks.Hide(); 
             _gameState.Views.GameField.SaveScaleValueBricks(TypesOption.SizeCells, _windowScalingBlocks);
             _gameState.Views.GameField.DestroyAll();
             _gameState.Views.GameField.ResetField();   
             _gameState.Views.GameField.GeneratePool();
             _gameState.Views.GameField.ReloadField();
-            _windowScaleBricks.Hide();     
         }
     }
     

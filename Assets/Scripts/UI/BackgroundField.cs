@@ -9,6 +9,10 @@ public class BackgroundField : MonoBehaviour
     [SerializeField] private BorderField _borderField;
     [SerializeField] private RectTransform _rectTransform;
     [SerializeField] private RectTransform _rectParentTransform;
+    [SerializeField] private SectionMenuView _rightTopMenuView;
+    [SerializeField] private SectionMenuView _leftTopMenuView;
+    [SerializeField] private SectionMenuView _centerTopMenuView;
+    
     public BorderField BorderField => _borderField;
     public RectTransform RectTransform => _rectTransform;
     private GridLayoutGroup _gridLayoutGroup;
@@ -116,5 +120,8 @@ public class BackgroundField : MonoBehaviour
         rectTransformMenuBar.anchorMin = new Vector2(0.5f, anchorYMin );
         rectTransformMenuBar.anchorMax = new Vector2(0.5f, anchorYMax );
         rectTransformMenuBar.sizeDelta = new Vector2( _rectTransform.sizeDelta.x, rectTransformMenuBar.sizeDelta.y );
+        var sizeCellForMenu = (rectTransformMenuBar.rect.width - _centerTopMenuView.GetWidth()) / 4f;
+        _rightTopMenuView.InitCellSize(sizeCellForMenu);    
+        _leftTopMenuView.InitCellSize(sizeCellForMenu);
     }
 }

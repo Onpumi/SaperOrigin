@@ -849,6 +849,9 @@ MonoBehaviour:
   _borderField: {fileID: 1320310686}
   _rectTransform: {fileID: 103083158}
   _rectParentTransform: {fileID: 1974903563}
+  _rightTopMenuView: {fileID: 1113609374}
+  _leftTopMenuView: {fileID: 1942420848}
+  _centerTopMenuView: {fileID: 1164760440}
 --- !u!224 &103083158
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5925,6 +5928,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _menuType: 1
+  _rectTransformFieldCells: {fileID: 0}
 --- !u!1 &635441451
 GameObject:
   m_ObjectHideFlags: 0
@@ -10536,7 +10540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MenuType: 3
   _centerImage: {fileID: 998485726}
-  _parentRectTransform: {fileID: 633069014}
+  _parentRectTransform: {fileID: 1779566968}
   _borderField: {fileID: 1320310686}
 --- !u!114 &1113609375
 MonoBehaviour:
@@ -16729,6 +16733,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _menuType: 0
+  _rectTransformFieldCells: {fileID: 103083158}
 --- !u!1 &1790110641
 GameObject:
   m_ObjectHideFlags: 0
@@ -18909,7 +18914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MenuType: 2
   _centerImage: {fileID: 998485726}
-  _parentRectTransform: {fileID: 633069014}
+  _parentRectTransform: {fileID: 1779566968}
   _borderField: {fileID: 1320310686}
 --- !u!114 &1942420849
 MonoBehaviour:
