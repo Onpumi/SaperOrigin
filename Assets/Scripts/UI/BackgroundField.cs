@@ -107,7 +107,6 @@ public class BackgroundField : MonoBehaviour
     {
         SetProperties(gameField);
        // var rectTransformMenuBar = _topMenuBar.GetComponent<RectTransform>();
-        
         //  if (Screen.width <= Screen.height)
         //    _borderField.Init(_rectTransform);
     }

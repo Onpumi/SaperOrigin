@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
@@ -6,10 +7,28 @@ using System.Collections.Generic;
 public class ButtonSettings : WindowBase, IBackToPreviousWindowCommand, IPointerDownHandler
 {
     [SerializeField] private GameState _gameState;
+    [SerializeField] private RectTransform _parent;
     [SerializeField] private IWindowCommand _activeWindowCommand;
     [SerializeField] private IBackToPreviousWindowCommand _backToPreviousWindowCommand;
     [SerializeField] private WindowSettings _windowSettings;
     [SerializeField] private IWindowCommand _backWindowCommand;
+    [SerializeField] private MenuBarView _topMenu;
+    private RectTransform _rectTransform;
+
+    private void Awake()
+    {
+        _rectTransform = GetComponent<RectTransform>();
+    }
+
+
+    private void Start()
+    {
+        if (_topMenu != null)
+        {
+            _topMenu.FitSizeUI(_rectTransform);
+        }
+    }
+
 
     public void OnPointerDown(PointerEventData eventData)
     {

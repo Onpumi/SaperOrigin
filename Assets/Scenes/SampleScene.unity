@@ -1850,6 +1850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scaleWidth: 0.5
+  _topMenu: {fileID: 0}
 --- !u!114 &208699290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3626,6 +3627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scaleWidth: 1
+  _topMenu: {fileID: 1779566971}
 --- !u!1 &393753515
 GameObject:
   m_ObjectHideFlags: 0
@@ -5685,7 +5687,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1490382524}
   m_HandleRect: {fileID: 1490382523}
   m_Direction: 2
-  m_Value: 0.9999998
+  m_Value: 0.99999964
   m_Size: 0.53934884
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -10970,6 +10972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scaleWidth: 1
+  _topMenu: {fileID: 0}
 --- !u!114 &1164760440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12872,7 +12875,9 @@ MonoBehaviour:
       Entry: 10
       Data: 1
   _gameState: {fileID: 2038550280}
+  _parent: {fileID: 0}
   _windowSettings: {fileID: 1398700026}
+  _topMenu: {fileID: 0}
 --- !u!1 &1439001009
 GameObject:
   m_ObjectHideFlags: 0
@@ -15978,7 +15983,9 @@ MonoBehaviour:
       Entry: 6
       Data: 
   _gameState: {fileID: 2038550280}
+  _parent: {fileID: 393753516}
   _windowSettings: {fileID: 1398700026}
+  _topMenu: {fileID: 1779566971}
 --- !u!114 &1704575726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15992,6 +15999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scaleWidth: 1
+  _topMenu: {fileID: 0}
 --- !u!1 &1720433638
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,9 @@ public class MenuBarView : WindowBase
     private Rect SafeArea => Screen.safeArea;
     public RectTransform RectTransform { get; private set; }
     public const float OffsetFromBottom = 100f;
+    public float Height => RectTransform.rect.height;
+    
+    
 
     private void Awake()
     {
@@ -51,8 +54,6 @@ public class MenuBarView : WindowBase
         RectTransform.sizeDelta = new Vector2(0f, heightMenu);
         var anchorPosition = RectTransform.anchoredPosition;
         RectTransform.anchoredPosition = new Vector2(anchorPosition.x, anchorPosition.y + OffsetFromBottom);
-
-      
     }
 
     public void FitWidth(float width)
@@ -65,8 +66,16 @@ public class MenuBarView : WindowBase
             RectTransform.anchorMin = new Vector2(deltaOffset, 0);
             RectTransform.anchorMax = new Vector2(1-deltaOffset, 0);
         }
-
     }
+
+    public void FitSizeUI( RectTransform rectTransform )
+    {
+        rectTransform.anchorMin = new Vector2(0.5f, 0f);
+        rectTransform.anchorMax = new Vector2(0.5f, 1f);
+        rectTransform.offsetMax = new Vector2(Height*0.5f,0);
+        rectTransform.offsetMin = new Vector2(-Height*0.5f,0);;
+    }
+    
 }
 
 public enum MenuType
