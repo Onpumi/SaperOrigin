@@ -13,7 +13,7 @@ public class UISizeManager : MonoBehaviour
         RectTransform rectTransform = GetComponent<RectTransform>();
         if (_topMenu != null)
         {
-            _topMenu.FitSizeUI(rectTransform);
+            _topMenu.FitSizeUI(rectTransform, _scaleWidth);
         }
     }
 

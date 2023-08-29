@@ -66,10 +66,12 @@ public class GameState : SerializedMonoBehaviour, ICompositeRoot
         IsPlay = false;
         IsPause = false;
         _uiData.ButtonPlay.SetNormColor();
+        
     }
 
 
     public void ResetTimeView() => _uiData.WindowTimer.ResetValue();
+    public void ResetCountMinesView( int countMines ) => _uiData.WindowCountMines.ResetValue(countMines);
 
     public void ActivatePause(bool isPause)
     {

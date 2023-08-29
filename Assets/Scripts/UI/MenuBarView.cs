@@ -68,12 +68,12 @@ public class MenuBarView : WindowBase
         }
     }
 
-    public void FitSizeUI( RectTransform rectTransform )
+    public void FitSizeUI( RectTransform rectTransform, float scale = 1f )
     {
         rectTransform.anchorMin = new Vector2(0.5f, 0f);
         rectTransform.anchorMax = new Vector2(0.5f, 1f);
-        rectTransform.offsetMax = new Vector2(Height*0.5f,0);
-        rectTransform.offsetMin = new Vector2(-Height*0.5f,0);;
+        rectTransform.offsetMax = new Vector2(Height*0.5f * scale,0);
+        rectTransform.offsetMin = new Vector2(-Height*0.5f * scale,0);;
     }
     
 }

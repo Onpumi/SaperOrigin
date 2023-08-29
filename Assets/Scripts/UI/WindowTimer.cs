@@ -9,7 +9,8 @@ public class WindowTimer : WindowBase
     [SerializeField] private TMP_Text _tmpText;
     [SerializeField] private float _deltaTime = 1f;
     [SerializeField] private Sprite[] _sprites;
-    [SerializeField] private BorderField _borderField; 
+    [SerializeField] private BorderField _borderField;
+    [SerializeField] private MenuBarView _topMenu;
     private DateTime _time = DateTime.Today;
     private StringBuilder _timeFinish;
     private bool _isPause = false;
@@ -29,7 +30,8 @@ public class WindowTimer : WindowBase
         int count = 0;
         foreach (Transform view in transform)
         {
-            _digitalViews[count++] = view.GetComponent<DigitalView>();
+            _digitalViews[count] = view.GetComponent<DigitalView>();
+            count++;
         }
         _gridLayoutGroup = GetComponent<GridLayoutGroup>();
         _rectTransform = GetComponent<RectTransform>();
@@ -38,21 +40,21 @@ public class WindowTimer : WindowBase
     }
 
 
-    private void InitSizeFieldTime()
+    public void InitSizeFieldTime()
     {
-        // _widthCell = (_rectTransform.rect.width ) / _digitalViews.Length;
-        _widthCell = 50f;
-        _heightCell = _rectTransform.rect.height;
+        _widthCell = _topMenu.Height / 3f;
+        _heightCell = _topMenu.Height;
        _gridLayoutGroup.cellSize = new Vector2(_widthCell, _heightCell);
-     
     }
+
+   
+    
 
     public void StartTimer()
     {
         _timeFinish.Clear();
         ResetValue();
         _seconds = 0;
-        InitSizeFieldTime();
         InvokeRepeating(nameof(UpdateTimer), 0, _deltaTime);
     }
 
@@ -76,7 +78,6 @@ public class WindowTimer : WindowBase
     public void StopTimer()
     {
         _timeFinish.Append(_time.ToString("mm:ss"));
-        ResetValue();
         CancelInvoke(nameof(UpdateTimer));
     }
 

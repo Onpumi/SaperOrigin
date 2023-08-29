@@ -122,5 +122,9 @@ public class BackgroundField : MonoBehaviour
         var sizeCellForMenu = (rectTransformMenuBar.rect.width - _centerTopMenuView.GetWidth()) / 4f;
         _rightTopMenuView.InitCellSize(sizeCellForMenu);    
         _leftTopMenuView.InitCellSize(sizeCellForMenu);
+        _rightTopMenuView.InitSetTimeView();
+        
     }
+    
+    
 }

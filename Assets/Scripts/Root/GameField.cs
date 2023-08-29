@@ -102,10 +102,15 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         if (GameState == null) return;
         GameState.StopGame();
         GameState.ResetTimeView();
+        //if (_fieldCells != null)
+        //{
+//            GameState.ResetCountMinesView(_fieldCells.ContainerMines.CountMines);
+  //      }
+
         _gameState.GameFieldData.ScaleBrick = DataSetting.GameData.GetOptionValue(TypesOption.SizeCells);
         BackGroundField.Init(this);
         var scale = GameState.GameFieldData.ScaleBrick;
-       if (_fieldCells != null)
+        if (_fieldCells != null)
             _fieldCells.DespawnField();
 
         var (countColumns, countRows) = BackGroundField.InitGRID(100f * scale);
@@ -119,7 +124,10 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         {
             _fieldCells.ResetField(countColumns, countRows, scale);
         }
-          BackGroundField.FitSizeMenu();
+
+        GameState.ResetCountMinesView(_fieldCells.ContainerMines.CountMines);
+        
+        BackGroundField.FitSizeMenu();
         //BackGroundField.BorderField.Init(BackGroundField.RectTransform);
         //if (Screen.width > Screen.height)
         //  BackGroundField.FitSizeMenu();
@@ -128,16 +136,14 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
 
     public void DestroyAll()
     {
-        foreach ( Transform child in transform)
+        foreach (Transform child in transform)
         {
             //Pool.Return(child.GetComponent<CellView>());
             Destroy(child.transform.gameObject);
         }
     }
-    
-    
-    
-    
+
+
     public void StartProgressLoad()
     {
         StartCoroutine(StartProgress());
