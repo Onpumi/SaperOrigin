@@ -4,10 +4,7 @@ using UnityEngine.UI;
 
 public class FlagView : MonoBehaviour, IFlagView, IPoolable<FlagView>
 {
-    [SerializeField] private CellView _parent;
     [SerializeField] private Sprite _spriteError;
-    [SerializeField] private RectTransform _rectTransform;
-    public RectTransform RectTransform => _rectTransform;
     private Image _image;
     public bool Value { get; private set; }
 
@@ -29,20 +26,12 @@ public class FlagView : MonoBehaviour, IFlagView, IPoolable<FlagView>
         Value = false;
     }
 
-    public float GetWidth() => _image.sprite.rect.width;
-
-    public float GetHeight() => _image.sprite.rect.height;
-
     public void SetFlagError()
     {
         _image.sprite = _spriteError;
         transform.localScale = Vector3.one;
     }
 
-    public void SetParent( ICell cell )
-    {
-        //transform.SetParent(cell.CellView.GetTransform());
-    }
 
     public void Display()
     {
@@ -56,9 +45,6 @@ public class FlagView : MonoBehaviour, IFlagView, IPoolable<FlagView>
         transform.gameObject.SetActive(value);
         transform.localScale = Vector3.one / 1.5f;
     }
-    
-    public Transform GetTransform() => transform;
-    
     
     public void SpawnFrom( IPool<FlagView> pool )
     {

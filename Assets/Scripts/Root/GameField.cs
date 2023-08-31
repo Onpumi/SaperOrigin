@@ -102,11 +102,6 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         if (GameState == null) return;
         GameState.StopGame();
         GameState.ResetTimeView();
-        //if (_fieldCells != null)
-        //{
-//            GameState.ResetCountMinesView(_fieldCells.ContainerMines.CountMines);
-  //      }
-
         _gameState.GameFieldData.ScaleBrick = DataSetting.GameData.GetOptionValue(TypesOption.SizeCells);
         BackGroundField.Init(this);
         var scale = GameState.GameFieldData.ScaleBrick;
@@ -126,7 +121,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         }
 
         GameState.ResetCountMinesView(_fieldCells.ContainerMines.CountMines);
-        
+
         BackGroundField.FitSizeMenu();
         //BackGroundField.BorderField.Init(BackGroundField.RectTransform);
         //if (Screen.width > Screen.height)
@@ -192,9 +187,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     public override void OpenCanvasByPressingEscape(IWindowCommand windowCommand)
     {
         if (_gameState.IsPlay)
-        {
             _gameState.UIData.WindowConfirmation.ActivateWindow(this);
-        }
         else
             _gameState.BackPreviousWindow.Open(this);
     }

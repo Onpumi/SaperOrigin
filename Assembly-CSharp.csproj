@@ -113,7 +113,7 @@
      <Compile Include="Assets\Scripts\UI\SectionMenuView.cs" />
      <Compile Include="Assets\Q3DAudio\Scripts\Q3DAudioSource.cs" />
      <Compile Include="Assets\Q3DAudio\Scripts\Q3DAudioGlobalSettings.cs" />
-     <Compile Include="Assets\Scripts\Model\Timer\TimeBuilder.cs" />
+     <Compile Include="Assets\Scripts\Model\Timer\DigitalBuilder.cs" />
      <Compile Include="Assets\Scripts\Pooling\IPoolFactory.cs" />
      <Compile Include="Assets\Scripts\Model\Cell\Cell.cs" />
      <Compile Include="Assets\Scripts\Pooling\Pool Field\PoolDataBuilder.cs" />

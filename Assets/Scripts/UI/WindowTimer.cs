@@ -16,7 +16,7 @@ public class WindowTimer : WindowBase
     private bool _isPause = false;
     private float _seconds;
     private DigitalView[] _digitalViews;
-    private TimeBuilder _timeBuilder;
+    private DigitalBuilder _digitalBuilder;
     private GridLayoutGroup _gridLayoutGroup;
     private RectTransform _rectTransform;
     private float _widthCell;
@@ -35,7 +35,7 @@ public class WindowTimer : WindowBase
         }
         _gridLayoutGroup = GetComponent<GridLayoutGroup>();
         _rectTransform = GetComponent<RectTransform>();
-        _timeBuilder = new TimeBuilder(_sprites, _digitalViews);
+        _digitalBuilder = new DigitalBuilder(_sprites, _digitalViews);
         InitSizeFieldTime();
     }
 
@@ -61,7 +61,7 @@ public class WindowTimer : WindowBase
     public void ResetValue()
     {
         _time = DateTime.Today;
-        _timeBuilder.DisplayDigitals( _time.ToString("mm:ss"));
+        _digitalBuilder.Display( _time.ToString("mm:ss"));
         _seconds = 0;
     }
 
@@ -71,7 +71,7 @@ public class WindowTimer : WindowBase
         {
             _seconds++;
             _time = DateTime.Today.AddSeconds(_seconds);
-            _timeBuilder.DisplayDigitals( _time.ToString("mm:ss"));
+            _digitalBuilder.Display( _time.ToString("mm:ss"));
         }
     }
 
