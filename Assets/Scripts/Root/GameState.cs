@@ -75,7 +75,7 @@ public class GameState : SerializedMonoBehaviour, ICompositeRoot
 
     public void ActivatePause(bool isPause)
     {
-        if (_timerPlayer != null)
+       if (_timerPlayer != null)
             _timerPlayer.ToFreezeTime(isPause);
         IsPause = isPause;
     }

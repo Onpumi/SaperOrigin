@@ -18,12 +18,26 @@ public class WindowSettings : WindowBase , IWindowUI
     private void OnEnable()
     {
         _gameState.CurrentInitWindow(this);
+
+    }
+
+
+    public void Start()
+    {
+        if (Screen.width > Screen.height)
+        {
+            var recTransform = GetComponent<RectTransform>();
+            var offset = (recTransform.rect.width - recTransform.rect.height) * 0.5f;
+         //   recTransform.anchorMin = new Vector2(0.3f, 0);
+         //   recTransform.anchorMax = new Vector2(0.7f, 1f);
+         recTransform.offsetMin = new Vector2(offset,0f);
+         recTransform.offsetMax = new Vector2(-offset,0f);
+        }
     }
 
     public void InitBackWindowCommand( IWindowCommand backWindowCommand )
     {
         _backWindowCommand = backWindowCommand;
-        
     }
 
      public override void OpenCanvasByPressingEscape( IWindowCommand windowCommand )

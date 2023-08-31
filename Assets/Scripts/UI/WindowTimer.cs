@@ -37,6 +37,7 @@ public class WindowTimer : WindowBase
         _rectTransform = GetComponent<RectTransform>();
         _digitalBuilder = new DigitalBuilder(_sprites, _digitalViews);
         InitSizeFieldTime();
+        transform.localScale = Vector2.one * 0.8f;
     }
 
 

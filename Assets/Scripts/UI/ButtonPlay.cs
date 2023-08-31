@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -18,6 +17,7 @@ public class ButtonPlay : WindowBase, IPointerDownHandler
     public void OnEnable()
     {
         _image = GetComponent<Image>();
+        
     }
 
     public void SetLossColor() => _image.color = _lossColor;
@@ -57,12 +57,14 @@ public class ButtonPlay : WindowBase, IPointerDownHandler
         {
             StartPlay();
         }
+        else
+        {
+            _gameState.ActivatePause(false);
+        }
     }
 
     public override void Display(List<IWindowCommand> activeUI)
     {
         _gameState.DisableAllUI();
-        //      if( activeUI != null )
-//          activeUI.ForEach(ui => ui.Enable());
     }
 }

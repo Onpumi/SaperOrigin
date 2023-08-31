@@ -13,6 +13,7 @@ public class DigitalView : MonoBehaviour
     {
         _rectTransform = GetComponent<RectTransform>();
         _image = GetComponent<Image>();
+        transform.localScale = Vector2.one * 0.8f;
     }
 
     public void Display( Sprite sprite )

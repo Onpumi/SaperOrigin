@@ -38,6 +38,7 @@ public class MenuBarView : WindowBase
         _anchorMinY = anchorMax.y;
         RectTransform.anchorMin = new Vector2(anchorMin.x, _anchorMinY);
         RectTransform.anchorMax = anchorMax;
+        RectTransform.anchoredPosition -= Vector2.up * (RectTransform.rect.height * 0.3f);
     }
 
     private void SetPropertiesBottomMenu()

@@ -15,6 +15,7 @@ public class UISizeManager : MonoBehaviour
         {
             _topMenu.FitSizeUI(rectTransform, _scaleWidth);
         }
+        transform.localScale = Vector2.one * 0.8f;
     }
 
     public void SetSize(RectTransform parentRectTransform)

@@ -7,7 +7,6 @@ using System.Collections.Generic;
 public class ButtonSettings : WindowBase, IBackToPreviousWindowCommand, IPointerDownHandler
 {
     [SerializeField] private GameState _gameState;
-    [SerializeField] private RectTransform _parent;
     [SerializeField] private IWindowCommand _activeWindowCommand;
     [SerializeField] private IBackToPreviousWindowCommand _backToPreviousWindowCommand;
     [SerializeField] private WindowSettings _windowSettings;
@@ -27,6 +26,8 @@ public class ButtonSettings : WindowBase, IBackToPreviousWindowCommand, IPointer
         {
             _topMenu.FitSizeUI(_rectTransform);
         }
+
+        transform.localScale = Vector2.one * 0.8f;
     }
 
 
