@@ -101,7 +101,7 @@
      <Compile Include="Assets\Scripts\Sounds\SoundAction.cs" />
      <Compile Include="Assets\Scripts\Factories\FactoryView.cs" />
      <Compile Include="Assets\Scripts\UI\UISizeManager.cs" />
-     <Compile Include="Assets\Scripts\UI\ButtonSettings.cs" />
+     <Compile Include="Assets\Scripts\UI\ButtonMenu.cs" />
      <Compile Include="Assets\Scripts\UI\ScalerRowMenu.cs" />
      <Compile Include="Assets\Scripts\Model\Actions\DigDownAction.cs" />
      <Compile Include="Assets\Scripts\Data\PoolDataContainer.cs" />
@@ -192,10 +192,12 @@
      <Compile Include="Assets\Scripts\UI\WindowS\BackOpenerWindow.cs" />
      <Compile Include="Assets\Scripts\Model\Scale\ScaleCalculator.cs" />
      <Compile Include="Assets\Scripts\SaveData\ScreenData.cs" />
+     <Compile Include="Assets\Scripts\UI\WindowStatistics.cs" />
      <Compile Include="Assets\YandexGame\ScriptsYG\ViewingAdsYG.cs" />
      <Compile Include="Assets\Scripts\Views\BrickView.cs" />
      <Compile Include="Assets\Scripts\Root\ICompositeRoot.cs" />
      <Compile Include="Assets\Scripts\Views\Interfaces\IMineView.cs" />
+     <Compile Include="Assets\Scripts\Model\Learn\Education.cs" />
      <Compile Include="Assets\YandexGame\ScriptsYG\LeaderboardYG.cs" />
      <Compile Include="Assets\Scripts\Pooling\Pool Field\PoolDataRoot.cs" />
      <Compile Include="Assets\Scripts\Data\GameSetups.cs" />
@@ -251,6 +253,7 @@
      <None Include="Assets\WebGLTemplates\LICENSE.txt" />
      <Folder Include="Assets\WebGLTemplates" />
      <Folder Include="Assets\Scripts\Data\Intefaces" />
+     <Folder Include="Assets\Scripts\Model\Learn" />
      <Folder Include="Assets\YandexGame\ScriptsYG" />
      <Folder Include="Assets\YandexGame\Prefabs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />

@@ -123,9 +123,6 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         GameState.ResetCountMinesView(_fieldCells.ContainerMines.CountMines);
 
         BackGroundField.FitSizeMenu();
-        //BackGroundField.BorderField.Init(BackGroundField.RectTransform);
-        //if (Screen.width > Screen.height)
-        //  BackGroundField.FitSizeMenu();
         _uiData.WindowWinner.Hide();
     }
 
@@ -133,16 +130,15 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     {
         foreach (Transform child in transform)
         {
-            //Pool.Return(child.GetComponent<CellView>());
             Destroy(child.transform.gameObject);
         }
     }
 
 
-    public void StartProgressLoad()
-    {
-        StartCoroutine(StartProgress());
-    }
+    //public void StartProgressLoad()
+    //{
+//        StartCoroutine(StartProgress());
+//    }
 
 
     IEnumerator StartProgress()

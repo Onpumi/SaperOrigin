@@ -65,14 +65,13 @@ public class Cell : ICell
 
     public void Despawn( Pool<CellView> pool )
     {
-        //_cellView.Despawn();
         pool.Return(_cellView);
     }
 
-    public void Destroy()
-    {
-        _cellView.Destroy();
-    }
+    //public void Destroy()
+    //{
+//        _cellView.Destroy();
+//    }
 
 
     public void Spawn(Pool<CellView> pool, CellData cellData)
@@ -85,8 +84,10 @@ public class Cell : ICell
         CellData = _cellView.CellData;
         Flag = new Flag(_cellView);
         ResetValue();
+        
     }
 
+    /*
     public void Spawn(CellView cellView, CellData cellData)
     {
         _cellView = cellView;
@@ -98,14 +99,14 @@ public class Cell : ICell
         Flag = new Flag(_cellView);
         ResetValue();
     }
-
+*/
 
     public void UpdateCellData()
     {
         CellData = CellView.CellData;
     }
 
-
+/*
     public void Init( CellView cellView )
     {
         _cellView = cellView;
@@ -117,7 +118,7 @@ public class Cell : ICell
         Flag = new Flag(_cellView);
         ResetValue();
     }
-
+*/
 
 
 

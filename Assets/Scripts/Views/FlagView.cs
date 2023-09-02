@@ -1,9 +1,9 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class FlagView : MonoBehaviour, IFlagView, IPoolable<FlagView>
 {
+    [SerializeField] private Sprite _spriteOriginal;
     [SerializeField] private Sprite _spriteError;
     private Image _image;
     public bool Value { get; private set; }
@@ -30,6 +30,11 @@ public class FlagView : MonoBehaviour, IFlagView, IPoolable<FlagView>
     {
         _image.sprite = _spriteError;
         transform.localScale = Vector3.one;
+    }
+
+    public void ResetSprite()
+    {
+        _image.sprite = _spriteOriginal;
     }
 
 

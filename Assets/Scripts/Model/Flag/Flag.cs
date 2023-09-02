@@ -41,7 +41,11 @@ public class Flag
         else return Value;
     }
 
-    public void Reset() => RemoveFlag();
+    public void Reset()
+    {
+        RemoveFlag();
+        _cellView.FlagView.ResetSprite();
+    }
 
     private bool RemoveFlag() => Value = _cellView.InitFlag(false);
 

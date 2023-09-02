@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
 
-public class ButtonSettings : WindowBase, IBackToPreviousWindowCommand, IPointerDownHandler
+public class ButtonMenu : WindowBase, IBackToPreviousWindowCommand, IPointerDownHandler
 {
     [SerializeField] private GameState _gameState;
     [SerializeField] private IWindowCommand _activeWindowCommand;
@@ -36,9 +35,12 @@ public class ButtonSettings : WindowBase, IBackToPreviousWindowCommand, IPointer
         var activesUI = new List<IWindowCommand>();
         activesUI.Add(_activeWindowCommand);
         Display(activesUI);
-        if (_backToPreviousWindowCommand != null)
-            _gameState.CurrentInitWindow(_windowSettings);
-        _windowSettings.InitBackWindowCommand(_backWindowCommand);
+        if (_windowSettings != null)
+        {
+            if (_backToPreviousWindowCommand != null)
+                _gameState.CurrentInitWindow(_windowSettings);
+            _windowSettings.InitBackWindowCommand(_backWindowCommand);
+        }
     }
 
     public override void Display(List<IWindowCommand> activeUI)

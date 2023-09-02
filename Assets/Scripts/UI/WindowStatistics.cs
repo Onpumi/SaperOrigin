@@ -1,5 +1,5 @@
 
-public class WindowReference : WindowBase
+public class WindowStatistics : WindowBase
 {
     private void Awake()
     {

@@ -11,6 +11,7 @@ public class BackButton : WindowBase, IPointerDownHandler, IPointerUpHandler
 
     public override void ConfirmAction(bool value)
     {
+        
         if (_backActionMenu == BackActionMenu.ReturnMainMenu && value == true)
         {
             _windowCommand.Hide();
@@ -33,15 +34,18 @@ public class BackButton : WindowBase, IPointerDownHandler, IPointerUpHandler
                 Application.Quit();
             }
         }
+        
     }
 
 
     public void OnPointerDown(PointerEventData eventData)
     {
+//        _backToPreviousWindowCommand.Activate();
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        
         TryBackAction();
         ExitFromCurrentWindow();
     }
@@ -59,6 +63,7 @@ public class BackButton : WindowBase, IPointerDownHandler, IPointerUpHandler
 
     public void TryBackAction()
     {
+        
         if (_backActionMenu != BackActionMenu.ReturnPlayGame)
         {
             _gameState.UIData.WindowConfirmation.ActivateWindow(this);
@@ -69,6 +74,7 @@ public class BackButton : WindowBase, IPointerDownHandler, IPointerUpHandler
             _gameState.ActivatePause(false);
             _gameState.CurrentInitWindow(_windowCommand.BackWindowCommand);
         }
+        
     }
 }
 
