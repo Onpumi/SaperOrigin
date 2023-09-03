@@ -25,6 +25,7 @@ public class ButtonPlay : WindowBase, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        _gameState.OpenField();
         if (_gameState.IsPlay)
             _gameState.UIData.WindowConfirmation.ActivateWindow(this);
         else

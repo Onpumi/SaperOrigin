@@ -16,13 +16,14 @@ public class GameState : SerializedMonoBehaviour, ICompositeRoot
     public UIData UIData => _uiData;
     public bool IsPlay { get; private set; }
     public bool IsPause { get; private set; }
+    public bool IsOpenField { get; private set; }
+    
     private List<IBackToPreviousWindowCommand> _backToPreviousWindowCommand;
     public IBackPreviousWindow BackPreviousWindow { get; private set; }
 
     public IWindowCommand CurrentWindow { get; private set; }
     public ClassForJavaScript JS;
     public Views Views => _views;
-
 
     public void Init()
     {
@@ -31,8 +32,20 @@ public class GameState : SerializedMonoBehaviour, ICompositeRoot
         _uiData ??= GetComponent<UIData>();
         _timerPlayer = new TimerPlayer(_uiData.WindowTimer);
         IsPlay = false;
+        IsOpenField = false;
         _backToPreviousWindowCommand = new List<IBackToPreviousWindowCommand>();
         BackPreviousWindow = new BackOpenerWindow();
+    }
+
+
+    public void CloseField()
+    {
+        IsOpenField = false;
+    }
+
+    public void OpenField()
+    {
+        IsOpenField = true;
     }
 
 

@@ -1722,6 +1722,113 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 169143879}
   m_CullTransparentMesh: 1
+--- !u!1 &191748240
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 191748241}
+  - component: {fileID: 191748244}
+  - component: {fileID: 191748243}
+  - component: {fileID: 191748245}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &191748241
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191748240}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1607947370}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -7.17, y: 515}
+  m_SizeDelta: {x: 363.22, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &191748243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191748240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &191748244
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191748240}
+  m_CullTransparentMesh: 1
+--- !u!114 &191748245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191748240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507c6cee2e1116e458d050f865fb92d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 63046951}
+    - {fileID: 199209382}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _windowNextCommand
+      Entry: 10
+      Data: 0
+    - Name: _windowPrevCommand
+      Entry: 10
+      Data: 1
+  _gameState: {fileID: 0}
 --- !u!1 &199209380
 GameObject:
   m_ObjectHideFlags: 0
@@ -5793,6 +5900,7 @@ MonoBehaviour:
       Data: 
   _gameState: {fileID: 2038550280}
   _backActionMenu: 0
+  _isPlayGame: 0
 --- !u!1 &587194462
 GameObject:
   m_ObjectHideFlags: 0
@@ -12598,9 +12706,9 @@ GameObject:
   - component: {fileID: 1359748087}
   - component: {fileID: 1359748090}
   - component: {fileID: 1359748089}
-  - component: {fileID: 1359748088}
+  - component: {fileID: 1359748091}
   m_Layer: 5
-  m_Name: BackReturn (1)
+  m_Name: BackReturn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12628,37 +12736,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -2773}
   m_SizeDelta: {x: 0, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1359748088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359748086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c5376a0896167045ab3d7dd08ac5492, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 1398700026}
-    - {fileID: 63046951}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: _windowCommand
-      Entry: 10
-      Data: 0
-    - Name: _backToPreviousWindowCommand
-      Entry: 10
-      Data: 1
-  _gameState: {fileID: 2038550280}
-  _backActionMenu: 0
 --- !u!114 &1359748089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12697,6 +12774,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1359748086}
   m_CullTransparentMesh: 1
+--- !u!114 &1359748091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359748086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507c6cee2e1116e458d050f865fb92d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 103083156}
+    - {fileID: 1398700026}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _windowNextCommand
+      Entry: 10
+      Data: 0
+    - Name: _windowPrevCommand
+      Entry: 10
+      Data: 1
+  _gameState: {fileID: 2038550280}
 --- !u!1 &1373203447
 GameObject:
   m_ObjectHideFlags: 0
@@ -13329,7 +13436,6 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 1398700026}
-    - {fileID: 63046951}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -13339,14 +13445,14 @@ MonoBehaviour:
       Entry: 10
       Data: 0
     - Name: _backToPreviousWindowCommand
-      Entry: 10
-      Data: 1
+      Entry: 6
+      Data: 
     - Name: _backWindowCommand
-      Entry: 10
-      Data: 1
+      Entry: 6
+      Data: 
   _gameState: {fileID: 2038550280}
   _windowSettings: {fileID: 1398700026}
-  _topMenu: {fileID: 0}
+  _topMenu: {fileID: 1779566971}
 --- !u!1 &1439001009
 GameObject:
   m_ObjectHideFlags: 0
@@ -14822,6 +14928,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2133590478}
+  - {fileID: 191748241}
   m_Father: {fileID: 202809056}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15553,28 +15660,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1653377098}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c5376a0896167045ab3d7dd08ac5492, type: 3}
+  m_Script: {fileID: 11500000, guid: 507c6cee2e1116e458d050f865fb92d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 1989881321}
     - {fileID: 63046951}
+    - {fileID: 1989881321}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: _windowCommand
+    - Name: _windowNextCommand
       Entry: 10
       Data: 0
-    - Name: _backToPreviousWindowCommand
+    - Name: _windowPrevCommand
       Entry: 10
       Data: 1
   _gameState: {fileID: 2038550280}
-  _backActionMenu: 0
 --- !u!1001 &1656443909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16387,6 +16493,7 @@ MonoBehaviour:
       Data: 
   _gameState: {fileID: 2038550280}
   _backActionMenu: 0
+  _isPlayGame: 0
 --- !u!1001 &1701153304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20008,7 +20115,7 @@ GameObject:
   - component: {fileID: 1949169815}
   - component: {fileID: 1949169818}
   - component: {fileID: 1949169817}
-  - component: {fileID: 1949169816}
+  - component: {fileID: 1949169819}
   m_Layer: 5
   m_Name: BackReturn
   m_TagString: Untagged
@@ -20038,37 +20145,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1949169816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1949169814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c5376a0896167045ab3d7dd08ac5492, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 1542947144}
-    - {fileID: 63046951}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: _windowCommand
-      Entry: 10
-      Data: 0
-    - Name: _backToPreviousWindowCommand
-      Entry: 10
-      Data: 1
-  _gameState: {fileID: 2038550280}
-  _backActionMenu: 0
 --- !u!114 &1949169817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20107,6 +20183,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949169814}
   m_CullTransparentMesh: 1
+--- !u!114 &1949169819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949169814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507c6cee2e1116e458d050f865fb92d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 63046951}
+    - {fileID: 1542947144}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _windowNextCommand
+      Entry: 10
+      Data: 0
+    - Name: _windowPrevCommand
+      Entry: 10
+      Data: 1
+  _gameState: {fileID: 0}
 --- !u!1 &1952766162
 GameObject:
   m_ObjectHideFlags: 0

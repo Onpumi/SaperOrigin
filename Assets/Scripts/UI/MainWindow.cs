@@ -55,7 +55,7 @@ public class MainWindow : WindowBase, IBackToPreviousWindowCommand
     {
         base.Enable();
         ActivateChildAll(transform);
-        
+        _gameState.CloseField();
         
     }
 
