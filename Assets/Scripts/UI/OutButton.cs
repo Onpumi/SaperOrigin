@@ -36,6 +36,7 @@ public class OutButton : WindowBase, IPointerDownHandler
             if (_gameState.IsOpenField == true)
             {
                 _gameState.UIData.WindowSettings.Hide();
+                _gameState.ActivatePause(false);
             }
             else
             {

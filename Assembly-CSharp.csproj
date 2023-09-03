@@ -43,6 +43,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\UI\Interfaces\IBackToPreviousWindowCommand.cs" />
      <Compile Include="Assets\Scripts\Views\Interfaces\ICellView.cs" />
+     <Compile Include="Assets\Scripts\UI\OutButton.cs" />
      <Compile Include="Assets\Scripts\UI\MainWindow.cs" />
      <Compile Include="Assets\Scripts\Model\Actions\IDownAction.cs" />
      <Compile Include="Assets\Scripts\Model\Field\FieldCells.cs" />
@@ -201,7 +202,6 @@
      <Compile Include="Assets\YandexGame\ScriptsYG\LeaderboardYG.cs" />
      <Compile Include="Assets\Scripts\Pooling\Pool Field\PoolDataRoot.cs" />
      <Compile Include="Assets\Scripts\Data\GameSetups.cs" />
-     <Compile Include="Assets\Scripts\UI\OutButton.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\YandexGame\Prefabs\Leaderboards" />
      <Folder Include="Assets\Scripts\SaveData" />
