@@ -1,3 +1,4 @@
+/*
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -36,7 +37,7 @@ public class BackButton : WindowBase, IPointerDownHandler, IPointerUpHandler
             }
         }
         
-        /*
+        
         if (_isPlayGame == false)
         {
             _windowCommand.Hide();
@@ -49,7 +50,7 @@ public class BackButton : WindowBase, IPointerDownHandler, IPointerUpHandler
             _gameState.BackPreviousWindow.Open(this, _gameState.UIData.MainWindow);
             _gameState.StopGame();
         }
-        */
+        
     }
 
 
@@ -89,7 +90,7 @@ public class BackButton : WindowBase, IPointerDownHandler, IPointerUpHandler
             _gameState.CurrentInitWindow(_windowCommand.BackWindowCommand);
         }
         
-/*        
+        
         if ( _isPlayGame == false )
         {
             _gameState.UIData.WindowConfirmation.ActivateWindow(this);
@@ -100,7 +101,7 @@ public class BackButton : WindowBase, IPointerDownHandler, IPointerUpHandler
             _gameState.ActivatePause(false);
             _gameState.CurrentInitWindow(_windowCommand.BackWindowCommand);
         }
-*/
+
     }
 }
 
@@ -111,3 +112,5 @@ public enum BackActionMenu
     ReturnMainMenu,
     Exit
 }
+
+*/
