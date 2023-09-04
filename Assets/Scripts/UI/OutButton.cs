@@ -10,9 +10,10 @@ public class OutButton : WindowBase, IPointerDownHandler
 
     private void ActivateCommandWindow()
     {
-        _windowPrevCommand.Hide();
-        _windowNextCommand.Enable();
+        _windowPrevCommand?.Hide();
+        _windowNextCommand?.Enable();
     }
+
     public override void ConfirmAction(bool value)
     {
         if (value == true)
@@ -35,9 +36,22 @@ public class OutButton : WindowBase, IPointerDownHandler
         if (_windowPrevCommand is WindowPause)
         {
             if (_gameState.IsOpenField && _gameState.IsPlay)
-                _gameState.UIData.WindowConfirmation.ActivateWindow(this);
-            else 
+            {
+                if (_windowNextCommand != null && _windowNextCommand is not GameField)
+                {
+                    _gameState.UIData.WindowConfirmation.ActivateWindow(this);
+                }
+                else
+                {
+                    _windowPrevCommand?.Hide();
+                    _gameState.ActivatePause(false);
+                }
+            }
+            else
+            {
                 ActivateCommandWindow();
+            }
+
             return;
         }
         else if (_windowPrevCommand is WindowSettings)
@@ -58,13 +72,13 @@ public class OutButton : WindowBase, IPointerDownHandler
 
         if (_windowNextCommand is not GameField)
         {
-            _windowNextCommand.Enable();
+            _windowNextCommand?.Enable();
         }
         else
         {
             _gameState.ActivatePause(false);
         }
 
-        _windowPrevCommand.Hide();
+        _windowPrevCommand?.Hide();
     }
 }
