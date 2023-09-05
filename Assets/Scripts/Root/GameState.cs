@@ -17,7 +17,7 @@ public class GameState : SerializedMonoBehaviour, ICompositeRoot
     public bool IsPlay { get; private set; }
     public bool IsPause { get; private set; }
     public bool IsOpenField { get; private set; }
-    
+
     private List<IBackToPreviousWindowCommand> _backToPreviousWindowCommand;
     public IBackPreviousWindow BackPreviousWindow { get; private set; }
 
@@ -83,11 +83,11 @@ public class GameState : SerializedMonoBehaviour, ICompositeRoot
 
 
     public void ResetTimeView() => _uiData.WindowTimer.ResetValue();
-    public void ResetCountMinesView( int countMines ) => _uiData.WindowCountMines.ResetValue(countMines);
+    public void ResetCountMinesView(int countMines) => _uiData.WindowCountMines.ResetValue(countMines);
 
     public void ActivatePause(bool isPause)
     {
-       if (_timerPlayer != null)
+        if (_timerPlayer != null)
             _timerPlayer.ToFreezeTime(isPause);
         IsPause = isPause;
     }

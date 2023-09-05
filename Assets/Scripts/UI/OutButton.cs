@@ -35,11 +35,18 @@ public class OutButton : WindowBase, IPointerDownHandler
     {
         if (_windowPrevCommand is WindowPause)
         {
-            if (_gameState.IsOpenField && _gameState.IsPlay)
+            if (_gameState.IsOpenField)
             {
                 if (_windowNextCommand != null && _windowNextCommand is not GameField)
                 {
-                    _gameState.UIData.WindowConfirmation.ActivateWindow(this);
+                    if (_gameState.IsPlay)
+                    {
+                        _gameState.UIData.WindowConfirmation.ActivateWindow(this);
+                    }
+                    else
+                    {
+                        ActivateCommandWindow();
+                    }
                 }
                 else
                 {
@@ -67,6 +74,12 @@ public class OutButton : WindowBase, IPointerDownHandler
                 _gameState.UIData.WindowSettings.Hide();
             }
 
+            return;
+        }
+
+        else if (_windowPrevCommand is WindowScaleBricks)
+        {
+            ActivateCommandWindow();
             return;
         }
 

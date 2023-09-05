@@ -12,30 +12,42 @@ public class SavingScaleBricks : WindowBase
 
     private void Awake()
     {
-        _buttonSave = transform.GetChild(0).GetComponent<Button>()
-                      ?? throw new ArgumentException("You try to get null saving button");
+         _buttonSave = transform.GetComponent<Button>()
+                        ?? throw new ArgumentException("You try to get null saving button");
 
         _buttonSave.onClick.AddListener(OnClickButton);
     }
 
     private void OnClickButton()
     {
-        if( _windowConfirmation != null )
-          _windowConfirmation.ActivateWindow(this);
+        if (_windowConfirmation != null && _gameState.IsPlay)
+        {
+            _windowConfirmation.ActivateWindow(this);
+        }
+        else
+        {
+            _windowScaleBricks.Hide();
+            SafeAndResetField();
+        }
     }
 
     public override void ConfirmAction(bool value)
     {
         if (value == true)
         {
-            _windowScaleBricks.Hide(); 
-            _gameState.Views.GameField.SaveScaleValueBricks(TypesOption.SizeCells, _windowScalingBlocks);
-            _gameState.Views.GameField.DestroyAll();
-            _gameState.Views.GameField.ResetField();   
-            _gameState.Views.GameField.GeneratePool();
-            _gameState.Views.GameField.ReloadField();
+            _windowScaleBricks.Hide();
+            SafeAndResetField();
         }
     }
-    
+
+
+    private void SafeAndResetField()
+    {
+        _gameState.Views.GameField.SaveScaleValueBricks(TypesOption.SizeCells, _windowScalingBlocks);
+        _gameState.Views.GameField.DestroyAll();
+        _gameState.Views.GameField.ResetField();   
+        _gameState.Views.GameField.GeneratePool();
+        _gameState.Views.GameField.ReloadField();
+    }
     
 }

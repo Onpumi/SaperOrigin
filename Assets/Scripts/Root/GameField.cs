@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
 {
@@ -134,16 +133,10 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         }
     }
 
-
-    //public void StartProgressLoad()
-    //{
-//        StartCoroutine(StartProgress());
-//    }
-
-
     IEnumerator StartProgress()
     {
         _sliderProgress.transform.gameObject.SetActive(true);
+        _sliderProgress.SetSizes();
         for (int i = 0; i < 100; i++)
         {
             float progress = Mathf.Clamp01(i / 100f);
