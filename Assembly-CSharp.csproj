@@ -188,6 +188,7 @@
      <Compile Include="Assets\Scripts\Factories\IFactoryCell.cs" />
      <Compile Include="Assets\Scripts\Views\BoomView.cs" />
      <Compile Include="Assets\Scripts\UI\UIInputCheck\UIInputCheckScreen.cs" />
+     <Compile Include="Assets\Scripts\UI\HighLighter.cs" />
      <Compile Include="Assets\Scripts\Data\UIData.cs" />
      <Compile Include="Assets\Scripts\UI\UIHeader.cs" />
      <Compile Include="Assets\Scripts\UI\WindowS\BackOpenerWindow.cs" />

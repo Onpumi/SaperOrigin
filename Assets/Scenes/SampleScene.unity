@@ -2187,6 +2187,8 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  _buttonField: {fileID: 1607947370}
+  _buttonBack: {fileID: 191748241}
 --- !u!114 &199209383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2968,6 +2970,7 @@ GameObject:
   - component: {fileID: 251686495}
   - component: {fileID: 251686494}
   - component: {fileID: 251686493}
+  - component: {fileID: 251686496}
   m_Layer: 0
   m_Name: ScreenFullMode
   m_TagString: Untagged
@@ -3059,6 +3062,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251686491}
   m_CullTransparentMesh: 1
+--- !u!114 &251686496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251686491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f1418f77c567549b2bf78aabbbac82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &269132600
 GameObject:
   m_ObjectHideFlags: 0
@@ -5034,7 +5049,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 8.0998535}
+  m_AnchoredPosition: {x: 0, y: 8.100098}
   m_SizeDelta: {x: 0, y: -567.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &490667982
@@ -6697,8 +6712,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1490382524}
   m_HandleRect: {fileID: 1490382523}
   m_Direction: 2
-  m_Value: 0.92650086
-  m_Size: 0.52033895
+  m_Value: 0.92650056
+  m_Size: 0.52033883
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8408,6 +8423,7 @@ GameObject:
   - component: {fileID: 809986926}
   - component: {fileID: 809986925}
   - component: {fileID: 809986923}
+  - component: {fileID: 809986927}
   m_Layer: 0
   m_Name: ScreenSleepMode
   m_TagString: Untagged
@@ -8499,6 +8515,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 809986921}
   m_CullTransparentMesh: 1
+--- !u!114 &809986927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809986921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f1418f77c567549b2bf78aabbbac82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &814424980
 GameObject:
   m_ObjectHideFlags: 0
@@ -12759,7 +12787,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -33.40039, y: 476.00006}
+  m_AnchoredPosition: {x: -33.400375, y: 476.00003}
   m_SizeDelta: {x: -178.2, y: 3295.7}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1248663098
@@ -13497,6 +13525,7 @@ GameObject:
   - component: {fileID: 1359748090}
   - component: {fileID: 1359748089}
   - component: {fileID: 1359748091}
+  - component: {fileID: 1359748092}
   m_Layer: 5
   m_Name: BackReturn
   m_TagString: Untagged
@@ -13594,6 +13623,18 @@ MonoBehaviour:
       Entry: 10
       Data: 1
   _gameState: {fileID: 2038550280}
+--- !u!114 &1359748092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359748086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f1418f77c567549b2bf78aabbbac82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1373203447
 GameObject:
   m_ObjectHideFlags: 0
@@ -20225,7 +20266,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041D\u0430\u0437\u0430\u0434"
+  m_text: "\u0437\u0430\u043A\u0440\u044B\u0442\u044C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -20416,6 +20457,7 @@ GameObject:
   - component: {fileID: 1926300689}
   - component: {fileID: 1926300691}
   - component: {fileID: 1926300690}
+  - component: {fileID: 1926300692}
   m_Layer: 0
   m_Name: SoundPress
   m_TagString: Untagged
@@ -20508,6 +20550,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926300687}
   m_CullTransparentMesh: 1
+--- !u!114 &1926300692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926300687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f1418f77c567549b2bf78aabbbac82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1942143218
 GameObject:
   m_ObjectHideFlags: 0

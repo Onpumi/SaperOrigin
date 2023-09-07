@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class UIInputCheckComplexity: MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class UIInputCheckComplexity : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private GameState _gameState;
     [SerializeField] private TypesGame _typeGame;
@@ -27,8 +27,8 @@ public class UIInputCheckComplexity: MonoBehaviour, IPointerDownHandler, IPointe
             button.SetActive(false);
             _buttons.Add(button);
         }
-        
-        _buttons[GameField.DataSetting.GameData.GetDifficultValue()].SetActive(true); 
+
+        _buttons[GameField.DataSetting.GameData.GetDifficultValue()].SetActive(true);
     }
 
     private void SetupButtons()
@@ -48,9 +48,9 @@ public class UIInputCheckComplexity: MonoBehaviour, IPointerDownHandler, IPointe
 
     public void SetActive(bool value)
     {
-            var color = _image.color;
-            color.a = (value == false) ? 0.3f : 1f;
-            _image.color = color;
+        var color = _image.color;
+        color.a = (value == false) ? 0.3f : 1f;
+        _image.color = color;
     }
 
     public void Activate(bool value)
@@ -62,8 +62,8 @@ public class UIInputCheckComplexity: MonoBehaviour, IPointerDownHandler, IPointe
             GameField.DataSetting.GameData.SetupOptionValue(_typeGame);
         }
     }
-    
-    public void OnPointerDown(PointerEventData eventData )
+
+    public void OnPointerDown(PointerEventData eventData)
     {
     }
 
@@ -71,5 +71,4 @@ public class UIInputCheckComplexity: MonoBehaviour, IPointerDownHandler, IPointe
     {
         SetupButtons();
     }
- 
 }
