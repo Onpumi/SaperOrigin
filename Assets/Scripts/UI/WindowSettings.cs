@@ -1,14 +1,14 @@
-
-using System;
 using UnityEngine;
 
 public class WindowSettings : WindowBase , IWindowUI 
 {
     [SerializeField] private GameState _gameState;
+    [SerializeField] private Color _colorHighLightMenu;
     private IBackToPreviousWindowCommand _backToPreviousWindowCommand;
     public IBackToPreviousWindowCommand BackToPreviousWindowCommand => _backToPreviousWindowCommand;
     private IWindowCommand _backWindowCommand;
     public override IWindowCommand BackWindowCommand => _backWindowCommand;
+    public Color ColorHighLightMenu => _colorHighLightMenu;
 
     private void Awake()
     {
@@ -28,8 +28,6 @@ public class WindowSettings : WindowBase , IWindowUI
         {
             var recTransform = GetComponent<RectTransform>();
             var offset = (recTransform.rect.width - recTransform.rect.height) * 0.5f;
-         //   recTransform.anchorMin = new Vector2(0.3f, 0);
-         //   recTransform.anchorMax = new Vector2(0.7f, 1f);
          recTransform.offsetMin = new Vector2(offset,0f);
          recTransform.offsetMax = new Vector2(-offset,0f);
         }

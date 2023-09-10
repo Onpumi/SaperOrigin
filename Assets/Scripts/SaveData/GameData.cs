@@ -1,5 +1,4 @@
 using SaveData;
-using UnityEngine;
 
 public class GameData : SavingData<GameSetups>
 {
@@ -8,7 +7,6 @@ public class GameData : SavingData<GameSetups>
         base.Key = key;
         DataSetups._scaleBricks = gameField.GetScale();
     }
-
 
     public void SetupOptionValue(TypesGame typeGame)
     {
@@ -28,7 +26,6 @@ public class GameData : SavingData<GameSetups>
         Save();
     }
 
-
     public float GetOptionValue(TypesOption typeOption)
     {
         return DataSetups.GetOptionValue(typeOption);
@@ -39,6 +36,4 @@ public class GameData : SavingData<GameSetups>
         return DataSetups.GetDifficultGameValue();
     }
 
-
-  //  public void InitScale(float scale) => DataSetups._scaleBricks = scale;
 }

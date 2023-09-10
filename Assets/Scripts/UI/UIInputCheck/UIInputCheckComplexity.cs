@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class UIInputCheckComplexity : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class UIInputCheckComplexity : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private GameState _gameState;
     [SerializeField] private TypesGame _typeGame;
@@ -11,12 +11,15 @@ public class UIInputCheckComplexity : MonoBehaviour, IPointerDownHandler, IPoint
     private List<UIInputCheckComplexity> _buttons;
     private Image _image;
     private GameField GameField => _gameState.Views.GameField;
+    private Color _currentColor;
+    private bool _isActive = false;
 
     private void Awake()
     {
         _parent = transform.parent;
         _buttons = new List<UIInputCheckComplexity>();
         _image = GetComponent<Image>();
+        _currentColor = _image.color;
     }
 
     private void Start()
@@ -48,12 +51,22 @@ public class UIInputCheckComplexity : MonoBehaviour, IPointerDownHandler, IPoint
 
     public void SetActive(bool value)
     {
-        var color = _image.color;
+        var color = _currentColor;
         color.a = (value == false) ? 0.3f : 1f;
         _image.color = color;
+        _currentColor = color;
+        if (value == true)
+        {
+            _isActive = true;
+        }
     }
 
-    public void Activate(bool value)
+    public void UpdateValue()
+    {
+        SetActive(_isActive);
+    }
+
+    private void Activate(bool value)
     {
         SetActive(value);
         if (value == true)
@@ -65,10 +78,9 @@ public class UIInputCheckComplexity : MonoBehaviour, IPointerDownHandler, IPoint
 
     public void OnPointerDown(PointerEventData eventData)
     {
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
         SetupButtons();
     }
+
+
+    
 }

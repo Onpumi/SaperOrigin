@@ -1,12 +1,10 @@
 using System;
 using System.Text;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class WindowTimer : WindowBase
 {
-    [SerializeField] private TMP_Text _tmpText;
     [SerializeField] private float _deltaTime = 1f;
     [SerializeField] private Sprite[] _sprites;
     [SerializeField] private BorderField _borderField;
@@ -18,7 +16,6 @@ public class WindowTimer : WindowBase
     private DigitalView[] _digitalViews;
     private DigitalBuilder _digitalBuilder;
     private GridLayoutGroup _gridLayoutGroup;
-    private RectTransform _rectTransform;
     private float _widthCell;
     private float _heightCell;
 
@@ -34,7 +31,6 @@ public class WindowTimer : WindowBase
             count++;
         }
         _gridLayoutGroup = GetComponent<GridLayoutGroup>();
-        _rectTransform = GetComponent<RectTransform>();
         _digitalBuilder = new DigitalBuilder(_sprites, _digitalViews);
         InitSizeFieldTime();
         transform.localScale = Vector2.one * 0.8f;
@@ -47,8 +43,6 @@ public class WindowTimer : WindowBase
         _heightCell = _topMenu.Height;
        _gridLayoutGroup.cellSize = new Vector2(_widthCell, _heightCell);
     }
-
-   
     
 
     public void StartTimer()
@@ -85,7 +79,5 @@ public class WindowTimer : WindowBase
     public string GetTimeResult() => _timeFinish.ToString();
 
     public void PauseTime(bool value) => _isPause = value;
-
-  
 
 }
