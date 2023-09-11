@@ -11,7 +11,7 @@ public class FirstDigDownAction : IDownAction
         _fieldCells = fieldCells ?? throw new ArgumentNullException("Grid Cells can't be null");
     }
 
-    public bool Select( ICell cell )
+    public bool Select( Cell cell )
     {
         _fieldCells.FindFirstIndexesOnClick(cell);
         _fieldCells.ConfirmFirstClick();

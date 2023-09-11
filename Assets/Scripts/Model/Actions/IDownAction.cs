@@ -1,5 +1,5 @@
 
 public interface IDownAction
 {
-    public bool Select( ICell cell);
+    public bool Select( Cell cell);
 }

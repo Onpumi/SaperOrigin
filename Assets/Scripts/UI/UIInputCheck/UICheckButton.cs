@@ -1,7 +1,8 @@
 using UnityEngine;
-using  UnityEngine.UI;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
+
 public class UICheckButton : MonoBehaviour
 {
     [SerializeField] private Sprite _spriteCheckOn;

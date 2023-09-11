@@ -11,14 +11,14 @@ public class DigDownAction : IDownAction
         _fieldCells = fieldCells;
     }
 
-    public bool Select( ICell cell )
+    public bool Select( Cell cell )
     {
         var result = _fieldCells.TryOpen( cell );
         if (result == false || (_fieldCells.isWin() && cell.IsInitMine == false)) StopGame( cell );
         return result;
     }
 
-    public void StopGame( ICell cell )
+    public void StopGame( Cell cell )
     {
         _fieldCells.GameField.GameState.StopGame();
         _fieldCells.OpenAll();

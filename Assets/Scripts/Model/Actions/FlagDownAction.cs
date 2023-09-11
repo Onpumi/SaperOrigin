@@ -1,7 +1,5 @@
 
 
-using System;
-using UnityEngine;
 
 public class FlagDownAction : IDownAction
 {
@@ -14,17 +12,18 @@ public class FlagDownAction : IDownAction
         _containerMines = containerMines;
     }
 
-      public bool Select( ICell cell )
+      public bool Select( Cell cell )
       {
           if (cell.IsOpen) return false;
           
           if (_containerMines == null || _containerMines.CountMines == 0) { return false;}
           var result = cell.SetFlag(_containerMines);
           
-          
           if( result ) _fieldCells.IncrementFlagCount();
           _fieldCells.GameField.DisplayCountMines(_containerMines.CountFlags);
           _fieldCells.GameField.Sounds.PlayAudio(TypesAudio.SoundFlag);
+        if( cell.CellView.FlagView.Value )
+          _fieldCells.GameField.UIData.WindowWindowCountMines.ActivateMoveFlag(cell.CellView);
 
           if ( _fieldCells.GameField.DataSetting.GameData.GetOptionValue(TypesOption.Vibration) == 1f )
           {

@@ -155,7 +155,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
 
     public void DisplayCountMines(int countMines)
     {
-        _uiData.WindowCountMines.Display(countMines);
+        _uiData.WindowWindowCountMines.Display(countMines);
     }
 
     public void Activate()

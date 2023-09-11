@@ -16,7 +16,6 @@ public class UIInputCheckSound : UIInputCheck
     {
         base.OnPointerUp(eventData);
         GameField.DataSetting.AudioData.SetupValue(_typesAudio,IsCheckOn);
-        
     }
 
 

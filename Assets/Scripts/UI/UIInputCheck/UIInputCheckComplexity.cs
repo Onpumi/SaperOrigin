@@ -59,6 +59,10 @@ public class UIInputCheckComplexity : MonoBehaviour, IPointerDownHandler
         {
             _isActive = true;
         }
+        else
+        {
+            _isActive = false;
+        }
     }
 
     public void UpdateValue()

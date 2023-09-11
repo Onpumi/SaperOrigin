@@ -1091,7 +1091,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1974903563}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4467,7 +4467,6 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  _gameState: {fileID: 2038550280}
   _sprites:
   - {fileID: 21300000, guid: 3acb7d92f59bbd9449dd80fc0acdbc5a, type: 3}
   - {fileID: 21300000, guid: 04e02a40d5cd4524c8e4c9c12dbc65b2, type: 3}
@@ -5802,6 +5801,7 @@ GameObject:
   - component: {fileID: 521990868}
   - component: {fileID: 521990867}
   - component: {fileID: 521990866}
+  - component: {fileID: 521990869}
   m_Layer: 0
   m_Name: Scale
   m_TagString: Untagged
@@ -5896,6 +5896,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 521990864}
   m_CullTransparentMesh: 1
+--- !u!114 &521990869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521990864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f1418f77c567549b2bf78aabbbac82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _windowSettings: {fileID: 1398700026}
 --- !u!1 &527396648
 GameObject:
   m_ObjectHideFlags: 0
@@ -6931,7 +6953,7 @@ RectTransform:
   - {fileID: 430249114}
   - {fileID: 998485726}
   m_Father: {fileID: 1974903563}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -13380,7 +13402,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1974903563}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -18391,7 +18413,7 @@ RectTransform:
   - {fileID: 1164760435}
   - {fileID: 1113609372}
   m_Father: {fileID: 1974903563}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -21203,10 +21225,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1779566968}
   - {fileID: 1320310685}
   - {fileID: 633069014}
   - {fileID: 103083158}
+  - {fileID: 1779566968}
   - {fileID: 1097533400}
   m_Father: {fileID: 1210022953}
   m_RootOrder: 0
@@ -21972,7 +21994,7 @@ MonoBehaviour:
   _windowTimer: {fileID: 1070366987}
   _buttonMode: {fileID: 998485730}
   _windowWinner: {fileID: 979322185}
-  _countMines: {fileID: 366950825}
+  _windowCountMines: {fileID: 366950825}
   _windowConfirmation: {fileID: 1980297158}
   _buttonPlay: {fileID: 1164760438}
   _mainWindow: {fileID: 63046951}

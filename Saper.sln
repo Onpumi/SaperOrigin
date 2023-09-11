@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniTask.DOTween", "UniTask.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sirenix.OdinInspector.CompatibilityLayer", "Sirenix.OdinInspector.CompatibilityLayer.csproj", "{cd744fe6-fbf3-6e0f-3937-59d8f1dd8cde}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{82b4657d-3e8d-fefd-dd6c-7e0dedd2526d}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniTask.TextMeshPro", "UniTask.TextMeshPro.csproj", "{c6a34ad7-8ba0-0cca-ab43-d1b11e46d5a6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniTask.Addressables", "UniTask.Addressables.csproj", "{87a9df56-2027-5e76-921d-c3b684b2e1ce}"
@@ -22,8 +24,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniTask.Editor", "UniTask.Editor.csproj", "{8815c8de-8ffd-502b-918d-0761bd701bb5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sirenix.OdinInspector.Modules.UnityMathematics", "Sirenix.OdinInspector.Modules.UnityMathematics.csproj", "{34d72b06-76db-6b1e-dac6-d330592f5353}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{82b4657d-3e8d-fefd-dd6c-7e0dedd2526d}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor-firstpass", "Assembly-CSharp-Editor-firstpass.csproj", "{d25b95c6-4c2f-b276-1af9-1f7e617e078f}"
 EndProject
@@ -42,6 +42,8 @@ Global
 		{9733e7c9-8442-6b09-00d9-78291e7080be}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{cd744fe6-fbf3-6e0f-3937-59d8f1dd8cde}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{cd744fe6-fbf3-6e0f-3937-59d8f1dd8cde}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82b4657d-3e8d-fefd-dd6c-7e0dedd2526d}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82b4657d-3e8d-fefd-dd6c-7e0dedd2526d}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{c6a34ad7-8ba0-0cca-ab43-d1b11e46d5a6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{c6a34ad7-8ba0-0cca-ab43-d1b11e46d5a6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87a9df56-2027-5e76-921d-c3b684b2e1ce}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -54,8 +56,6 @@ Global
 		{8815c8de-8ffd-502b-918d-0761bd701bb5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34d72b06-76db-6b1e-dac6-d330592f5353}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{34d72b06-76db-6b1e-dac6-d330592f5353}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{82b4657d-3e8d-fefd-dd6c-7e0dedd2526d}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82b4657d-3e8d-fefd-dd6c-7e0dedd2526d}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{d25b95c6-4c2f-b276-1af9-1f7e617e078f}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{d25b95c6-4c2f-b276-1af9-1f7e617e078f}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection

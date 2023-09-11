@@ -14,7 +14,7 @@ public class FieldCells
     private readonly int _percentMine = 15;
     private int _countCells;
     public bool IsFirstClick { get; private set; }
-    public ICell[,] Cells => _cells;
+    public Cell[,] Cells => _cells;
     public GameField GameField => _gameField;
 
     public FieldCells(GameField gameField, int countColumns, int countRows)

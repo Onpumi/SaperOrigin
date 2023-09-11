@@ -135,6 +135,7 @@
      <Compile Include="Assets\Scripts\UI\WindowPlayModeButton.cs" />
      <Compile Include="Assets\YandexGame\Example\Scripts\NewResultLeaderboard.cs" />
      <Compile Include="Assets\YandexGame\ScriptsYG\UnityToolbag-main\ConditionallyVisiblePropertyDrawer\Runtime\ConditionallyVisibleAttribute.cs" />
+     <Compile Include="Assets\Scripts\Model\Statistics\Statistics.cs" />
      <Compile Include="Assets\Scripts\Model\Actions\FirstDigDownAction.cs" />
      <Compile Include="Assets\Scripts\SaveData\SavingData.cs" />
      <Compile Include="Assets\Scripts\UI\WindowTimer.cs" />
@@ -203,7 +204,7 @@
      <Compile Include="Assets\YandexGame\ScriptsYG\LeaderboardYG.cs" />
      <Compile Include="Assets\Scripts\Pooling\Pool Field\PoolDataRoot.cs" />
      <Compile Include="Assets\Scripts\Data\GameSetups.cs" />
-     <Compile Include="Assets\Scripts\Model\Statistics\Statistics.cs" />
+     <Compile Include="Assets\Scripts\Model\Animation\FlagAnimation.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\YandexGame\Prefabs\Leaderboards" />
      <Folder Include="Assets\Scripts\SaveData" />
@@ -212,6 +213,7 @@
      <Folder Include="Assets\Q3DAudio\PluginLibs\Android\libs" />
      <Folder Include="Assets\Scripts\Pooling" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+     <Folder Include="Assets\Scripts\Model\Animation" />
      <Folder Include="Assets\AndroidAPI\C# For example" />
      <Folder Include="Assets\YandexGame\Example" />
      <Folder Include="Assets\TextMesh Pro\Sprites" />
@@ -312,6 +314,7 @@
      <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
      <Folder Include="Assets\TextMesh Pro\Documentation" />
      <Folder Include="Assets\Prefabs\Sound" />
+     <Folder Include="Assets\Resources" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
      <Folder Include="Assets\Scripts\Graphics" />
      <None Include="Assets\YandexGame\ScriptsYG\UnityToolbag-main\LICENSE.txt" />
@@ -558,6 +561,24 @@
      <Reference Include="UnityEditor.UnityConnectModule">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.28f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
      </Reference>
+     <Reference Include="Sirenix.OdinInspector.Attributes">
+     <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Burst.Cecil.Pdb">
+     <HintPath>C:\GamerProjects\Saper\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
+     </Reference>
+     <Reference Include="Sirenix.Serialization.Config">
+     <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTween">
+     <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
+     </Reference>
+     <Reference Include="Newtonsoft.Json">
+     <HintPath>C:\GamerProjects\Saper\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
+     </Reference>
+     <Reference Include="Sirenix.Utilities.Editor">
+     <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
+     </Reference>
      <Reference Include="Sirenix.OdinInspector.Editor">
      <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
      </Reference>
@@ -567,32 +588,17 @@
      <Reference Include="Unity.Burst.Cecil.Mdb">
      <HintPath>C:\GamerProjects\Saper\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
      </Reference>
-     <Reference Include="Sirenix.OdinInspector.Attributes">
-     <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Burst.Cecil.Pdb">
-     <HintPath>C:\GamerProjects\Saper\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.Burst.Cecil">
      <HintPath>C:\GamerProjects\Saper\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
-     </Reference>
-     <Reference Include="Sirenix.Serialization.Config">
-     <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
-     </Reference>
-     <Reference Include="Sirenix.Utilities">
-     <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
-     </Reference>
-     <Reference Include="Newtonsoft.Json">
-     <HintPath>C:\GamerProjects\Saper\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
-     </Reference>
-     <Reference Include="Sirenix.Serialization">
-     <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil.Rocks">
      <HintPath>C:\GamerProjects\Saper\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
      </Reference>
-     <Reference Include="Sirenix.Utilities.Editor">
-     <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
+     <Reference Include="Sirenix.Utilities">
+     <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
+     </Reference>
+     <Reference Include="Sirenix.Serialization">
+     <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.iOS.Extensions.Xcode">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.28f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -1067,6 +1073,10 @@
      </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{82b4657d-3e8d-fefd-dd6c-7e0dedd2526d}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
       <Project>{cd744fe6-fbf3-6e0f-3937-59d8f1dd8cde}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
