@@ -16,6 +16,7 @@ public class UIData : MonoBehaviour
     [SerializeField] private MainWindow _mainWindow;
     [SerializeField] private WindowSettings _windowSettings;
     [SerializeField] private WindowPause _windowPause;
+    [SerializeField] private GameField _gameField;
 
     public WindowTimer WindowTimer => _windowTimer;
     public ControllerButtonMode ControllerButtonMode => _buttonMode;
@@ -27,5 +28,6 @@ public class UIData : MonoBehaviour
     public MainWindow MainWindow => _mainWindow;
     public WindowSettings WindowSettings => _windowSettings;
     public WindowPause WindowPause => _windowPause;
-    
+    public GameField GameField => _gameField;
+
 }

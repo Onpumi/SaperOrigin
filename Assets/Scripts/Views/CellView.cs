@@ -19,6 +19,7 @@ public class CellView : MonoBehaviour, ICellView, IPoolable<CellView>, IView
 
     private IDownAction _downAction;
     public CellData CellData { get; private set; }
+    public FlagView FlagIcon { get; private set;  }
     private Sprite _emptySprite;
 
     private void Awake()
@@ -56,6 +57,11 @@ public class CellView : MonoBehaviour, ICellView, IPoolable<CellView>, IView
     {
         FlagView.InitFlag(value);
         return FlagView.Value;
+    }
+
+    public void SafeFlagIcon(FlagView flagIcon)
+    {
+        FlagIcon = flagIcon;
     }
 
     public void SpawnFrom(IPool<CellView> pool)

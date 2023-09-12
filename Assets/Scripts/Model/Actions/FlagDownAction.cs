@@ -1,6 +1,4 @@
 
-
-
 public class FlagDownAction : IDownAction
 {
     private readonly FieldCells _fieldCells;
@@ -12,18 +10,25 @@ public class FlagDownAction : IDownAction
         _containerMines = containerMines;
     }
 
+    
+    
       public bool Select( Cell cell )
       {
           if (cell.IsOpen) return false;
           
           if (_containerMines == null || _containerMines.CountMines == 0) { return false;}
+
+          if ( _containerMines.CountFlags > 0 || cell.IsFlagged == true)
+              _fieldCells.GameField.UIData.WindowWindowCountMines.ActivateMoveFlag(cell.CellView);
+          
+          
           var result = cell.SetFlag(_containerMines);
           
           if( result ) _fieldCells.IncrementFlagCount();
+          
           _fieldCells.GameField.DisplayCountMines(_containerMines.CountFlags);
-          _fieldCells.GameField.Sounds.PlayAudio(TypesAudio.SoundFlag);
-        if( cell.CellView.FlagView.Value )
-          _fieldCells.GameField.UIData.WindowWindowCountMines.ActivateMoveFlag(cell.CellView);
+          //_fieldCells.GameField.Sounds.PlayAudio(TypesAudio.SoundFlag);
+          
 
           if ( _fieldCells.GameField.DataSetting.GameData.GetOptionValue(TypesOption.Vibration) == 1f )
           {

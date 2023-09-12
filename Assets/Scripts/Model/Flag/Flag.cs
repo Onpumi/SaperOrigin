@@ -13,7 +13,6 @@ public class Flag
     {
         var countFlags = containerMines.CountFlags;
 
-
         if (countFlags <= 0 && Value == false)
         {
             return Value;

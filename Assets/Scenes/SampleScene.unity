@@ -4467,6 +4467,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  _gameState: {fileID: 2038550280}
   _sprites:
   - {fileID: 21300000, guid: 3acb7d92f59bbd9449dd80fc0acdbc5a, type: 3}
   - {fileID: 21300000, guid: 04e02a40d5cd4524c8e4c9c12dbc65b2, type: 3}
@@ -6777,8 +6778,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1490382524}
   m_HandleRect: {fileID: 1490382523}
   m_Direction: 2
-  m_Value: 0.92650056
-  m_Size: 0.52033883
+  m_Value: 0.9265008
+  m_Size: 0.520339
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -12953,7 +12954,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -33.400375, y: 476.00003}
+  m_AnchoredPosition: {x: -33.40039, y: 476.00006}
   m_SizeDelta: {x: -178.2, y: 3295.7}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1248663098
@@ -22000,6 +22001,7 @@ MonoBehaviour:
   _mainWindow: {fileID: 63046951}
   _windowSettings: {fileID: 1398700026}
   _windowPause: {fileID: 1989881321}
+  _gameField: {fileID: 103083156}
 --- !u!114 &2038550280
 MonoBehaviour:
   m_ObjectHideFlags: 0

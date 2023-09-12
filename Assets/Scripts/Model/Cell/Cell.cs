@@ -68,12 +68,6 @@ public class Cell : ICell
         pool.Return(_cellView);
     }
 
-    //public void Destroy()
-    //{
-//        _cellView.Destroy();
-//    }
-
-
     public void Spawn(Pool<CellView> pool, CellData cellData)
     {
         _cellView.SpawnFrom(pool);
@@ -84,41 +78,12 @@ public class Cell : ICell
         CellData = _cellView.CellData;
         Flag = new Flag(_cellView);
         ResetValue();
-        
     }
-
-    /*
-    public void Spawn(CellView cellView, CellData cellData)
-    {
-        _cellView = cellView;
-        Value = 0;
-        IsOpen = false;
-        IsInitMine = false;
-        IsFlagged = false;
-        CellData = cellView.CellData;
-        Flag = new Flag(_cellView);
-        ResetValue();
-    }
-*/
-
+  
     public void UpdateCellData()
     {
         CellData = CellView.CellData;
     }
-
-/*
-    public void Init( CellView cellView )
-    {
-        _cellView = cellView;
-        Value = 0;
-        IsOpen = false;
-        IsInitMine = false;
-        IsFlagged = false;
-        CellData = cellView.CellData;
-        Flag = new Flag(_cellView);
-        ResetValue();
-    }
-*/
 
 
 

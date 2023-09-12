@@ -17,6 +17,13 @@ public class HighLighter : WindowBase, IPointerEnterHandler, IPointerExitHandler
 
     private void Awake()
     {
+
+        if (SystemInfo.operatingSystemFamily != OperatingSystemFamily.Windows)
+        {
+            enabled = false;
+        }
+        
+        
         _textMenu = GetComponentInChildren<TMP_Text>();
         _uiCheckButton = GetComponentInChildren<UICheckButton>();
         if (_uiCheckButton is not null)
@@ -29,6 +36,9 @@ public class HighLighter : WindowBase, IPointerEnterHandler, IPointerExitHandler
         _uiInputCheckComplexity = GetComponent<UIInputCheckComplexity>();
         _uiInputCheckSound = GetComponent<UIInputCheckSound>();
         _uiInputCheckScreen = GetComponent<UIInputCheckScreen>();
+        
+        
+        
     }
 
     private void SetImageColor(Color color)

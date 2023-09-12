@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class WindowCountMines : WindowBase
 {
+    [SerializeField] private GameState _gameState;
     [SerializeField] private Sprite[] _sprites;
     [SerializeField] private MenuBarView _topMenu;
     [SerializeField] private FlagView _flagViewPrefab;
@@ -13,6 +14,7 @@ public class WindowCountMines : WindowBase
     private DigitalBuilder _digitalBuilder;
     private FlagView _flagIcon;
     private FlagAnimation _flagAnimation;
+    private RectTransform _rectTransform;
 
     private void Start()
     {
@@ -20,24 +22,35 @@ public class WindowCountMines : WindowBase
         _digitalViews = new DigitalView[transform.childCount];
         _gridLayoutGroup = GetComponent<GridLayoutGroup>();
         _digitalBuilder = new DigitalBuilder(_sprites, _digitalViews);
-        _flagAnimation = new FlagAnimation();
+        _flagAnimation = new FlagAnimation(_gameState.UIData.GameField);
         int count = 0;
         foreach (Transform view in transform)
         {
             _digitalViews[count] = view.GetComponent<DigitalView>();
             count++;
         }
+
         InitSizeFieldTime();
         transform.localScale = Vector3.one * 0.8f;
     }
 
 
-    public void ActivateMoveFlag( CellView cellView )
+    public void ActivateMoveFlag(CellView cellView)
     {
-        var flagIcon = SpawnFlagIcon();
-        flagIcon.transform.SetAsLastSibling();
-        flagIcon.transform.gameObject.SetActive(true);
-        _flagAnimation.MoveFlag(flagIcon.transform, cellView.transform.position);
+        if (cellView.FlagView.Value == false)
+        {
+            FlagView flagIcon;
+            flagIcon = SpawnFlagIcon();
+            flagIcon.transform.SetAsLastSibling();
+            flagIcon.transform.gameObject.SetActive(true);
+            cellView.SafeFlagIcon(flagIcon);
+            _flagAnimation.MoveFlag(flagIcon.transform, cellView);
+        }
+        else
+        {
+            cellView.FlagIcon.transform.gameObject.SetActive(true);
+            _flagAnimation.MoveBackFlag(cellView.FlagIcon.transform, transform.position);
+        }
     }
 
     public void ResetValue(int count)
@@ -73,10 +86,9 @@ public class WindowCountMines : WindowBase
     private FlagView SpawnFlagIcon()
     {
         var flagIcon = Instantiate(_flagViewPrefab, _parentFlagIcon) as FlagView;
-        var rectTransform = GetComponent<RectTransform>();
+        _rectTransform = GetComponent<RectTransform>();
         var rectTransformFlag = flagIcon.GetComponent<RectTransform>();
-        rectTransformFlag.anchoredPosition = Vector2.zero + Vector2.left * rectTransform.rect.width;
+            rectTransformFlag.anchoredPosition = Vector2.zero + Vector2.left * _rectTransform.rect.width;
         return flagIcon;
     }
-    
 }
