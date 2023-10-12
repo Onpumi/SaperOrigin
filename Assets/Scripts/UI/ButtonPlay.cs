@@ -38,7 +38,6 @@ public class ButtonPlay : WindowBase, IPointerDownHandler
         _gameState.CurrentInitWindow(_gameState.Views.GameField);
     }
 
-
     private void StartPlay()
     {
         _gameState.Views.GameField.ReloadField();

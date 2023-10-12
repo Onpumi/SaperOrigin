@@ -205,6 +205,9 @@
      <Compile Include="Assets\YandexGame\ScriptsYG\LeaderboardYG.cs" />
      <Compile Include="Assets\Scripts\Pooling\Pool Field\PoolDataRoot.cs" />
      <Compile Include="Assets\Scripts\Data\GameSetups.cs" />
+     <Compile Include="Assets\Scripts\Data\StatisticSetups.cs" />
+     <Compile Include="Assets\Scripts\SaveData\StatisticsData.cs" />
+     <Compile Include="Assets\Scripts\Data\TypesStatistics.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\YandexGame\Prefabs\Leaderboards" />
      <Folder Include="Assets\Scripts\SaveData" />

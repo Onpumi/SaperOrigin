@@ -6,5 +6,4 @@ public class Statistics
     private float _averageGameTime;
     private float _gameTimeRecord;
     private int _totalGameStarted;
-
 }

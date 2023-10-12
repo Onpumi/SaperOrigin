@@ -18,6 +18,7 @@ public class WindowTimer : WindowBase
     private GridLayoutGroup _gridLayoutGroup;
     private float _widthCell;
     private float _heightCell;
+    
 
 
     private void Start()
@@ -68,6 +69,11 @@ public class WindowTimer : WindowBase
             _time = DateTime.Today.AddSeconds(_seconds);
             _digitalBuilder.Display( _time.ToString("mm:ss"));
         }
+    }
+
+    public float GetTotalSeconds()
+    {
+        return _seconds;
     }
 
     public void StopTimer()

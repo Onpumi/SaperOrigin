@@ -22,11 +22,16 @@ public class DigDownAction : IDownAction
     {
         _fieldCells.GameField.GameState.StopGame();
         _fieldCells.OpenAll();
-        if (_fieldCells.isWin() && cell.IsInitMine == false)
+        var isWin = _fieldCells.isWin();
+        if ( isWin && cell.IsInitMine == false)
         {
             _fieldCells.GameField.ActivateWindowsWin();
             _fieldCells.GameField.GameState.UIData.ButtonPlay.SetNormColor();    
         }
-        else _fieldCells.GameField.GameState.UIData.ButtonPlay.SetLossColor();
+        else
+        {
+            _fieldCells.GameField.GameState.UIData.ButtonPlay.SetLossColor();
+        }
+        _fieldCells.GameField.SaveStatistics( isWin );
     }
 }

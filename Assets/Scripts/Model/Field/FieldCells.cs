@@ -165,6 +165,16 @@ public class FieldCells
         }
     }
 
+    public void ActivateWin()
+    {
+        GameField.GameState.StopGame(); 
+        GameField.GameState.UIData.ButtonPlay.SetNormColor();
+        OpenAll();
+        Reset();
+        GameField.ActivateWindowsWin();
+    }
+    
+
     public void OpenAll()
     {
         foreach (var cell in _cells)

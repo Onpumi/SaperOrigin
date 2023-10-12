@@ -6,7 +6,6 @@ public class CellView : MonoBehaviour, ICellView, IPoolable<CellView>, IView
 {
     [SerializeField] private Sprite[] _spriteNumbers;
     [SerializeField] private InputHandler _inputHandler;
-
     [SerializeField] private Image _image;
     [SerializeField] private BrickView _brickView;
     [SerializeField] private FlagView _flagView;

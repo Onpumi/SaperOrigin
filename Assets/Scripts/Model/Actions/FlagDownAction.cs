@@ -3,6 +3,7 @@ public class FlagDownAction : IDownAction
 {
     private readonly FieldCells _fieldCells;
     private readonly ContainerMines _containerMines;
+    private Cell _currentCell;
 
     public FlagDownAction(FieldCells fieldCells, ContainerMines containerMines )
     {
@@ -14,19 +15,23 @@ public class FlagDownAction : IDownAction
     
       public bool Select( Cell cell )
       {
+          _currentCell = cell;
+          
           if (cell.IsOpen) return false;
           
           if (_containerMines == null || _containerMines.CountMines == 0) { return false;}
 
           if ( _containerMines.CountFlags > 0 || cell.IsFlagged == true)
               _fieldCells.GameField.UIData.WindowWindowCountMines.ActivateMoveFlag(cell.CellView);
+              //_fieldCells.GameField.UIData.WindowWindowCountMines.ActivateMoveFlag(this);
           
           
           var result = cell.SetFlag(_containerMines);
           
           if( result ) _fieldCells.IncrementFlagCount();
           
-          _fieldCells.GameField.DisplayCountMines(_containerMines.CountFlags);
+          // эти строки раскоментить если анимация флага выключена
+          //_fieldCells.GameField.DisplayCountMines(_containerMines.CountFlags);
           //_fieldCells.GameField.Sounds.PlayAudio(TypesAudio.SoundFlag);
           
 
@@ -35,13 +40,9 @@ public class FlagDownAction : IDownAction
               _fieldCells.GameField.GameState.Vibrate( 500 );
           }
 
-          if (_fieldCells.isWin())
+          if (_fieldCells.isWin()) //здесь что то делать если анимация флага выключена (раскоментить в блоке)
         {
-            _fieldCells.GameField.GameState.StopGame(); 
-            _fieldCells.GameField.GameState.UIData.ButtonPlay.SetNormColor();
-            _fieldCells.OpenAll();
-            _fieldCells.Reset();
-            _fieldCells.GameField.ActivateWindowsWin();
+            //_fieldCells.ActivateWin();
         }
         return result;
     }

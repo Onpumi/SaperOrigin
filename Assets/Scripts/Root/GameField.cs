@@ -11,7 +11,6 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     [SerializeField] private IWindowCommand _backWindowCommand;
     [SerializeField] private Transform _parentField;
     [SerializeField] private SliderProgress _sliderProgress;
-    [SerializeField] private Transform _poolParent;
     public BackgroundField BackGroundField { get; private set; }
     public DataSetting DataSetting { get; private set; }
     public UIData UIData => _uiData;
@@ -19,16 +18,15 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     public GameState GameState => _gameState;
     public Sounds Sounds => _sounds;
     public override IWindowCommand BackWindowCommand => _backWindowCommand;
-    public PoolDataContainer PoolDataContainer { get; private set; }
 
     private FieldCells _fieldCells;
+    public FieldCells FieldCells => _fieldCells;
 
     public Pool<CellView> Pool { get; private set; }
 
 
     public bool IsLoadPoolFinish { get; private set; }
     private IPoolFactory<CellView> _factoryCellViewPool;
-    public IPoolFactory<CellView> FactoryCellViewPool => _factoryCellViewPool;
 
     private bool _isFirstLoad = true;
 
@@ -52,6 +50,8 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         DataSetting = new DataSetting(this);
         _gameState.GameFieldData.ScaleBrick = DataSetting.GameData.GetOptionValue(TypesOption.SizeCells);
         SetPercentMine((TypesGame)DataSetting.GameData.GetDifficultValue());
+        
+        
     }
 
     public void SetPercentMine(TypesGame typesGame)
@@ -88,7 +88,6 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
             _gameState.GameFieldData.ScaleBrick = DataSetting.GameData.GetOptionValue(TypesOption.SizeCells);
         }
     }
-
 
     public void ResetField()
     {
@@ -151,6 +150,23 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
 
 
     public void ActivateWindowsWin() => _uiData.WindowWinner.Display(_uiData.WindowTimer);
+
+
+    public void SaveStatistics( bool isWin )
+    {
+        if (isWin)
+        {
+            
+        }
+        else
+        {
+            var totalSeconds = _uiData.WindowTimer.GetTotalSeconds();
+            DataSetting.StatisticsData.UpdateTotalPlayGamesSeconds((int)totalSeconds);
+        }
+        DataSetting.StatisticsData.UpdateCountFinishPlayGames(isWin);
+        DataSetting.StatisticsData.CalculateAverageTime();
+        
+    }
 
 
     public void DisplayCountMines(int countMines)

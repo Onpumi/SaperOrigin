@@ -1,8 +1,4 @@
 
-
-using Cysharp.Threading.Tasks;
-using UnityEngine;
-
 public class Cell : ICell
 {
     private CellView _cellView;

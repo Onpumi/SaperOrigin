@@ -6,6 +6,7 @@ public class DataSetting
     public AudioData AudioData { get; private set; }
     public ScreenData ScreenData { get; private set; }
     public GameData GameData { get; private set; }
+    public StatisticsData StatisticsData { get; private set; }
 
     public DataSetting(GameField gameField)
     {
@@ -16,6 +17,8 @@ public class DataSetting
         ScreenData.Load();
         GameData = new GameData("GameKey", gameField);
         GameData.Load();
+        StatisticsData = new StatisticsData("StatisticsKey");
+        StatisticsData.Load();
         InitScreen();
     }
 

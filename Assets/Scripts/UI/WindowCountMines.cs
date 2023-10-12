@@ -36,6 +36,7 @@ public class WindowCountMines : WindowBase
 
 
     public void ActivateMoveFlag(CellView cellView)
+    //public void ActivateMoveFlag(FlagDownAction _flagDownAction)
     {
         if (cellView.FlagView.Value == false)
         {

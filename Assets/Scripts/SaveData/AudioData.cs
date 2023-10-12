@@ -1,5 +1,3 @@
-using TMPro;
-using UnityEngine;
 using SaveData;
 
 public class AudioData : SavingData<AudioSetups>
