@@ -21,7 +21,7 @@ public class StatisticsData : SavingData<StatisticSetups>
         Save();
     }
     
-    
+    /*
     public void SetupValue( bool value )
     {
         DataSetups.UpdateCountFinishPlayGames( value );
@@ -38,6 +38,8 @@ public class StatisticsData : SavingData<StatisticSetups>
     {
         return DataSetups.GetCountPlayGames( isWin );
     }
+    
+    */
 
     public void UpdateCountFinishPlayGames( bool isWin )
     {

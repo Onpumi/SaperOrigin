@@ -29,12 +29,15 @@ public class StatisticSetups
             CountLoss++;
         
         CountPlayes++;
+        
+//        Debug.Log( "количество проигрышей:" + CountLoss);
+//        Debug.Log( "количество выигрышей:" + CountWins);
+        
     }
 
     public void CalculateAverageTime()
     {
-        AverageGameSecondsTime = TotalPlayGamesSeconds / CountPlayes;
-        Debug.Log(AverageGameSecondsTime);
+        AverageGameSecondsTime =  (int)((float)TotalPlayGamesSeconds / (float)CountPlayes);
     }
 
     public void UpdateTotalPlayGamesSeconds(int seconds)

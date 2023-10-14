@@ -17,10 +17,16 @@ public class DataSetting
         ScreenData.Load();
         GameData = new GameData("GameKey", gameField);
         GameData.Load();
-        StatisticsData = new StatisticsData("StatisticsKey");
-        StatisticsData.Load();
+        UpdateStatisticsData(gameField);
         InitScreen();
     }
+
+    public void UpdateStatisticsData( GameField gameField )
+    {
+        StatisticsData = new StatisticsData("StatisticsKey" + gameField.DifficultLevel);
+        StatisticsData.Load();
+    }
+    
 
     private void InitScreen()
     {

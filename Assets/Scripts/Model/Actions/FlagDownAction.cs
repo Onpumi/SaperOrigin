@@ -16,6 +16,8 @@ public class FlagDownAction : IDownAction
       public bool Select( Cell cell )
       {
           _currentCell = cell;
+
+          var isWin = _fieldCells.isWin();
           
           if (cell.IsOpen) return false;
           
@@ -40,7 +42,8 @@ public class FlagDownAction : IDownAction
               _fieldCells.GameField.GameState.Vibrate( 500 );
           }
 
-          if (_fieldCells.isWin()) //здесь что то делать если анимация флага выключена (раскоментить в блоке)
+         // if (_fieldCells.isWin()) //здесь что то делать если анимация флага выключена (раскоментить в блоке)
+           if( isWin )
         {
             //_fieldCells.ActivateWin();
         }

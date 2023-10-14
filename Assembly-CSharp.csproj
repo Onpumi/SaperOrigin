@@ -85,6 +85,7 @@
      <Compile Include="Assets\Scripts\Data\ScreenSetups.cs" />
      <Compile Include="Assets\Scripts\Root\GameFieldData.cs" />
      <Compile Include="Assets\Scripts\Model\Timer\TimerPlayer.cs" />
+     <Compile Include="Assets\Scripts\Data\StatisticSetups.cs" />
      <Compile Include="Assets\Scripts\Extensions\IntExtensions.cs" />
      <Compile Include="Assets\Scripts\UI\MenuBarView.cs" />
      <Compile Include="Assets\YandexGame\Example\Scripts\LanguageExample.cs" />
@@ -106,6 +107,7 @@
      <Compile Include="Assets\Scripts\UI\ScalerRowMenu.cs" />
      <Compile Include="Assets\Scripts\Model\Actions\DigDownAction.cs" />
      <Compile Include="Assets\Scripts\Data\PoolDataContainer.cs" />
+     <Compile Include="Assets\Scripts\Data\TypesStatistics.cs" />
      <Compile Include="Assets\Scripts\Root\GameField.cs" />
      <Compile Include="Assets\YandexGame\ScriptsYG\GraphicSettingsYG.cs" />
      <Compile Include="Assets\Scripts\Views\Interfaces\IBoomView.cs" />
@@ -141,6 +143,7 @@
      <Compile Include="Assets\Scripts\UI\WindowTimer.cs" />
      <Compile Include="Assets\Scripts\Data\Views.cs" />
      <Compile Include="Assets\Scripts\Data\TypesScreen.cs" />
+     <Compile Include="Assets\Scripts\SaveData\StatisticsData.cs" />
      <Compile Include="Assets\Scripts\Factories\IFactoryView.cs" />
      <Compile Include="Assets\Scripts\UI\UIInputCheck\UIInputCheckComplexity.cs" />
      <Compile Include="Assets\YandexGame\ScriptsYG\PaymentsYG.cs" />
@@ -205,9 +208,6 @@
      <Compile Include="Assets\YandexGame\ScriptsYG\LeaderboardYG.cs" />
      <Compile Include="Assets\Scripts\Pooling\Pool Field\PoolDataRoot.cs" />
      <Compile Include="Assets\Scripts\Data\GameSetups.cs" />
-     <Compile Include="Assets\Scripts\Data\StatisticSetups.cs" />
-     <Compile Include="Assets\Scripts\SaveData\StatisticsData.cs" />
-     <Compile Include="Assets\Scripts\Data\TypesStatistics.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\YandexGame\Prefabs\Leaderboards" />
      <Folder Include="Assets\Scripts\SaveData" />

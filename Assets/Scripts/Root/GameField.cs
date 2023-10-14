@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
 {
@@ -20,11 +21,9 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     public override IWindowCommand BackWindowCommand => _backWindowCommand;
 
     private FieldCells _fieldCells;
+    public TypesGame DifficultLevel { get; private set; }
     public FieldCells FieldCells => _fieldCells;
-
     public Pool<CellView> Pool { get; private set; }
-
-
     public bool IsLoadPoolFinish { get; private set; }
     private IPoolFactory<CellView> _factoryCellViewPool;
 
@@ -50,12 +49,12 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         DataSetting = new DataSetting(this);
         _gameState.GameFieldData.ScaleBrick = DataSetting.GameData.GetOptionValue(TypesOption.SizeCells);
         SetPercentMine((TypesGame)DataSetting.GameData.GetDifficultValue());
-        
-        
     }
 
     public void SetPercentMine(TypesGame typesGame)
     {
+        DifficultLevel = typesGame;
+        DataSetting.UpdateStatisticsData(this );
         switch (typesGame)
         {
             case TypesGame.DifficultGame:
@@ -154,18 +153,12 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
 
     public void SaveStatistics( bool isWin )
     {
-        if (isWin)
-        {
-            
-        }
-        else
-        {
-            var totalSeconds = _uiData.WindowTimer.GetTotalSeconds();
-            DataSetting.StatisticsData.UpdateTotalPlayGamesSeconds((int)totalSeconds);
-        }
+        var totalSeconds = _uiData.WindowTimer.GetTotalSeconds();
+        DataSetting.StatisticsData.UpdateTotalPlayGamesSeconds((int)totalSeconds);
+
         DataSetting.StatisticsData.UpdateCountFinishPlayGames(isWin);
-        DataSetting.StatisticsData.CalculateAverageTime();
         
+        DataSetting.StatisticsData.CalculateAverageTime();
     }
 
 

@@ -169,6 +169,7 @@ public class FieldCells
     {
         GameField.GameState.StopGame(); 
         GameField.GameState.UIData.ButtonPlay.SetNormColor();
+        GameField.SaveStatistics( true );
         OpenAll();
         Reset();
         GameField.ActivateWindowsWin();

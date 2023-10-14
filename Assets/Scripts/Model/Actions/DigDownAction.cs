@@ -26,12 +26,14 @@ public class DigDownAction : IDownAction
         if ( isWin && cell.IsInitMine == false)
         {
             _fieldCells.GameField.ActivateWindowsWin();
-            _fieldCells.GameField.GameState.UIData.ButtonPlay.SetNormColor();    
+            _fieldCells.GameField.GameState.UIData.ButtonPlay.SetNormColor();
+            
         }
         else
         {
             _fieldCells.GameField.GameState.UIData.ButtonPlay.SetLossColor();
         }
         _fieldCells.GameField.SaveStatistics( isWin );
+        
     }
 }
