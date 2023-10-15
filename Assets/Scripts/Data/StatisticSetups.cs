@@ -59,6 +59,9 @@ public class StatisticSetups
                 BestPlayGameSecondsTime = seconds;
             }
         }
+        
+        //Debug.Log(BestPlayGameSecondsTime);
+        
     }
 
     public void UpdateTotalGameStarted()

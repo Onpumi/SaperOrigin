@@ -1,5 +1,4 @@
 using SaveData;
-using UnityEngine;
 
 public class StatisticsData : SavingData<StatisticSetups>
 {
@@ -7,7 +6,6 @@ public class StatisticsData : SavingData<StatisticSetups>
     {
         base.Key = key;
     }
-
 
     public void UpdateCountStart()
     {
@@ -20,30 +18,16 @@ public class StatisticsData : SavingData<StatisticSetups>
         DataSetups.UpdateTotalPlayGamesSeconds(seconds);
         Save();
     }
-    
-    /*
-    public void SetupValue( bool value )
-    {
-        DataSetups.UpdateCountFinishPlayGames( value );
-        DataSetups.CalculateAverageTime();
-        Save();
-    }
-
-    public (int,int) GetTimesValue()
-    {
-        return DataSetups.GetPlayTimesValue();
-    }
-
-    public int GetCountPlayGames( bool isWin )
-    {
-        return DataSetups.GetCountPlayGames( isWin );
-    }
-    
-    */
 
     public void UpdateCountFinishPlayGames( bool isWin )
     {
         DataSetups.UpdateCountFinishPlayGames( isWin );
+        Save();
+    }
+
+    public void SetupBestPlayGames( int seconds )
+    {
+        DataSetups.SetupBestPlayGames(seconds);
         Save();
     }
 

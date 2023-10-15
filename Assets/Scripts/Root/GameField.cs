@@ -154,13 +154,16 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
     public void SaveStatistics( bool isWin )
     {
         var totalSeconds = _uiData.WindowTimer.GetTotalSeconds();
-        DataSetting.StatisticsData.UpdateTotalPlayGamesSeconds((int)totalSeconds);
-
         DataSetting.StatisticsData.UpdateCountFinishPlayGames(isWin);
         
-        DataSetting.StatisticsData.CalculateAverageTime();
-    }
+        if ( isWin )
+        {
+            DataSetting.StatisticsData.UpdateTotalPlayGamesSeconds((int)totalSeconds);
+            DataSetting.StatisticsData.CalculateAverageTime();
+            DataSetting.StatisticsData.SetupBestPlayGames( (int)totalSeconds );
+        }
 
+    }
 
     public void DisplayCountMines(int countMines)
     {
