@@ -23,6 +23,7 @@ public class DigDownAction : IDownAction
         _fieldCells.GameField.GameState.StopGame();
         _fieldCells.OpenAll();
         var isWin = _fieldCells.isWin();
+        _fieldCells.GameField.SaveStatistics( isWin );
         if ( isWin && cell.IsInitMine == false)
         {
             _fieldCells.GameField.ActivateWindowsWin();
@@ -33,7 +34,7 @@ public class DigDownAction : IDownAction
         {
             _fieldCells.GameField.GameState.UIData.ButtonPlay.SetLossColor();
         }
-        _fieldCells.GameField.SaveStatistics( isWin );
+
         
     }
 }

@@ -84,6 +84,11 @@ public class WindowTimer : WindowBase
 
     public string GetTimeResult() => _timeFinish.ToString();
 
+    public int GetTimeIntResult()
+    {
+        return (int)_seconds;
+    }
+
     public void PauseTime(bool value) => _isPause = value;
 
 }

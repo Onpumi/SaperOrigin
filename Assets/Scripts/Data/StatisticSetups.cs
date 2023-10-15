@@ -1,4 +1,3 @@
-using UnityEngine;
 
 public class StatisticSetups
 {
@@ -6,7 +5,7 @@ public class StatisticSetups
     public int CountLoss;
     public int CountPlayes;
     public int AverageGameSecondsTime;
-    public int BestPlayGameSecondsTime;
+    public int BestPlayGameSecondsTime { get; private set; }
     public int TotalGameStarted;
     public int TotalPlayGamesSeconds;
 
