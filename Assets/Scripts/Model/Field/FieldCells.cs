@@ -70,7 +70,6 @@ public class FieldCells
                 _cells[i, j].Despawn( _gameField.Pool );
             }
     }
-    
    
     public void ConfirmFirstClick()
     {

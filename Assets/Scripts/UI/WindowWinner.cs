@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using TMPro;
 
@@ -12,13 +13,19 @@ public class WindowWinner : WindowBase
     private const string TitleTime = "Время игры составило: ";
     private const string TitleBest = "Рекорд по времени: ";
     private const string TitleAverage = "Средняя продолжительность: ";
-
     private ConverterTime _converterTime;
+    private CustomizerWindow _customizerWindow;
 
     private void Awake()
     {
         Hide();
         _converterTime = new ConverterTime();
+        _customizerWindow = new CustomizerWindow();
+    }
+
+    private void Start()
+    {
+        _customizerWindow.InitSizeWindow(transform);
     }
 
     public void Display(WindowTimer windowTimer)

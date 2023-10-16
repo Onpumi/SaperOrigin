@@ -5,18 +5,22 @@ public class WindowStatistics : WindowBase
     [SerializeField] private RectTransform _buttonField;
     [SerializeField] private RectTransform _buttonBack;
     private RectTransform _rectTransform;
+    private CustomizerWindow _customizerWindow;
     private Vector2 _anchorMin = (Screen.width < Screen.height) ? (new Vector2(0, 0.1f)) : (new Vector2(0.25f, 0.05f));
     private Vector2 _anchorMax = (Screen.width < Screen.height) ? (new Vector2(1, 0.3f)) : (new Vector2(0.75f, 0.2f));
 
     private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
+        _customizerWindow = new CustomizerWindow();
         Hide();
     }
 
     private void Start()
     {
-        SetSizeWindow();
+        //SetSizeWindow();
+        _customizerWindow.InitSizeWindow(transform.GetChild(0));
+
     }
 
     public void Display()

@@ -183,6 +183,7 @@
      <Compile Include="Assets\Scripts\Sounds\Sounds.cs" />
      <Compile Include="Assets\Scripts\Setting\ISettings.cs" />
      <Compile Include="Assets\Scripts\Data\Intefaces\IPoolData.cs" />
+     <Compile Include="Assets\Scripts\Model\Timer\ConverterTime.cs" />
      <Compile Include="Assets\YandexGame\ScriptsYG\ImageLoadYG.cs" />
      <Compile Include="Assets\Scripts\Model\Animation\FlagAnimation.cs" />
      <Compile Include="Assets\Scripts\Factories\FactoryViewPool.cs" />
@@ -208,7 +209,7 @@
      <Compile Include="Assets\YandexGame\ScriptsYG\LeaderboardYG.cs" />
      <Compile Include="Assets\Scripts\Pooling\Pool Field\PoolDataRoot.cs" />
      <Compile Include="Assets\Scripts\Data\GameSetups.cs" />
-     <Compile Include="Assets\Scripts\Model\Timer\ConverterTime.cs" />
+     <Compile Include="Assets\Scripts\Model\Window\CustomizerWindow.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\YandexGame\Prefabs\Leaderboards" />
      <Folder Include="Assets\Scripts\SaveData" />
@@ -300,6 +301,7 @@
      <None Include="Assets\Q3DAudio\readme.txt" />
      <None Include="Assets\YandexGame\Example\Content\Font\LICENSE.txt" />
      <Folder Include="Assets\AndroidAPI\Class" />
+     <Folder Include="Assets\Scripts\Model\Window" />
      <Folder Include="Assets\Q3DAudio" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
      <None Include="Assets\YandexGame\ScriptsYG\UnityToolbag-main\Notices.txt" />

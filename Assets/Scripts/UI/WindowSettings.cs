@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public class WindowSettings : WindowBase , IWindowUI 
+public class WindowSettings : WindowBase, IWindowUI
 {
     [SerializeField] private GameState _gameState;
     [SerializeField] private Color _colorHighLightMenu;
+    private CustomizerWindow _customizerWindow;
     private IBackToPreviousWindowCommand _backToPreviousWindowCommand;
     public IBackToPreviousWindowCommand BackToPreviousWindowCommand => _backToPreviousWindowCommand;
     private IWindowCommand _backWindowCommand;
@@ -13,48 +14,39 @@ public class WindowSettings : WindowBase , IWindowUI
     private void Awake()
     {
         Hide();
+        _customizerWindow = new CustomizerWindow();
     }
 
     private void OnEnable()
     {
         _gameState.CurrentInitWindow(this);
-
     }
 
 
     public void Start()
     {
-        if (Screen.width > Screen.height)
-        {
-            var recTransform = GetComponent<RectTransform>();
-            var offset = (recTransform.rect.width - recTransform.rect.height) * 0.5f;
-         recTransform.offsetMin = new Vector2(offset,0f);
-         recTransform.offsetMax = new Vector2(-offset,0f);
-        }
+        _customizerWindow.InitSizeWindow(transform);
     }
 
-    public void InitBackWindowCommand( IWindowCommand backWindowCommand )
+    public void InitBackWindowCommand(IWindowCommand backWindowCommand)
     {
         _backWindowCommand = backWindowCommand;
     }
 
-     public override void OpenCanvasByPressingEscape( IWindowCommand windowCommand )
+    public override void OpenCanvasByPressingEscape(IWindowCommand windowCommand)
     {
-        _gameState.BackPreviousWindow.Open(this, _backWindowCommand );
+        _gameState.BackPreviousWindow.Open(this, _backWindowCommand);
         _gameState.ActivatePause(false);
     }
-  
-  
-    
+
+
     public void InitBackNavigation(IBackToPreviousWindowCommand backToPreviousWindowCommand)
     {
         _backToPreviousWindowCommand = backToPreviousWindowCommand;
     }
 
-    public void Activate(  )
+    public void Activate()
     {
         Enable();
     }
-    
-    
 }

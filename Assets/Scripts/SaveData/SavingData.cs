@@ -4,7 +4,6 @@ namespace SaveData
     public abstract class SavingData<T> where T : new()
     {
         protected virtual string Key { get; set; }
-        //protected T DataSetups;
         public T DataSetups { get; private set; }
         private readonly PlayerPrefSettings _settings;
 

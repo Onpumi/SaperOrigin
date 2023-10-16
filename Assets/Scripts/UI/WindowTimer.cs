@@ -38,7 +38,7 @@ public class WindowTimer : WindowBase
     }
 
 
-    public void InitSizeFieldTime()
+    private void InitSizeFieldTime()
     {
         _widthCell = _topMenu.Height / 3f;
         _heightCell = _topMenu.Height;
