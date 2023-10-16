@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Views\Interfaces\IView.cs" />
      <Compile Include="Assets\Scripts\UI\WindowS\IBackPreviousWindow.cs" />
      <Compile Include="Assets\Scripts\Root\GameState.cs" />
+     <Compile Include="Assets\Scripts\Model\Window\CustomizerWindow.cs" />
      <Compile Include="Assets\YandexGame\ScriptsYG\InfoYG.cs" />
      <Compile Include="Assets\YandexGame\ScriptsYG\LanguageYG.cs" />
      <Compile Include="Assets\Scripts\Sounds\SoundDatas.cs" />
@@ -209,7 +210,6 @@
      <Compile Include="Assets\YandexGame\ScriptsYG\LeaderboardYG.cs" />
      <Compile Include="Assets\Scripts\Pooling\Pool Field\PoolDataRoot.cs" />
      <Compile Include="Assets\Scripts\Data\GameSetups.cs" />
-     <Compile Include="Assets\Scripts\Model\Window\CustomizerWindow.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\YandexGame\Prefabs\Leaderboards" />
      <Folder Include="Assets\Scripts\SaveData" />

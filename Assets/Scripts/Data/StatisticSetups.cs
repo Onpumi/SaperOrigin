@@ -1,13 +1,15 @@
 
+using UnityEngine;
+
 public class StatisticSetups
 {
     public int CountWins;
     public int CountLoss;
-    public int CountPlayes;
     public int AverageGameSecondsTime;
-    public int BestPlayGameSecondsTime { get; private set; }
+    public int BestPlayGameSecondsTime;
     public int TotalGameStarted;
     public int TotalPlayGamesSeconds;
+    private int _countPlayes;
 
     public StatisticSetups()
     {
@@ -17,7 +19,7 @@ public class StatisticSetups
         TotalGameStarted = 0;
         BestPlayGameSecondsTime = -1;
         TotalPlayGamesSeconds = 0;
-        CountPlayes = 0;
+        _countPlayes = 0;
     }
 
     public void UpdateCountFinishPlayGames(bool isWin)
@@ -26,17 +28,12 @@ public class StatisticSetups
             CountWins++;
         else
             CountLoss++;
-        
-        CountPlayes++;
-        
-//        Debug.Log( "количество проигрышей:" + CountLoss);
-//        Debug.Log( "количество выигрышей:" + CountWins);
-        
+        _countPlayes++;
     }
 
     public void CalculateAverageTime()
     {
-        AverageGameSecondsTime =  (int)((float)TotalPlayGamesSeconds / (float)CountPlayes);
+        AverageGameSecondsTime =  (int)((float)TotalPlayGamesSeconds / (float)_countPlayes);
     }
 
     public void UpdateTotalPlayGamesSeconds(int seconds)
@@ -58,27 +55,11 @@ public class StatisticSetups
                 BestPlayGameSecondsTime = seconds;
             }
         }
-        
-        //Debug.Log(BestPlayGameSecondsTime);
-        
     }
 
     public void UpdateTotalGameStarted()
     {
         TotalGameStarted++;
-    }
-
-    public int GetCountPlayGames(bool isWin)
-    {
-        if (isWin)
-            return CountWins;
-        else
-            return CountLoss;
-    }
-
-    public (int, int) GetPlayTimesValue()
-    {
-        return (AverageGameSecondsTime, BestPlayGameSecondsTime);
     }
 
     public int GetCountStartPlayGames()

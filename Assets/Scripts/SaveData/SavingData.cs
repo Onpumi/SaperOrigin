@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 namespace SaveData
 {
     public abstract class SavingData<T> where T : new()
@@ -15,16 +17,21 @@ namespace SaveData
 
         public T Load()
         {
-        
+
             if (_settings.Exists(Key))
+            {
                 DataSetups = _settings.Load(Key, DataSetups);
+            }
             else
                 Save();
 
             return DataSetups;
         }
 
-        protected void Save() => _settings.Save(Key, DataSetups);
+        protected void Save()
+        {
+            _settings.Save(Key, DataSetups);
+        }
 
         public void DeleteAll() => UnityEngine.PlayerPrefs.DeleteAll();
 

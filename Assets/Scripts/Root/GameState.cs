@@ -70,7 +70,7 @@ public class GameState : SerializedMonoBehaviour, ICompositeRoot
         IsPlay = true;
         _uiData.ButtonPlay.SetNormColor();
         ActivatePause(false);
-        _uiData.GameField.DataSetting.StatisticsData.UpdateCountStart();
+        _uiData.GameField.DataSetting.StatisticsData.UpdateTotalGameStarted();
     }
 
     public void StopGame()

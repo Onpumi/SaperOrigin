@@ -7,7 +7,7 @@ public class StatisticsData : SavingData<StatisticSetups>
         base.Key = key;
     }
 
-    public void UpdateCountStart()
+    public void UpdateTotalGameStarted()
     {
         DataSetups.UpdateTotalGameStarted(); 
         Save();
@@ -30,10 +30,13 @@ public class StatisticsData : SavingData<StatisticSetups>
         DataSetups.SetupBestPlayGames(seconds);
         Save();
     }
+    
+    
 
     public void CalculateAverageTime()
     {
         DataSetups.CalculateAverageTime();
+        Save();
     }
 
     public int GetCountStartPlayGames() => DataSetups.GetCountStartPlayGames();
