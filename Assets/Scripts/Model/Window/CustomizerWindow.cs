@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class CustomizerWindow
 {
-
     public void InitSizeWindow( Transform transform, float scale = 0.5f )
     {
         if (Screen.width > Screen.height)
@@ -14,5 +13,4 @@ public class CustomizerWindow
             recTransform.offsetMax = new Vector2(-offset, 0f);
         }
     }
-    
 }

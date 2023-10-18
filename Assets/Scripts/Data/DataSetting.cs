@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DataSetting
 {
-    private GameField _gameField;
+    //private GameField _gameField;
     public AudioData AudioData { get; private set; }
     public ScreenData ScreenData { get; private set; }
     public GameData GameData { get; private set; }
@@ -10,7 +10,7 @@ public class DataSetting
 
     public DataSetting(GameField gameField)
     {
-        _gameField = gameField;
+      //  _gameField = gameField;
         AudioData = new AudioData("AudioKey");
         AudioData.Load();
         ScreenData = new ScreenData("ScreenKey");

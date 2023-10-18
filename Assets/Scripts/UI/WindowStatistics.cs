@@ -11,7 +11,7 @@ public class WindowStatistics : WindowBase
 
     private void Start()
     {
-        _customizerWindow.InitSizeWindow(transform.GetChild(0));
+        _customizerWindow.InitSizeWindow(transform.GetChild(0), 0.7f);
     }
   
 }
