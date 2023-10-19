@@ -42,176 +42,152 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\UI\Interfaces\IBackToPreviousWindowCommand.cs" />
-     <Compile Include="Assets\Scripts\Views\Interfaces\ICellView.cs" />
-     <Compile Include="Assets\Scripts\UI\OutButton.cs" />
-     <Compile Include="Assets\Scripts\UI\MainWindow.cs" />
-     <Compile Include="Assets\Scripts\Model\Actions\IDownAction.cs" />
-     <Compile Include="Assets\Scripts\Model\Field\FieldCells.cs" />
      <Compile Include="Assets\Scripts\SaveData\PlayerPrefStorage.cs" />
-     <Compile Include="Assets\YandexGame\ScriptsYG\BannerYG.cs" />
-     <Compile Include="Assets\Scripts\UI\IWindowCommand.cs" />
-     <Compile Include="Assets\YandexGame\ScriptsYG\DebuggingModeYG.cs" />
-     <Compile Include="Assets\Scripts\Views\MineView.cs" />
-     <Compile Include="Assets\YandexGame\Example\Scripts\RewardedAd.cs" />
+     <Compile Include="Assets\Scripts\Model\Field\FieldCells.cs" />
      <Compile Include="Assets\Q3DAudio\Scripts\Q3DAudioRoom.cs" />
-     <Compile Include="Assets\YandexGame\ScriptsYG\GetPlayerYG.cs" />
      <Compile Include="Assets\Scripts\Sounds\SoundClip.cs" />
      <Compile Include="Assets\Scripts\Pooling\PrefabFactory.cs" />
      <Compile Include="Assets\Scripts\Views\Interfaces\IView.cs" />
      <Compile Include="Assets\Scripts\UI\WindowS\IBackPreviousWindow.cs" />
-     <Compile Include="Assets\Scripts\Root\GameState.cs" />
-     <Compile Include="Assets\Scripts\Model\Window\CustomizerWindow.cs" />
-     <Compile Include="Assets\YandexGame\ScriptsYG\InfoYG.cs" />
-     <Compile Include="Assets\YandexGame\ScriptsYG\LanguageYG.cs" />
-     <Compile Include="Assets\Scripts\Sounds\SoundDatas.cs" />
-     <Compile Include="Assets\Scripts\Factories\IFactoryMine.cs" />
-     <Compile Include="Assets\Scripts\UI\UIInputCheck\UIInputCheckGame.cs" />
-     <Compile Include="Assets\YandexGame\ScriptsYG\ReviewYG.cs" />
-     <Compile Include="Assets\Scripts\Views\FlagView.cs" />
      <Compile Include="Assets\Scripts\Views\Vibration.cs" />
-     <Compile Include="Assets\Scripts\UI\UIScrollRect.cs" />
-     <Compile Include="Assets\Scripts\Views\Interfaces\IBrickView.cs" />
-     <Compile Include="Assets\YandexGame\Example\Scripts\GetLederboardData.cs" />
-     <Compile Include="Assets\Scripts\UI\WindowScaleParent.cs" />
      <Compile Include="Assets\Scripts\Model\Flag\Flag.cs" />
      <Compile Include="Assets\Scripts\Root\EntyPoint.cs" />
      <Compile Include="Assets\Scripts\Pooling\IPool.cs" />
      <Compile Include="Assets\Scripts\Model\Field\FieldCellData.cs" />
      <Compile Include="Assets\Scripts\Factories\FactoryCell.cs" />
      <Compile Include="Assets\Scripts\UI\BackgroundField.cs" />
-     <Compile Include="Assets\Scripts\UI\WindowWinner.cs" />
      <Compile Include="Assets\Scripts\SaveData\AudioData.cs" />
      <Compile Include="Assets\Scripts\UI\ButtonPlay.cs" />
      <Compile Include="Assets\Scripts\Tools\SafeAreaFitter.cs" />
      <Compile Include="Assets\Scripts\Data\ScreenSetups.cs" />
      <Compile Include="Assets\Scripts\Root\GameFieldData.cs" />
-     <Compile Include="Assets\Scripts\Model\Timer\TimerPlayer.cs" />
      <Compile Include="Assets\Scripts\Data\StatisticSetups.cs" />
      <Compile Include="Assets\Scripts\Extensions\IntExtensions.cs" />
-     <Compile Include="Assets\Scripts\UI\MenuBarView.cs" />
-     <Compile Include="Assets\YandexGame\Example\Scripts\LanguageExample.cs" />
-     <Compile Include="Assets\Scripts\Views\Interfaces\IFlagView.cs" />
-     <Compile Include="Assets\YandexGame\ScriptsYG\Inside\ConfigYG.cs" />
-     <Compile Include="Assets\Scripts\Views\CellView.cs" />
      <Compile Include="Assets\Scripts\MyLongRunningOperation.cs" />
      <Compile Include="Assets\Scripts\Test.cs" />
-     <Compile Include="Assets\YandexGame\ScriptsYG\YandexGame.cs" />
-     <Compile Include="Assets\Scripts\Factories\Factory.cs" />
      <Compile Include="Assets\Scripts\UI\UIInputCheck\UIInputCheckSound.cs" />
-     <Compile Include="Assets\Scripts\Data\DataSetting.cs" />
      <Compile Include="Assets\Scripts\UI\BorderField.cs" />
-     <Compile Include="Assets\YandexGame\Example\Scripts\DebugViewing.cs" />
+     <Compile Include="Assets\Scripts\UI\ScalerRowMenu.cs" />
+     <Compile Include="Assets\Scripts\Data\PoolDataContainer.cs" />
+     <Compile Include="Assets\Scripts\Data\TypesStatistics.cs" />
+     <Compile Include="Assets\Scripts\UI\WindowScaleBricks.cs" />
+     <Compile Include="Assets\Scripts\UI\SectionMenuView.cs" />
+     <Compile Include="Assets\Q3DAudio\Scripts\Q3DAudioGlobalSettings.cs" />
+     <Compile Include="Assets\Scripts\Model\Cell\Cell.cs" />
+     <Compile Include="Assets\Scripts\Views\BackGroundSliderView.cs" />
+     <Compile Include="Assets\Scripts\Test2.cs" />
+     <Compile Include="Assets\Scripts\Views\Interfaces\IGameField.cs" />
+     <Compile Include="Assets\Scripts\UI\UIInputCheck\UIInpurtCheckStatistic.cs" />
+     <Compile Include="Assets\Scripts\Model\Cell\ICell.cs" />
+     <Compile Include="Assets\Scripts\Setting\ISaveObject.cs" />
+     <Compile Include="Assets\Scripts\Factories\IFactory.cs" />
+     <Compile Include="Assets\Scripts\UI\WindowPlayModeButton.cs" />
+     <Compile Include="Assets\Scripts\Model\Actions\FirstDigDownAction.cs" />
+     <Compile Include="Assets\Scripts\SaveData\SavingData.cs" />
+     <Compile Include="Assets\Scripts\Factories\IFactoryView.cs" />
+     <Compile Include="Assets\Scripts\Model\Actions\FlagDownAction.cs" />
+     <Compile Include="Assets\Q3DAudio\Scripts\Q3DAudioManager.cs" />
+     <Compile Include="Assets\Scripts\UI\ButtonPause.cs" />
+     <Compile Include="Assets\Scripts\Data\Intefaces\IViews.cs" />
+     <Compile Include="Assets\Scripts\UI\WindowScalingBlocks.cs" />
+     <Compile Include="Assets\Scripts\UI\BackButton.cs" />
+     <Compile Include="Assets\AndroidAPI\C# For example\main.cs" />
+     <Compile Include="Assets\Scripts\UI\WindowBase.cs" />
+     <Compile Include="Assets\Scripts\Model\Timer\ConverterTime.cs" />
+     <Compile Include="Assets\Scripts\UI\WindowCountMines.cs" />
+     <Compile Include="Assets\Scripts\UI\UIInputCheck\UIInputCheckScreen.cs" />
+     <Compile Include="Assets\Scripts\Data\UIData.cs" />
+     <Compile Include="Assets\Scripts\UI\UIHeader.cs" />
+     <Compile Include="Assets\Scripts\Model\Scale\ScaleCalculator.cs" />
+     <Compile Include="Assets\Scripts\SaveData\ScreenData.cs" />
+     <Compile Include="Assets\Scripts\Views\BrickView.cs" />
+     <Compile Include="Assets\Scripts\Root\ICompositeRoot.cs" />
+     <Compile Include="Assets\Scripts\Model\Learn\Education.cs" />
+     <Compile Include="Assets\Scripts\Pooling\Pool Field\PoolDataRoot.cs" />
+     <Compile Include="Assets\Scripts\Data\GameSetups.cs" />
+     <Compile Include="Assets\Scripts\Views\Interfaces\ICellView.cs" />
+     <Compile Include="Assets\Scripts\UI\OutButton.cs" />
+     <Compile Include="Assets\Scripts\UI\MainWindow.cs" />
+     <Compile Include="Assets\Scripts\Model\Actions\IDownAction.cs" />
+     <Compile Include="Assets\Scripts\UI\IWindowCommand.cs" />
+     <Compile Include="Assets\Scripts\Views\MineView.cs" />
+     <Compile Include="Assets\Scripts\Root\GameState.cs" />
+     <Compile Include="Assets\Scripts\Model\Window\CustomizerWindow.cs" />
+     <Compile Include="Assets\Scripts\Factories\IFactoryMine.cs" />
+     <Compile Include="Assets\Scripts\Sounds\SoundDatas.cs" />
+     <Compile Include="Assets\Scripts\UI\UIInputCheck\UIInputCheckGame.cs" />
+     <Compile Include="Assets\Scripts\Views\FlagView.cs" />
+     <Compile Include="Assets\Scripts\UI\UIScrollRect.cs" />
+     <Compile Include="Assets\Scripts\Views\Interfaces\IBrickView.cs" />
+     <Compile Include="Assets\Scripts\UI\WindowScaleParent.cs" />
+     <Compile Include="Assets\Scripts\UI\WindowWinner.cs" />
+     <Compile Include="Assets\Scripts\Model\Timer\TimerPlayer.cs" />
+     <Compile Include="Assets\Scripts\UI\MenuBarView.cs" />
+     <Compile Include="Assets\Scripts\Views\Interfaces\IFlagView.cs" />
+     <Compile Include="Assets\Scripts\Views\CellView.cs" />
+     <Compile Include="Assets\Scripts\Factories\Factory.cs" />
+     <Compile Include="Assets\Scripts\Data\DataSetting.cs" />
      <Compile Include="Assets\Scripts\Sounds\SoundAction.cs" />
      <Compile Include="Assets\Scripts\Factories\FactoryView.cs" />
      <Compile Include="Assets\Scripts\UI\UISizeManager.cs" />
      <Compile Include="Assets\Scripts\UI\ButtonMenu.cs" />
-     <Compile Include="Assets\Scripts\UI\ScalerRowMenu.cs" />
      <Compile Include="Assets\Scripts\Model\Actions\DigDownAction.cs" />
-     <Compile Include="Assets\Scripts\Data\PoolDataContainer.cs" />
-     <Compile Include="Assets\Scripts\Data\TypesStatistics.cs" />
      <Compile Include="Assets\Scripts\Root\GameField.cs" />
-     <Compile Include="Assets\YandexGame\ScriptsYG\GraphicSettingsYG.cs" />
      <Compile Include="Assets\Scripts\Views\Interfaces\IBoomView.cs" />
-     <Compile Include="Assets\Scripts\UI\WindowScaleBricks.cs" />
-     <Compile Include="Assets\YandexGame\WorkingData\SavesYG.cs" />
-     <Compile Include="Assets\Scripts\UI\SectionMenuView.cs" />
      <Compile Include="Assets\Q3DAudio\Scripts\Q3DAudioSource.cs" />
-     <Compile Include="Assets\Q3DAudio\Scripts\Q3DAudioGlobalSettings.cs" />
      <Compile Include="Assets\Scripts\Model\Timer\DigitalBuilder.cs" />
      <Compile Include="Assets\Scripts\Pooling\IPoolFactory.cs" />
-     <Compile Include="Assets\Scripts\Model\Cell\Cell.cs" />
      <Compile Include="Assets\Scripts\Pooling\Pool Field\PoolDataBuilder.cs" />
      <Compile Include="Assets\Scripts\Factories\FactoryMineView.cs" />
      <Compile Include="Assets\Scripts\Model\Field\SpawnerField.cs" />
-     <Compile Include="Assets\Scripts\Views\BackGroundSliderView.cs" />
-     <Compile Include="Assets\Scripts\Views\Interfaces\IGameField.cs" />
      <Compile Include="Assets\Scripts\SaveData\GameData.cs" />
      <Compile Include="Assets\Scripts\Input\InputHandler.cs" />
      <Compile Include="Assets\Scripts\Graphics\SpriteData.cs" />
-     <Compile Include="Assets\Scripts\Model\Cell\ICell.cs" />
-     <Compile Include="Assets\Scripts\Setting\ISaveObject.cs" />
-     <Compile Include="Assets\Scripts\Factories\IFactory.cs" />
      <Compile Include="Assets\Scripts\Pooling\PoolCore.cs" />
-     <Compile Include="Assets\YandexGame\Example\Scripts\OpenAuthorizationDialog.cs" />
      <Compile Include="Assets\Scripts\Graphics\ScreenProperties.cs" />
-     <Compile Include="Assets\YandexGame\Example\Scripts\SaverTest.cs" />
-     <Compile Include="Assets\Scripts\UI\WindowPlayModeButton.cs" />
-     <Compile Include="Assets\YandexGame\Example\Scripts\NewResultLeaderboard.cs" />
-     <Compile Include="Assets\YandexGame\ScriptsYG\UnityToolbag-main\ConditionallyVisiblePropertyDrawer\Runtime\ConditionallyVisibleAttribute.cs" />
      <Compile Include="Assets\Scripts\Model\Statistics\Statistics.cs" />
-     <Compile Include="Assets\Scripts\Model\Actions\FirstDigDownAction.cs" />
-     <Compile Include="Assets\Scripts\SaveData\SavingData.cs" />
      <Compile Include="Assets\Scripts\UI\WindowTimer.cs" />
      <Compile Include="Assets\Scripts\Data\Views.cs" />
      <Compile Include="Assets\Scripts\Data\TypesScreen.cs" />
      <Compile Include="Assets\Scripts\SaveData\StatisticsData.cs" />
-     <Compile Include="Assets\Scripts\Factories\IFactoryView.cs" />
      <Compile Include="Assets\Scripts\UI\UIInputCheck\UIInputCheckComplexity.cs" />
-     <Compile Include="Assets\YandexGame\ScriptsYG\PaymentsYG.cs" />
      <Compile Include="Assets\Scripts\Views\SliderProgress.cs" />
-     <Compile Include="Assets\Scripts\Model\Actions\FlagDownAction.cs" />
-     <Compile Include="Assets\Q3DAudio\Scripts\Q3DAudioManager.cs" />
      <Compile Include="Assets\Scripts\Views\DigitalView.cs" />
      <Compile Include="Assets\Scripts\Tools\VibratorWrapper.cs" />
-     <Compile Include="Assets\Scripts\UI\ButtonPause.cs" />
      <Compile Include="Assets\Scripts\Data\AudioSetups.cs" />
      <Compile Include="Assets\Scripts\UI\WindowReference.cs" />
-     <Compile Include="Assets\YandexGame\ScriptsYG\PromptYG.cs" />
      <Compile Include="Assets\Scripts\JavaScript\ClassForJavaScript.cs" />
-     <Compile Include="Assets\Scripts\Data\Intefaces\IViews.cs" />
-     <Compile Include="Assets\YandexGame\Example\Scripts\GetPlayerData.cs" />
      <Compile Include="Assets\Scripts\UI\WindowPause.cs" />
-     <Compile Include="Assets\YandexGame\ScriptsYG\Inside\CallingAnEvent.cs" />
-     <Compile Include="Assets\Scripts\UI\WindowScalingBlocks.cs" />
      <Compile Include="Assets\Scripts\UI\SliderSizeCells.cs" />
      <Compile Include="Assets\Scripts\Model\Cell\CellData.cs" />
-     <Compile Include="Assets\Scripts\UI\BackButton.cs" />
-     <Compile Include="Assets\YandexGame\Example\Scripts\SwitchSceneTest.cs" />
      <Compile Include="Assets\Scripts\Pooling\IPoolable.cs" />
      <Compile Include="Assets\Scripts\Data\TypesGame.cs" />
-     <Compile Include="Assets\AndroidAPI\C# For example\main.cs" />
      <Compile Include="Assets\Scripts\UI\WindowSettings.cs" />
      <Compile Include="Assets\Scripts\UI\Interfaces\IWindowUI.cs" />
      <Compile Include="Assets\Q3DAudio\Scripts\Q3DAudioListener.cs" />
      <Compile Include="Assets\Scripts\Data\TypesAudio.cs" />
-     <Compile Include="Assets\YandexGame\ScriptsYG\ForVisualScriptYG.cs" />
      <Compile Include="Assets\Scripts\UI\WindowConfirmation.cs" />
      <Compile Include="Assets\Scripts\UI\SavingScaleBricks.cs" />
      <Compile Include="Assets\AndroidAPI\Class\AndroidAPI.cs" />
      <Compile Include="Assets\Scripts\UI\UIInputCheck\UIInputCheck.cs" />
-     <Compile Include="Assets\Scripts\UI\WindowBase.cs" />
      <Compile Include="Assets\Scripts\Model\Field\ContainerMines.cs" />
      <Compile Include="Assets\Scripts\Sounds\Sounds.cs" />
-     <Compile Include="Assets\Scripts\Setting\ISettings.cs" />
      <Compile Include="Assets\Scripts\Data\Intefaces\IPoolData.cs" />
-     <Compile Include="Assets\Scripts\Model\Timer\ConverterTime.cs" />
-     <Compile Include="Assets\YandexGame\ScriptsYG\ImageLoadYG.cs" />
+     <Compile Include="Assets\Scripts\Setting\ISettings.cs" />
      <Compile Include="Assets\Scripts\Model\Animation\FlagAnimation.cs" />
      <Compile Include="Assets\Scripts\Factories\FactoryViewPool.cs" />
      <Compile Include="Assets\Scripts\UI\UIInputCheck\UICheckButton.cs" />
      <Compile Include="Assets\Scripts\Pooling\Pool.cs" />
      <Compile Include="Assets\Scripts\UI\ControllerButtonMode.cs" />
-     <Compile Include="Assets\Scripts\UI\WindowCountMines.cs" />
      <Compile Include="Assets\Scripts\Factories\IFactoryCell.cs" />
      <Compile Include="Assets\Scripts\Views\BoomView.cs" />
-     <Compile Include="Assets\Scripts\UI\UIInputCheck\UIInputCheckScreen.cs" />
      <Compile Include="Assets\Scripts\UI\HighLighter.cs" />
-     <Compile Include="Assets\Scripts\Data\UIData.cs" />
-     <Compile Include="Assets\Scripts\UI\UIHeader.cs" />
      <Compile Include="Assets\Scripts\UI\WindowS\BackOpenerWindow.cs" />
-     <Compile Include="Assets\Scripts\Model\Scale\ScaleCalculator.cs" />
-     <Compile Include="Assets\Scripts\SaveData\ScreenData.cs" />
      <Compile Include="Assets\Scripts\UI\WindowStatistics.cs" />
-     <Compile Include="Assets\YandexGame\ScriptsYG\ViewingAdsYG.cs" />
-     <Compile Include="Assets\Scripts\Views\BrickView.cs" />
-     <Compile Include="Assets\Scripts\Root\ICompositeRoot.cs" />
      <Compile Include="Assets\Scripts\Views\Interfaces\IMineView.cs" />
-     <Compile Include="Assets\Scripts\Model\Learn\Education.cs" />
-     <Compile Include="Assets\YandexGame\ScriptsYG\LeaderboardYG.cs" />
-     <Compile Include="Assets\Scripts\Pooling\Pool Field\PoolDataRoot.cs" />
-     <Compile Include="Assets\Scripts\Data\GameSetups.cs" />
+     <Compile Include="Assets\Scripts\TestSO.cs" />
+     <Compile Include="Assets\Scripts\ScriptableObject\DifficultType.cs" />
      <Folder Include="Assets" />
-     <Folder Include="Assets\YandexGame\Prefabs\Leaderboards" />
      <Folder Include="Assets\Scripts\SaveData" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <Folder Include="Assets\Sprites\Border" />
@@ -220,7 +196,6 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <Folder Include="Assets\Scripts\Model\Animation" />
      <Folder Include="Assets\AndroidAPI\C# For example" />
-     <Folder Include="Assets\YandexGame\Example" />
      <Folder Include="Assets\TextMesh Pro\Sprites" />
      <Folder Include="Assets\Scripts\UI" />
      <Folder Include="Assets\TextMesh Pro\Resources\Sprite Assets" />
@@ -230,16 +205,13 @@
      <Folder Include="Assets\Scripts\Model\Timer" />
      <Folder Include="Assets\Scripts\UI\Interfaces" />
      <Folder Include="Assets\Scripts\Tools" />
-     <Folder Include="Assets\YandexGame\WorkingData" />
      <Folder Include="Assets\Prefabs\UI\Border" />
      <Folder Include="Assets\Scripts\Data" />
      <Folder Include="Assets\Scenes" />
-     <Folder Include="Assets\YandexGame\Example\Content\Materials" />
      <Folder Include="Assets\Q3DAudio\PluginLibs\x86_64" />
      <Folder Include="Assets\Sprites\Timer" />
      <Folder Include="Assets\YandexGame" />
      <Folder Include="Assets\TextMesh Pro\Resources\Fonts &amp; Materials" />
-     <Folder Include="Assets\YandexGame\Example\Content\Font" />
      <Folder Include="Assets\Scripts\UI\UIInputCheck" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
      <Folder Include="Assets\AndroidAPI\Scene" />
@@ -248,35 +220,27 @@
      <Folder Include="Assets\WebGLTemplates\PluginYG" />
      <Folder Include="Assets\Scripts\Setting" />
      <Folder Include="Assets\Scripts\Factories" />
-     <Folder Include="Assets\YandexGame\ScriptsYG\UnityToolbag-main\ConditionallyVisiblePropertyDrawer" />
      <Folder Include="Assets\Q3DAudio\PluginLibs\x86" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <Folder Include="Assets\Prefabs\UI" />
-     <Folder Include="Assets\YandexGame\Documentation" />
      <Folder Include="Assets\Prefabs" />
      <Folder Include="Assets\TextMesh Pro" />
-     <Folder Include="Assets\YandexGame\Prefabs\Payments" />
      <Folder Include="Assets\Scripts\Model\Field" />
      <Folder Include="Assets\Scripts\Model\Statistics" />
+     <Folder Include="Assets\Scripts\ScriptableObject" />
      <None Include="Assets\WebGLTemplates\Notices.txt" />
      <Folder Include="Assets\Sound" />
-     <Folder Include="Assets\YandexGame\Prefabs\Banners" />
      <None Include="Assets\WebGLTemplates\LICENSE.txt" />
      <Folder Include="Assets\WebGLTemplates" />
      <Folder Include="Assets\Scripts\Data\Intefaces" />
      <Folder Include="Assets\Scripts\Model\Learn" />
-     <Folder Include="Assets\YandexGame\ScriptsYG" />
-     <Folder Include="Assets\YandexGame\Prefabs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
-     <Folder Include="Assets\YandexGame\ScriptsYG\Inside" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
      <Folder Include="Assets\Scripts\Extensions" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
-     <None Include="Assets\YandexGame\Documentation\Readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
-     <Folder Include="Assets\YandexGame\ScriptsYG\UnityToolbag-main" />
      <Folder Include="Assets\Scripts\Pooling\Pool Field" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
      <Folder Include="Assets\AndroidAPI\Plugins\Android" />
@@ -291,7 +255,6 @@
      <Folder Include="Assets\AndroidAPI" />
      <Folder Include="Assets\Prefabs\Views" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-     <Folder Include="Assets\YandexGame\Example\Scripts" />
      <Folder Include="Assets\Scripts\Model\Flag" />
      <Folder Include="Assets\Scripts\Model\Cell" />
      <Folder Include="Assets\Scripts" />
@@ -299,21 +262,15 @@
      <Folder Include="Assets\Scripts\JavaScript" />
      <Folder Include="Assets\Scripts\Views\Interfaces" />
      <None Include="Assets\Q3DAudio\readme.txt" />
-     <None Include="Assets\YandexGame\Example\Content\Font\LICENSE.txt" />
      <Folder Include="Assets\AndroidAPI\Class" />
      <Folder Include="Assets\Scripts\Model\Window" />
      <Folder Include="Assets\Q3DAudio" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
-     <None Include="Assets\YandexGame\ScriptsYG\UnityToolbag-main\Notices.txt" />
      <Folder Include="Assets\Scripts\Root" />
-     <Folder Include="Assets\YandexGame\Example\Content\Textures" />
-     <None Include="Assets\YandexGame\Documentation\Third-Party Notices.txt" />
-     <Folder Include="Assets\YandexGame\Example\Scenes" />
      <Folder Include="Assets\Scripts\Input" />
      <Folder Include="Assets\Scripts\Model\Actions" />
      <Folder Include="Assets\WebGLTemplates\PluginYG\TemplateData" />
      <Folder Include="Assets\Q3DAudio\PluginLibs\Android" />
-     <Folder Include="Assets\YandexGame\ScriptsYG\UnityToolbag-main\ConditionallyVisiblePropertyDrawer\Runtime" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
      <Folder Include="Assets\Q3DAudio\PluginLibs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
@@ -323,13 +280,11 @@
      <Folder Include="Assets\Resources" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
      <Folder Include="Assets\Scripts\Graphics" />
-     <None Include="Assets\YandexGame\ScriptsYG\UnityToolbag-main\LICENSE.txt" />
      <Folder Include="Assets\Q3DAudio\PluginLibs\Android\libs\armeabi-v7a" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne.json" />
      <Folder Include="Assets\Scripts\Model" />
      <Folder Include="Assets\Sprites" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
-     <Folder Include="Assets\YandexGame\Example\Content" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.28f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>
@@ -567,44 +522,29 @@
      <Reference Include="UnityEditor.UnityConnectModule">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.28f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
      </Reference>
+     <Reference Include="Sirenix.OdinInspector.Editor">
+     <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
+     </Reference>
      <Reference Include="Sirenix.OdinInspector.Attributes">
      <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Burst.Cecil.Pdb">
-     <HintPath>C:\GamerProjects\Saper\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
      </Reference>
      <Reference Include="Sirenix.Serialization.Config">
      <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
      </Reference>
-     <Reference Include="DOTween">
-     <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
-     </Reference>
-     <Reference Include="Newtonsoft.Json">
-     <HintPath>C:\GamerProjects\Saper\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
-     </Reference>
-     <Reference Include="Sirenix.Utilities.Editor">
-     <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Sirenix.OdinInspector.Editor">
-     <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Burst.Unsafe">
-     <HintPath>C:\GamerProjects\Saper\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.Unsafe.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Burst.Cecil.Mdb">
-     <HintPath>C:\GamerProjects\Saper\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Burst.Cecil">
-     <HintPath>C:\GamerProjects\Saper\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Burst.Cecil.Rocks">
-     <HintPath>C:\GamerProjects\Saper\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
-     </Reference>
      <Reference Include="Sirenix.Utilities">
      <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
+     <HintPath>C:\GamerProjects\Saper\Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTween">
+     <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
+     </Reference>
      <Reference Include="Sirenix.Serialization">
      <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
+     </Reference>
+     <Reference Include="Sirenix.Utilities.Editor">
+     <HintPath>C:\GamerProjects\Saper\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.iOS.Extensions.Xcode">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.28f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -984,23 +924,14 @@
      <Reference Include="System.Xml.Serialization">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.28f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.2D.Animation.Editor">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.2D.Animation.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.InternalAPIEngineBridge.001">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.001.dll</HintPath>
+     <Reference Include="Unity.VisualScripting.Flow.Editor">
+     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VSCode.Editor">
      <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.2D.PixelPerfect">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.2D.PixelPerfect.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.2D.Tilemap.Editor">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="PsdPlugin">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
+     <Reference Include="Unity.VisualScripting.Shared.Editor">
+     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.TextMeshPro.Editor">
      <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
@@ -1008,29 +939,26 @@
      <Reference Include="Unity.VisualStudio.Editor">
      <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.Timeline.Editor">
+     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.Timeline">
      <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
      </Reference>
      <Reference Include="Unity.TextMeshPro">
      <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.Burst.Editor">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
+     <Reference Include="Unity.VisualScripting.State.Editor">
+     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.2D.IK.Editor">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.2D.IK.Editor.dll</HintPath>
+     <Reference Include="Unity.VisualScripting.Core.Editor">
+     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.2D.Sprite.Editor">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
+     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.2D.Psdimporter.Editor">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.2D.Path.Editor">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.2D.Path.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.InternalAPIEditorBridge.001">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.001.dll</HintPath>
+     <Reference Include="Unity.VisualScripting.Flow">
+     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.UI">
      <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
@@ -1044,38 +972,11 @@
      <Reference Include="UnityEngine.UI">
      <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.Mathematics">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
+     <Reference Include="Unity.VisualScripting.State">
+     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.2D.IK.Runtime">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.2D.IK.Runtime.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Burst">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.2D.Animation.Runtime">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.2D.Animation.Runtime.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.2D.PixelPerfect.Editor">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.2D.PixelPerfect.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Timeline.Editor">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Mathematics.Editor">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.2D.Common.Runtime">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.2D.SpriteShape.Editor">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.2D.SpriteShape.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.2D.Common.Editor">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.2D.Common.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.2D.SpriteShape.Runtime">
-     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
+     <Reference Include="Unity.VisualScripting.Core">
+     <HintPath>C:\GamerProjects\Saper\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -1087,33 +988,9 @@
       <Project>{cd744fe6-fbf3-6e0f-3937-59d8f1dd8cde}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="UniTask.DOTween.csproj">
-      <Project>{9733e7c9-8442-6b09-00d9-78291e7080be}</Project>
-      <Name>UniTask.DOTween</Name>
-    </ProjectReference>
-    <ProjectReference Include="UniTask.Linq.csproj">
-      <Project>{075ed485-46ed-266f-0572-9df72a7fe015}</Project>
-      <Name>UniTask.Linq</Name>
-    </ProjectReference>
-    <ProjectReference Include="Sirenix.OdinInspector.Modules.UnityMathematics.csproj">
-      <Project>{34d72b06-76db-6b1e-dac6-d330592f5353}</Project>
-      <Name>Sirenix.OdinInspector.Modules.UnityMathematics</Name>
-    </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
       <Project>{a796b377-cdf4-11fc-821c-1a4b6247acef}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="UniTask.TextMeshPro.csproj">
-      <Project>{c6a34ad7-8ba0-0cca-ab43-d1b11e46d5a6}</Project>
-      <Name>UniTask.TextMeshPro</Name>
-    </ProjectReference>
-    <ProjectReference Include="UniTask.csproj">
-      <Project>{f4ee67c2-c17a-7384-cbf4-9d6213c4608e}</Project>
-      <Name>UniTask</Name>
-    </ProjectReference>
-    <ProjectReference Include="UniTask.Addressables.csproj">
-      <Project>{87a9df56-2027-5e76-921d-c3b684b2e1ce}</Project>
-      <Name>UniTask.Addressables</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

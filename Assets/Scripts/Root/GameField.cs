@@ -57,7 +57,7 @@ public class GameField : WindowBase, IGameField, IBackToPreviousWindowCommand
         DataSetting.UpdateStatisticsData(this );
         switch (typesGame)
         {
-            case TypesGame.DifficultGame:
+            case TypesGame.HardGame:
                 _gameState.GameFieldData.PercentMine = 20;
                 break;
             case TypesGame.MediumGame:

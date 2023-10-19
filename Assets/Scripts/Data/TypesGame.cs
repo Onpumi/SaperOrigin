@@ -2,7 +2,7 @@ public enum TypesGame
 {
     EasyGame,
     MediumGame,
-    DifficultGame
+    HardGame
 }
 
 public enum TypesOption
